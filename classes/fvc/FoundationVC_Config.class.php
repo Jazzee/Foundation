@@ -144,4 +144,19 @@ class FoundationVC_Config extends Lvc_Config {
     }  
     return false;
   }
+  
+  /**
+   * Cascading Element Exists
+   * @param string $className
+	 * @param string $prefix
+	 * @param string $suffix
+   */
+  public static function findElementCacading($className, $prefix = '', $suffix = ''){
+    if(!isset(self::$_cache)) self::$_cache = Cache::getInstance();
+    do {
+      $elementName = $prefix . $className . $suffix;
+      if(self::elementExists($elementName)) return $elementName;
+    } while ($className = get_parent_class($className));
+    return false;
+  }
 }
