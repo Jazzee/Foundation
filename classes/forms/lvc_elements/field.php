@@ -16,7 +16,7 @@ if(!empty($field->legend)){
   echo "<legend>{$field->legend}</legend>\n";
 }
 if(!empty($field->instructions)){
-  echo "<p class='instructions'>{$field->instructions}</p>\n";
+  echo "<div class='instructions'>{$field->instructions}</div>\n";
 }
 ?>
 <?php 
