@@ -70,6 +70,7 @@ if(extension_loaded('apc')){
 $virtualResources = Resource::getInstance();
 $virtualResources->addDirectory(dirname(__FILE__) . '/javascript/', 'foundation/scripts');
 $virtualResources->addDirectory(dirname(__FILE__) . '/media/famfamfam_silk_icons_v013/icons', 'foundation/icons/');
+$virtualResources->addDirectory(dirname(__FILE__) . '/media/cc_images', 'foundation/cc_images/');
 
 $virtualResources->add(dirname(__FILE__) . '/lib/jquery/jquery-1.4.4.min.js', 'foundation/scripts/jquery.js');
 $virtualResources->add(dirname(__FILE__) . '/lib/jquery/plugins/jquery.json-2.2.min.js', 'foundation/scripts/jquery.json.js');
