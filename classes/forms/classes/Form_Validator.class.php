@@ -23,7 +23,7 @@ abstract class Form_Validator{
    * Holds the rule set for processing
    * @var mixed
    */
-  protected $rulesSet;
+  protected $ruleSet;
   
   /**
    * @param Form_Element $e the element we are validating
