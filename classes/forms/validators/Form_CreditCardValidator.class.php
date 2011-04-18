@@ -71,19 +71,21 @@ class Form_CreditCardValidator extends Form_Validator{
    * @param string $number
    * @return boolean
    */
-  public function passesLuhnCheck($number) {
+public function passesLuhnCheck($number) {
     $sum = 0;
+    $alt = false;
     //go backwards through the number so we don't double the check digit
     for($i = strlen($number) - 1; $i >= 0; $i--) {
-      if($i % 2) {
-        //double the even numbers
+      if($alt) { //double every other number
         $digit = $number[$i]*2;
         //if the value is two digits subtract 9 to make a single digit
         if($digit > 9) $digit = $digit - 9;
       } else {
         $digit = $number[$i];
       }
+      print (bool)($i%2) . ' ' . $digit;
       $sum += $digit;
+      $alt = !$alt;
     }
     //the result should be evenly divisble by 10
     return $sum % 10 == 0;
