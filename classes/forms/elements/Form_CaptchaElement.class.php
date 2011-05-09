@@ -11,9 +11,9 @@ class Form_CaptchaElement extends Form_Element{
   /**
   * The reCAPTCHA server URL's
   */
-  const API_SERVER = 'http://api.recaptcha.net';
-  const API_SECURE_SERVER = 'https://api-secure.recaptcha.net';
-  const SIGNUP_SERVER = 'http://recaptcha.net/api/getkey';
+  const API_SERVER = 'http://www.google.com/recaptcha/api';
+  const API_SECURE_SERVER = 'https://www.google.com/recaptcha/api';
+  const SIGNUP_SERVER = 'https://www.google.com/recaptcha/admin/create';
   
   /**
    * Our Private API Key
@@ -131,7 +131,7 @@ class Form_CaptchaValidator extends Form_Validator{
   /**
    * The verification server
    */
-  const VERIFY_SERVER = 'api-verify.recaptcha.net';
+  const VERIFY_SERVER = 'www.google.com';
   
   public function validate(FormInput $input){
     //discard empty submissions
