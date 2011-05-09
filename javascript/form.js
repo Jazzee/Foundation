@@ -57,6 +57,7 @@ function Form(){
       var value = String(this);
       if(typeof(window[value]) == 'function'){
         cDiv.append(window[value](obj));
+        return false; //break the loop
       }
     });
     eDiv.append(cDiv);
