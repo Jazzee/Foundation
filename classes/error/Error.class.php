@@ -54,6 +54,9 @@ class Error extends Foundation {
    * @return false to populate $php_errormsg and let any other handlers do their thing
    */
   public function register($errno, $errstr, $errfile = null, $errline = null, $errcontext = null){
+    //check to see if error reporting has been supressed for this error
+    //from http://www.php.net/manual/en/language.operators.errorcontrol.php#98895
+    if(0 == error_reporting()) return;
     $message = new ErrorMessage($errno, $errstr, $errfile, $errline, $errcontext);
     
     //PHP5 implicity handles objects by reference so this foreach loop
