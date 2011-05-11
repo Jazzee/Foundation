@@ -8,7 +8,7 @@
  */
 class Form_DateBeforeValidator extends Form_Validator{
   public function validate(FormInput $input){
-    if(!is_null($input->{$this->e->name}) AND strtotime($input->{$this->e->name}) > strtotime($this->rulesSet)){
+    if(!is_null($input->{$this->e->name}) AND strtotime($input->{$this->e->name}) > strtotime($this->ruleSet)){
       $this->addError('Date must be before ' . $this->ruleSet);
       return false;
     }
