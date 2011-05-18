@@ -34,12 +34,14 @@ if(!class_exists('imagick')){
 
 //load the helper functions
 require_once('functions.php');
-
-//load Doctrine infront of autoload
-require_once('lib/doctrine/lib/Doctrine.php');
-spl_autoload_register(array('Doctrine', 'autoload'));
-//model autoloading is sepearte from doctrine component autoloading
-spl_autoload_register(array('Doctrine_Core', 'modelsAutoload'));
+    
+require_once 'lib/doctrine2/lib/vendor/doctrine-common/lib/Doctrine/Common/ClassLoader.php';
+$classLoader = new Doctrine\Common\ClassLoader('Doctrine\ORM', realpath(__DIR__ . '/lib/doctrine2/lib'));
+$classLoader->register();
+$classLoader = new Doctrine\Common\ClassLoader('Doctrine\DBAL', realpath(__DIR__ . '/lib/doctrine2/lib/vendor/doctrine-dbal/lib'));
+$classLoader->register();
+$classLoader = new Doctrine\Common\ClassLoader('Doctrine\Common', realpath(__DIR__ . '/lib/doctrine2/lib/vendor/doctrine-common/lib'));
+$classLoader->register();
 
 require_once('classes/Autoload.class.php');
 
@@ -51,20 +53,6 @@ require_once('lib/lightvc/lightvc.php');
 
 //load the portable password hasher
 Autoload::addAutoLoadPath(dirname(__FILE__) . '/lib/phpass/');
-
-
-$manager = Doctrine_Manager::getInstance();
-$manager->setAttribute(Doctrine::ATTR_VALIDATE, Doctrine::VALIDATE_ALL);
-$manager->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);
-//allow the get/set accessors to be overridden
-$manager->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
-
-//if apc is loaded us it to cache querys and results
-if(extension_loaded('apc')){
-  $cacheDriver = new Doctrine_Cache_Apc();
-  $manager->setAttribute(Doctrine_Core::ATTR_QUERY_CACHE, $cacheDriver);
-  $manager->setAttribute(Doctrine_Core::ATTR_RESULT_CACHE, $cacheDriver);
-}
 
 //Create virtual paths to foundation resources
 $virtualResources = Resource::getInstance();
