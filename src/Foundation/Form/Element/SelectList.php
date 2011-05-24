@@ -32,7 +32,7 @@ class SelectList extends ListElement{
    * @param integer $multiple
    */
   public function setMultiple($multiple){
-    $this->multipe = $multipls;
+    $this->multiple = $multiple;
   }
 }
 ?>
