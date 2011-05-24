@@ -1,0 +1,27 @@
+<?php
+namespace Foundation\Form\Validator;
+/**
+ * Check to see if the date entered is before a specific date
+ */
+class DateBefore extends AbstractValidator{
+  /**
+   * Construct 
+   * Check the ruleSet
+   * @param \Foundation\Form\Element $e
+   * @param mixed $ruleSet
+   */
+  public function  __construct(\Foundation\Form\Element $e, $ruleSet){
+    if(!\strtotime($ruleSet)){
+      throw new \Foundation\Exception("The ruleset for DateBefore must be a valid PHP date string");
+    }
+    parent::__construct($e, $ruleSet);
+  }
+  public function validate(\Foundation\Form\Input $input){
+    if(strtotime($input->get($this->e->getName())) > strtotime($this->ruleSet)){
+      $this->addError('Date must be before ' . $this->ruleSet);
+      return false;
+    }
+    return true;
+  }
+}
+?>

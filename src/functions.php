@@ -3,7 +3,7 @@
  * Foundation Helper Functions
  * @author Jon Johnson <jon.johnson@ucsf.edu>
  * @license http://jazzee.org/license.txt
- * @package foundation
+ * @package Jazzee\Foundation
  */
 
 /**
