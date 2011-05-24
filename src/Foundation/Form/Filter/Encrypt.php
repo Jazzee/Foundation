@@ -18,7 +18,7 @@ class Encrypt extends AbstractFilter{
     parent::__construct($e, $pki);
   }
   
-  public function filter($value){
+  public function filterValue($value){
     return $this->ruleSet->encrypt($value);
   }
 }

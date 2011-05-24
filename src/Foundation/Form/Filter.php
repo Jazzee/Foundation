@@ -10,6 +10,6 @@ interface Filter{
    * @param mixed $value
    * @return mixed $value
    */
-  function filter($value);
+  function filterValue($value);
 }
 ?>

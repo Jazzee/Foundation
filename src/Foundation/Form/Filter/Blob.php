@@ -3,7 +3,7 @@
  * Pull the file contents out and set them as the value
  */
 class Blob extends AbstractFilter{
-  public function filter($value){
+  public function filterValue($value){
     if(!is_array($value)) //some other filter might have preprocessed the file already
       return $value;
     if(array_key_exists('tmp_name', $value))

@@ -147,7 +147,7 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
    */
   public function filter(\Foundation\Form\Input $input){
     if(is_null($input->get($this->getName()))) return null;
-    foreach($this->filters as $f) $f->filter($input->get($this->getName()));
+    foreach($this->filters as $f) $f->filterValue($input->get($this->getName()));
   }
   
   /**

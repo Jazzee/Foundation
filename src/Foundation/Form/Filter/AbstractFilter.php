@@ -25,10 +25,5 @@ abstract class AbstractFilter implements \Foundation\Form\Filter{
     $this->e = $e;
     $this->ruleSet = $ruleSet;
   }
-  
-  /**
-   * @see Foundation\Form.Filter::filter()
-   */
-  abstract public function filter($value);
 }
 ?>

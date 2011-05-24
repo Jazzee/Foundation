@@ -4,7 +4,7 @@ namespace Foundation\Form\Filter;
  * Apply one of PHPs built in input sanitizers
  */
 class PHPSanitize extends AbstractFilter{
-  public function filter($value){
+  public function filterValue($value){
     $options = null;
     if(is_int($this->ruleSet)){
       $type = $this->ruleSet;
