@@ -2,26 +2,26 @@
 namespace Foundation\Virtual;
 /**
  * Proxy Directory
- * @package Foundation\Virtual
  */
-class ProxyDirectory implements Directory{
+class ProxyDirectory implements Directory
+{
   /**
    * @var string the file system path
    */
-  protected $absolutePath;
+  protected $_absolutePath;
   
   /**
    * @var the VirtualDirectory we represent
    */
-  protected $virtualDirectory;
+  protected $_virtualDirectory;
  
   /**
    * Constructor
    * @param string $absolutePath;
    */
   public function __construct($absolutePath){
-    $this->absolutePath = $absolutePath;
-    $this->virtualDirectory = false;
+    $this->_absolutePath = $absolutePath;
+    $this->_virtualDirectory = false;
   }
   
   /**
@@ -29,16 +29,16 @@ class ProxyDirectory implements Directory{
    * @see Foundation\Virtual.Directory::find()
    */
   public function find($pathName){
-    if(false != $this->virtualDirectory) return $this->virtualDirectory->find($pathName);
-    $this->virtualDirectory = new VirtualDirectory();
+    if(false != $this->_virtualDirectory) return $this->_virtualDirectory->find($pathName);
+    $this->_virtualDirectory = new VirtualDirectory();
     
-    $dir = new \DirectoryIterator($this->absolutePath);
+    $dir = new \DirectoryIterator($this->_absolutePath);
     foreach($dir as $file){
       if(!$file->isDot() and $file->isReadable()){
         if($file->isFile()){
-          $this->virtualDirectory->addFile($file->getFilename(), new RealFile($file->getFilename(),$file->getPathName()));
+          $this->_virtualDirectory->addFile($file->getFilename(), new RealFile($file->getFilename(),$file->getPathName()));
         } else if($file->isDir()){
-          $this->virtualDirectory->addDirectory($file->getFilename(), new ProxyDirectory($file->getPathName()));
+          $this->_virtualDirectory->addDirectory($file->getFilename(), new ProxyDirectory($file->getPathName()));
         }
       }
     }
@@ -46,4 +46,3 @@ class ProxyDirectory implements Directory{
   }
   
 }
-?>

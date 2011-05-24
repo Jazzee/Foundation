@@ -9,13 +9,13 @@ class RealFile extends AbstractFile{
    * The Absolute path to the file
    * @var string
    */
-  protected $absolutePath;
+  protected $_absolutePath;
   
   /**
    * The contents of the file
    * @var string
    */
-  protected $fileContents;
+  protected $_fileContents;
   
   /**
    * Constructor
@@ -24,8 +24,8 @@ class RealFile extends AbstractFile{
    */
   public function __construct($name, $absolutePath){
     parent::__construct($name);
-    $this->absolutePath = $absolutePath;
-    $this->fileContents = false;
+    $this->_absolutePath = $absolutePath;
+    $this->_fileContents = false;
   }
   
   /**
@@ -34,9 +34,9 @@ class RealFile extends AbstractFile{
    * @see Foundation\Virtual.File::getFileContents()
    */
   public function getFileContents(){
-    if(false !== $this->fileContents) return $this->fileContents;
-    if(!is_readable($this->absolutePath) or !$this->fileContents = file_get_contents($this->absolutePath)) throw new Exception($this->name, 404);
-    return $this->fileContents;
+    if(false !== $this->_fileContents) return $this->_fileContents;
+    if(!is_readable($this->_absolutePath) or !$this->_fileContents = file_get_contents($this->_absolutePath)) throw new Exception($this->_name, 404);
+    return $this->_fileContents;
   }
   
   /**
@@ -44,7 +44,7 @@ class RealFile extends AbstractFile{
    * @see Foundation\Virtual.File::getLastModified()
    */
   public function getLastModified(){
-    $time = filemtime($this->absolutePath);
+    $time = filemtime($this->_absolutePath);
     $dt = new \DateTime();
     $dt->setTimestamp($time);
     return $dt;

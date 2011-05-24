@@ -1,39 +1,11 @@
 <?xml version="1.0"?>
-<ruleset name="PEAR">
- <description>The PEAR coding standard.</description>
-
- <!-- Include some additional sniffs from the Generic standard -->
- <rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
- <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
- <rule ref="Generic.PHP.LowerCaseConstant"/>
- <rule ref="Generic.PHP.DisallowShortOpenTag"/>
- <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
-
- <!-- Lines can be 85 chars long, but never show errors -->
- <rule ref="Generic.Files.LineLength">
-  <properties>
-   <property name="lineLimit" value="85"/>
-   <property name="absoluteLineLimit" value="0"/>
-  </properties>
+<ruleset name="Foundation">
+ <description>Foundation standard based on The PEAR coding standard.</description>
+ <rule ref="Zend">
+  <exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
  </rule>
-
- <!-- Use Unix newlines -->
- <rule ref="Generic.Files.LineEndings">
-  <properties>
-   <property name="eolChar" value="\n"/>
-  </properties>
- </rule>
-
- <!-- This messgae is not required as spaces are allowed for alignment -->
- <rule ref="Generic.Functions.FunctionCallArgumentSpacing.TooMuchSpaceAfterComma">
-  <severity>0</severity>
- </rule>
-
- <!-- Use warnings for inline control structures -->
- <rule ref="Generic.ControlStructures.InlineControlStructure">
-  <properties>
-   <property name="error" value="false"/>
-  </properties>
- </rule>
-
+ 
+ <!-- Function signature brace on same line -->
+ <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+ 
 </ruleset>

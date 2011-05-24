@@ -4,26 +4,27 @@ namespace Foundation\Virtual;
  * An abstract file type
  * @package Foundation\Virtual
  */
-abstract class AbstractFile implements File{  
+abstract class AbstractFile implements File
+{
   /**
    * The mimetype of file
    * @var string
    */
-  protected $mimeType;
+  protected $_mimeType;
   
   /**
    * The name of the file
    * @var string
    */
-  protected $name;
+  protected $_name;
   
   /**
    * Constructor
    * @param string $name
    */
   public function __construct($name){
-    $this->name = $name;
-    $this->mimeType = false;
+    $this->_name = $name;
+    $this->_mimeType = false;
   }
   
   /**
@@ -42,7 +43,7 @@ abstract class AbstractFile implements File{
    * @see File::getName
    */
   public function getName(){
-    return $this->name;
+    return $this->_name;
   }
   
   /**
@@ -50,8 +51,8 @@ abstract class AbstractFile implements File{
    * Guess it if we haven't set it yet.
    */
   public function getMimeType(){
-    if(!$this->mimeType) $this->mimeType = $this->guessMimeType($this->getFileContents());
-    return $this->mimeType;
+    if(!$this->_mimeType) $this->_mimeType = $this->guessMimeType($this->getFileContents());
+    return $this->_mimeType;
   }
   
   /**
@@ -59,7 +60,7 @@ abstract class AbstractFile implements File{
    * @param string $mimeType
    */
   public function setMimeType($mimeType){
-    $this->mimeType = $mimeType;
+    $this->_mimeType = $mimeType;
   }
   
   /**

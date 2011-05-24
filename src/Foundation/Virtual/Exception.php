@@ -1,11 +1,14 @@
 <?php
 namespace Foundation\Virtual;
 /**
+ * Exceptions for Virtual Files
+ * 
  * Declare an exception class for Foundation\Virtual
  * Allows us to easily send error codes
 */
-class Exception extends \Foundation\Exception{
-  protected $httpErrorCode;
+class Exception extends \Foundation\Exception
+{
+  protected $_httpErrorCode;
   /**  
    * Override the default Exception class constructor
    * Take the file name and the Error code and create a new Exception
@@ -14,7 +17,7 @@ class Exception extends \Foundation\Exception{
    * @param int $httpErrorCode HTTP error code
    */
   public function __construct($fileName, $httpErrorCode){
-    $this->httpErrorCode = $httpErrorCode;
+    $this->_httpErrorCode = $httpErrorCode;
     $message = "Attempting to access {$fileName} resulted in {$errorCode}";
     parent::__construct($message);
   }
@@ -25,6 +28,6 @@ class Exception extends \Foundation\Exception{
    * @return integer
    */
   public function getHttpErrorCode(){
-    return $this->httpErrorCode;
+    return $this->_httpErrorCode;
   }
 }

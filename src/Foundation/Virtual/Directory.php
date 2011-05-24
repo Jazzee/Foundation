@@ -2,9 +2,9 @@
 namespace Foundation\Virtual;
 /**
  * Direcotry interface
- * @package Foundation\Virtual
  */
-interface Directory{
+interface Directory
+{
   /**
    * Find a File in the virtual direcotry
    * @param $virtualPath
@@ -12,4 +12,3 @@ interface Directory{
    */
   function find($virtualPath);
 }
-?>

@@ -2,26 +2,26 @@
 namespace Foundation\Virtual;
 /**
  * Virtual Directory
- * @package Foundation\Virtual
  */
-class VirtualDirectory implements Directory{
+class VirtualDirectory implements Directory
+{
   /**
    * Array of absolute file system paths keyed by virtual path
    * @var array
    */
-  protected $files;
+  protected $_files;
   
   /**
    * Array of other Direcotry Objects keyed by virtual path
    */
-  protected $directories;
+  protected $_directories;
  
   /**
    * Constructor
    */
-  public function __construct(){
-    $this->files = array();
-    $this->directores = array();
+  public function __construct() {
+    $this->_files = array();
+    $this->_directores = array();
   }
 
   /**
@@ -30,8 +30,8 @@ class VirtualDirectory implements Directory{
    * @param string $virtualName
    * @param AbstractFile $file
    */
-  public function addFile($virtualName, File $file){
-    $this->files[$virtualName] = $file;
+  public function addFile($virtualName, File $file) {
+    $this->_files[$virtualName] = $file;
   }
   
   /**
@@ -40,8 +40,8 @@ class VirtualDirectory implements Directory{
    * @param string $virtualName
    * @param Directory $directory
    */
-  public function addDirectory($virtualName, Directory $directory){
-    $this->directories[$virtualName] = $directory;
+  public function addDirectory($virtualName, Directory $directory) {
+    $this->_directories[$virtualName] = $directory;
   }
   
   
@@ -50,14 +50,14 @@ class VirtualDirectory implements Directory{
    * @param $name
    * @return \Foundation\Virtual\File;
    */
-  public function find($name){
-    if(\array_key_exists($name, $this->files)) return $this->files[$name];
+  public function find($name) {
+    if(\array_key_exists($name, $this->_files)) return $this->_files[$name];
     //only continue if there is some text left
     if(!empty($name)){
       //break the name down by seperator
       $arr = \explode('/',$name);
       $first = array_shift($arr);
-      if(\array_key_exists($first, $this->directories)) return $this->directories[$first]->find(\implode('/',$arr));
+      if(\array_key_exists($first, $this->_directories)) return $this->_directories[$first]->find(\implode('/',$arr));
     } 
     throw new \Foundation\Exception("Unable to Virtual File {$name}");
   }

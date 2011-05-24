@@ -2,9 +2,9 @@
 namespace Foundation\Virtual;
 /**
  * Interface for VirtualFiles
- * @package Foundation\Virtual
  */
-interface File{
+interface File
+{
   /**
    * Get the contents of the file
    * @return string
@@ -35,4 +35,3 @@ interface File{
   function output();
   
 }
-?>
