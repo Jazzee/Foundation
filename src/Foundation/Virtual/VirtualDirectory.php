@@ -21,7 +21,7 @@ class VirtualDirectory implements Directory
    */
   public function __construct() {
     $this->_files = array();
-    $this->_directores = array();
+    $this->_directories = array();
   }
 
   /**
@@ -59,7 +59,7 @@ class VirtualDirectory implements Directory
       $first = array_shift($arr);
       if(\array_key_exists($first, $this->_directories)) return $this->_directories[$first]->find(\implode('/',$arr));
     } 
-    throw new \Foundation\Exception("Unable to Virtual File {$name}");
+    throw new Exception($name, 404);
   }
   
 }
