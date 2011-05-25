@@ -5,7 +5,7 @@ namespace Foundation\Session;
  * Seperate Session stores allow the same variables to be sepearted
  * For instance a user can be logged in to two seperate parts of an application
  */
-class Session_Store{
+class Store{
   /**
    * Data Store
    * @var array
