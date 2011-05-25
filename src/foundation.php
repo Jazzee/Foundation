@@ -41,6 +41,10 @@ require_once('functions.php');
 $doctrineClassLoader = new Doctrine\Common\ClassLoader('Doctrine');
 $doctrineClassLoader->register();
 
+//Register the foundation class loader
+$doctrineClassLoader = new Doctrine\Common\ClassLoader('Foundation', __DIR__);
+$doctrineClassLoader->register();
+
 //load lightVC
 require_once(dirname(__FILE__) . '/lib/lightvc/lightvc.php');
 
