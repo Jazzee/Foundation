@@ -18,7 +18,7 @@ class Exception extends \Foundation\Exception
    */
   public function __construct($fileName, $httpErrorCode){
     $this->_httpErrorCode = $httpErrorCode;
-    $message = "Attempting to access {$fileName} resulted in {$errorCode}";
+    $message = "Attempting to access {$fileName} resulted in {$httpErrorCode}";
     parent::__construct($message);
   }
   
