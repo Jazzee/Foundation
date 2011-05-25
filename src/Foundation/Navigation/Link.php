@@ -209,6 +209,14 @@ class Link extends \Foundation\HTMLElement{
     return $this->shape;
   }
   
-
+  /**
+   * Add current to classes if we are current
+   * @see Foundation.HTMLElement::getClass()
+   */
+  public function getClass(){
+    $class = parent::getClass();
+    if($this->current) $class = $class . ' current';
+    return $class;
+  }
 }
 ?>
