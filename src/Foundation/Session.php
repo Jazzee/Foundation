@@ -1,9 +1,8 @@
 <?php
-namespace Foundation\Session;
+namespace Foundation;
 /**
- * Singleton for PHP sessions
+ * Session Fascade
  * Handles some default security and wrapper tasks
- * @package Foundation\Session
  */
 class Session{
   /**
@@ -120,9 +119,7 @@ class Session{
       $_SESSION['stores'][$name]->touchActivity();
       return $_SESSION['stores'][$name];
     }
-    $_SESSION['stores'][$name] = new Store($lifetime);
+    $_SESSION['stores'][$name] = new Session\Store($lifetime);
     return $_SESSION['stores'][$name];
   }
 }
-
-?>
