@@ -14,6 +14,7 @@ class Container extends \Foundation\HTMLElement{
    * 
    */
   public function __construct(){
+    parent::__construct();
     $this->menus = array();
   }
   

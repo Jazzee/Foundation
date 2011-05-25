@@ -14,6 +14,7 @@ class Menu extends \Foundation\HTMLElement{
    * Construct
    */
   public function __construct(){
+    parent::__construct();
     $this->links = array();
   }
   

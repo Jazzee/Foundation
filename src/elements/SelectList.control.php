@@ -13,9 +13,7 @@ foreach($element->getAttributes() as $memberName => $htmlName){
   if($element->value == $item->value){
     print ' selected="selected"';
   }
-  foreach($item->getAttributes() as $memberName => $htmlName){
-    $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$item->$memberName));
-  }
+  $this->renderElement('attributes', array('object'=>$link));
   echo ">{$item->label}</option>";
 }
 ?>

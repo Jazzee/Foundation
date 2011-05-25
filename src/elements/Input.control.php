@@ -3,8 +3,4 @@
  * Input element form control;
  */
  ?>
- <input<?php
-foreach($element->getAttributes() as $memberName => $htmlName){
-  $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$element->$memberName));
-}
-?>/>
+ <input<?php $this->renderElement('attributes', array('object'=>$link)); ?> />

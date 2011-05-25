@@ -4,11 +4,7 @@
  */
 ?>
 <?php echo $menu->getTitle() ?>
-<ol<?
-foreach($menu->getAttributes() as $memberName => $htmlName){
-  $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$menu->$memberName));
-}
-?>>
+<ol<?php $this->renderElement('attributes', array('object'=>$menu)); ?>>
 <?php
 foreach($menu->getLinks() as $link){
   echo '<li';

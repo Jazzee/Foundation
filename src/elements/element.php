@@ -6,7 +6,7 @@
 //call any pre rendering functions for validators
 $element->preRender(); 
 ?>
-<div class='field <?php echo $element->getClass(); ?>'>
+<div<?php $this->renderElement('attributes', array('object'=>$link)); ?>>
 <?php if(!empty($element->getInstructions())) echo '<p class="instructions">' . $element->getInstructions() . '</p>'; ?>
 <?php foreach($element->getMessages() AS $message) echo "<p class='message'>{$message}</p>"; ?>
   <div class='element yui-gf'>

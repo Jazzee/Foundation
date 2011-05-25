@@ -35,6 +35,7 @@ class Field extends \Foundation\HTMLElement{
    */
   public function __construct(\Foundation\Form $form){
     parent::__construct();
+    $this->addClass('field');
     $this->elements = array();
     $this->form = $form;
   }

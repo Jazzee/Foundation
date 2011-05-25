@@ -3,13 +3,9 @@
  * View for navigation container
  */
 ?>
-<div<?
-foreach($container->getAttributes() as $memberName => $htmlName){
-  $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$container->$memberName));
-}
-?>>
+<div<?php $this->renderElement('attributes', array('object'=>$container)); ?>>
   <ol><?php
-  foreach($navigation->getMenus() as $menu){
+  foreach($container->getMenus() as $menu){
     if($menu->hasLink()){
       echo '<li>';
       $this->renderElement('menu', array('menu'=>$menu));
