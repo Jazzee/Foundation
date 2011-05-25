@@ -33,8 +33,38 @@ abstract class AbstractFile implements File
    * @return string
    */
   protected function guessMimeType($fileContents){
-    $finfo = finfo_open(FILEINFO_MIME);
-    $mimetype = finfo_buffer($finfo, $fileContents);
+    //first try a simple extension type
+    $mimeTypes = array(
+      'txt' => 'text/plain',
+      'css' => 'text/css',
+      'js' => 'application/javascript',
+      'htm' => 'text/html',
+      'html' => 'text/html',
+      'xml' => 'application/xml',
+      'swf' => 'application/x-shockwave-flash',
+      'flv' => 'video/x-flv',
+      'png' => 'image/png',
+      'jpe' => 'image/jpeg',
+      'jpeg' => 'image/jpeg',
+      'jpg' => 'image/jpeg',
+      'gif' => 'image/gif',
+      'bmp' => 'image/bmp',
+      'ico' => 'image/vnd.microsoft.icon',
+      'tiff' => 'image/tiff',
+      'tif' => 'image/tiff',
+      'svg' => 'image/svg+xml',
+      'svgz' => 'image/svg+xml',
+      'pdf' => 'application/pdf'
+    );
+  
+    $extension = strtolower(array_pop(explode('.',$this->getName())));
+    if (array_key_exists($extension, $mimeTypes)) {
+        return $mimeTypes[$extension];
+    }
+    
+    //then attempt to detect the type from the context
+    $finfo = new \finfo(FILEINFO_MIME);
+    $mimetype = $finfo->buffer($fileContents);
     finfo_close($finfo);
     return $mimetype;
   }
@@ -68,8 +98,8 @@ abstract class AbstractFile implements File
    */
   public function output(){
     if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) AND false !== $this->getLastModified() ){ 
-      $headerLastModified = DateTime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
-      $headerLastModified->setTimezone('GMT');
+      $headerLastModified = new \DateTime($_SERVER['HTTP_IF_MODIFIED_SINCE']);
+      $headerLastModified->setTimezone(new \DateTimeZone('GMT'));
       if($headerLastModified == $this->getLastModified()){ //is the last modified time identical to the last time the file was modified)
         // This is a cached file send the file time back with a 304 Not Modified header
         header('Last-Modified: ' . $this->getLastModified()->format('D, d M Y H:i:s e'), true, 304);
