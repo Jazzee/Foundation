@@ -51,19 +51,4 @@ require_once(dirname(__FILE__) . '/lib/lightvc/lightvc.php');
 //load the portable password hasher
 require_once(dirname(__FILE__) . '/lib/phpass/PasswordHash.class.php');
 
-/*
-//Create virtual paths to foundation resources
-$virtualResources = Resource::getInstance();
-$virtualResources->addDirectory(dirname(__FILE__) . '/javascript/', 'foundation/scripts');
-$virtualResources->addDirectory(dirname(__FILE__) . '/media/famfamfam_silk_icons_v013/icons', 'foundation/icons/');
-$virtualResources->addDirectory(dirname(__FILE__) . '/media/cc_images', 'foundation/cc_images/');
-
-$virtualResources->add(dirname(__FILE__) . '/lib/jquery/jquery-1.4.4.min.js', 'foundation/scripts/jquery.js');
-$virtualResources->add(dirname(__FILE__) . '/lib/jquery/plugins/jquery.json-2.2.min.js', 'foundation/scripts/jquery.json.js');
-$virtualResources->add(dirname(__FILE__) . '/lib/jquery/plugins/jquery.cookie-1.min.js', 'foundation/scripts/jquery.cookie.js');
-$virtualResources->add(dirname(__FILE__) . '/lib/jquery/jquery-ui-1.8.11.min.js', 'foundation/scripts/jqueryui.js');
-$virtualResources->addDirectory(dirname(__FILE__) . '/lib/jquery/themes/', 'foundation/styles/jquery/themes');
-$virtualResources->add(dirname(__FILE__) . '/lib/yui/base-min.css', 'foundation/styles/base.css');
-$virtualResources->add(dirname(__FILE__) . '/lib/yui/reset-fonts-grids-min.css', 'foundation/styles/reset-fonts-grids.css');
-*/
 ?>
