@@ -65,7 +65,7 @@ abstract class AbstractFile implements File
     //then attempt to detect the type from the context
     $finfo = new \finfo(FILEINFO_MIME);
     $mimetype = $finfo->buffer($fileContents);
-    finfo_close($finfo);
+    unset($finfo);
     return $mimetype;
   }
   
