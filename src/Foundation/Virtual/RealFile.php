@@ -24,7 +24,10 @@ class RealFile extends AbstractFile{
    */
   public function __construct($name, $absolutePath){
     parent::__construct($name);
-    $this->_absolutePath = $absolutePath;
+    if(
+      !$this->_absolutePath = \realpath($absolutePath)
+      or !\is_readable($this->_absolutePath)) 
+        throw new \Foundation\Exception("Unable to read '{$absolutePath}'.");
     $this->_fileContents = false;
   }
   

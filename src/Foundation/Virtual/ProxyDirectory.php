@@ -20,7 +20,11 @@ class ProxyDirectory implements Directory
    * @param string $absolutePath;
    */
   public function __construct($absolutePath){
-    $this->_absolutePath = $absolutePath;
+    if(
+      !$this->_absolutePath = \realpath($absolutePath) 
+      or !\is_dir($this->_absolutePath) 
+      or !\is_readable($this->_absolutePath)) 
+        throw new \Foundation\Exception("Unable to read '{$absolutePath}' directory.");
     $this->_virtualDirectory = false;
   }
   
