@@ -27,7 +27,7 @@ class View extends \Lvc_View{
 	 * @see Lvc_View::renderElement()
 	 */
 	protected function renderElement($elementName, $data = array()) {
-		$view = FoundationVC_Config::getElementView($elementName, $data);
+		$view = Config::getElementView($elementName, $data);
 		if (!is_null($view)) {
 			$view->setController($this->controller);
 			$view->output();
