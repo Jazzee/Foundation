@@ -62,9 +62,9 @@ class Controller extends \Lvc_PageController{
 	 */
 	protected function loadView($controllerViewName) {
 		
-		$view = FoundationVC_Config::getControllerView($controllerViewName, $this->viewVars);
+		$view = Config::getControllerView($controllerViewName, $this->viewVars);
 		if (is_null($view)) {
-			throw new Lvc_Exception('Unable to load controller view "' . $controllerViewName . '" for controller "' . $this->controllerName . '"');
+			throw new \Lvc_Exception('Unable to load controller view "' . $controllerViewName . '" for controller "' . $this->controllerName . '"');
 		} else {
 			$view->setController($this);
 			$viewContents = $view->getOutput();
@@ -75,10 +75,10 @@ class Controller extends \Lvc_PageController{
 		}
 		if ( ! empty($this->layout)) {
 			// Use an explicit name for this data so we don't override some other variable...
-			$this->layoutVars[FoundationVC_Config::getLayoutContentVarName()] = $viewContents;
-			$layoutView = FoundationVC_Config::getLayoutView($this->layout, $this->layoutVars);
+			$this->layoutVars[Config::getLayoutContentVarName()] = $viewContents;
+			$layoutView = Config::getLayoutView($this->layout, $this->layoutVars);
 			if (is_null($layoutView)) {
-				throw new Lvc_Exception('Unable to load layout view "' . $this->layout . '" for controller "' . $this->controllerName . '"');
+				throw new \Lvc_Exception('Unable to load layout view "' . $this->layout . '" for controller "' . $this->controllerName . '"');
 			} else {
 				$layoutView->setController($this);
 				$layoutView->output();
@@ -100,9 +100,9 @@ class Controller extends \Lvc_PageController{
 		if (is_null($controllerParams)) {
 			$controllerParams = $this->params;
 		}
-		$controller = FoundationVC_Config::getController($controllerName);
+		$controller = Config::getController($controllerName);
 		if (is_null($controller)) {
-			throw new Lvc_Exception('Unable to load controller "' . $controllerName . '"');
+			throw new \Lvc_Exception('Unable to load controller "' . $controllerName . '"');
 		}
 		$controller->setControllerParams($controllerParams);
 		$controller->setLayoutOverride($layout);
