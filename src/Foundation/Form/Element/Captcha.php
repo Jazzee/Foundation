@@ -66,7 +66,7 @@ class Captcha extends AbstractElement{
     
     parent::__construct($field);   
     
-    $this->newValidator('Captcha', self::$_privateApiKey); 
+    $this->addValidator(new \Foundation\Form\Validator\Captcha($this, self::$_privateApiKey)); 
   }
   
   /**
