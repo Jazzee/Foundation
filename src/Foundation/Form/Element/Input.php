@@ -9,7 +9,7 @@ abstract class Input extends AbstractElement{
    * HTML element attributes
    * @var string
    */
-  protected $type = 'text';
+  protected $type;
   protected $maxlength;
   protected $disabled;
 

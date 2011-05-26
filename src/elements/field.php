@@ -2,16 +2,12 @@
 /**
  * Form Field element form control;
  */
- ?><fieldset<?
-foreach($field->getAttributes() as $memberName => $htmlName){
-  $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$field->$memberName));
-}
-?>>
-<?php if(!empty($field->getLegend())){
+ ?><fieldset<?php $this->renderElement('attributes', array('object'=>$field)); ?>>
+<?php if(!is_null($field->getLegend())){
   echo '<legend>' . $field->getLegend() . '</legend>';
 }?>
 
-<?php if(!empty($field->getInstructions())){
+<?php if(!is_null($field->getInstructions())){
   echo '<div class="instructions">' . $field->getInstructions() . '</div>';
 }
 ?>

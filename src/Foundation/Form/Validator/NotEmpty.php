@@ -13,7 +13,7 @@ class NotEmpty extends AbstractValidator{
   }
   
   public function preRender(){
-    $this->e->setRequired(true);
+    $this->e->addClass('required');
   }
 }
 ?>

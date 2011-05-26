@@ -11,6 +11,17 @@ class FormFieldTest extends TestCase{
     $field = new \Foundation\Form\Field($this->form);
     $elements = $field->getElements();
     $this->assertTrue(empty($elements));
+    $this->assertNull($field->getInstructions());
+    $this->assertNull($field->getLegend());
+  }
+  
+  function testSetLegend(){
+    $text = uniqid();
+    $field = new \Foundation\Form\Field($this->form);
+    $field->setInstructions($text);
+    $this->asswertEquals($text, $field->getInstructions());
+    $field->setLegend($text);
+    $this->asswertEquals($text, $field->getLegend());
   }
   
   function testNewElement(){

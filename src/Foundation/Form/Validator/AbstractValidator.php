@@ -21,7 +21,7 @@ abstract class AbstractValidator implements \Foundation\Form\Validator{
    * @param \Foundation\Form\Element $e
    * @param mixed $ruleSet
    */
-  public function  __construct(\Foundation\Form\Element $e, $ruleSet){
+  public function  __construct(\Foundation\Form\Element $e, $ruleSet = false){
     $this->e = $e;
     $this->ruleSet = $ruleSet;
   }
@@ -43,11 +43,15 @@ abstract class AbstractValidator implements \Foundation\Form\Validator{
   /**
    * Validate Input
    */
-  public function validate(\Foundation\Form\Input $input){}
+  public function validate(\Foundation\Form\Input $input){
+    return true;
+  }
   
   /**
    * Validate Null Input
    */
-  public function validateNull(\Foundation\Form\Input $input){}
+  public function validateNull(\Foundation\Form\Input $input){
+    return true;
+  }
 }
 ?>

@@ -38,11 +38,6 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
    * @var string
    */
   protected $defaultValue;
- 
-  /**
-   * Is this element required
-   */
-  protected $required;
   
   /**
    * Holds a reference to the field which contains this element
@@ -75,7 +70,6 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
   public function __construct(\Foundation\Form\Field $field){
     $this->field = $field;
     parent::__construct();
-    $this->required = false;
     $this->messages = array();
     
     $this->attributes['name'] = 'name';
@@ -85,6 +79,8 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
     
     $this->validators = array();
     $this->filters = array();
+    
+    $this->addClass('field');
   }
   
   /**
@@ -146,8 +142,11 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
    * @param FormInput $input
    */
   public function filter(\Foundation\Form\Input $input){
-    if(is_null($input->get($this->getName()))) return null;
-    foreach($this->filters as $f) $f->filterValue($input->get($this->getName()));
+    $value = $input->get($this->getName());
+    if(!\is_null($value))
+      foreach($this->filters as $f) 
+        $value = $f->filterValue($value);
+    return $value;
   }
   
   /**
@@ -253,6 +252,37 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
   public function getTabindex(){
     return $this->tabindex;
   }
-    
+  
+  /**
+   * Set the instructions
+   * @param string $instructions
+   */
+  public function setInstructions($instructions){
+    $this->instructions = $instructions;
+  }
+  
+  /**
+   * Get the instructions
+   * @return string $instructions
+   */
+  public function getInstructions(){
+    return $this->instructions;
+  }
+  
+  /**
+   * Set the format
+   * @param string $format
+   */
+  public function setFormat($format){
+    $this->format = $format;
+  }
+  
+  /**
+   * Get the format
+   * @return string $format
+   */
+  public function getFormat(){
+    return $this->format;
+  }
 }
 ?>

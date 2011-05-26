@@ -105,6 +105,32 @@ interface Element{
    * @return string $tabindex
    */
   function getTabindex();
+  
+
+  
+  /**
+   * Set the instructions
+   * @param string $instructions
+   */
+  function setInstructions($instructions);
+  
+  /**
+   * Get the instructions
+   * @return string $instructions
+   */
+  function getInstructions();
+  
+  /**
+   * Set the format
+   * @param string $format
+   */
+  function setFormat($format);
+  
+  /**
+   * Get the legend
+   * @return string $legend
+   */
+  function getFormat();
     
 }
 ?>

@@ -9,13 +9,13 @@ class Field extends \Foundation\HTMLElement{
    * Any field level instructions
    * @var string
    */
-  public $instructions;
+  protected $instructions;
   
   /**
    * The legend for the field
    * @var string
    */
-  public $legend;
+  protected $legend;
   
   /**
    * Holds the field elements
@@ -80,6 +80,38 @@ class Field extends \Foundation\HTMLElement{
    */
   public function getForm(){
     return $this->form;
+  }
+  
+  /**
+   * Set the instructions
+   * @param string $instructions
+   */
+  public function setInstructions($instructions){
+    $this->instructions = $instructions;
+  }
+  
+  /**
+   * Get the instructions
+   * @return string $instructions
+   */
+  public function getInstructions(){
+    return $this->instructions;
+  }
+  
+  /**
+   * Set the legend
+   * @param string $legend
+   */
+  public function setLegend($legend){
+    $this->legend = $legend;
+  }
+  
+  /**
+   * Get the legend
+   * @return string $legend
+   */
+  public function getLegend(){
+    return $this->legend;
   }
 }
 ?>

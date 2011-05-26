@@ -105,6 +105,7 @@ class Form extends HTMLElement{
     $e = $this->buttons->newElement('ButtonInput',$type);
     $e->setValue($value);
     $e->setDefaultValue($value);
+    $e->setType($type);
     return $e; 
   }
   
@@ -116,7 +117,7 @@ class Form extends HTMLElement{
    */
   public function processInput($arr){
     if(!empty($arr)){
-      $input = new Input($arr);
+      $input = new Form\Input($arr);
       if($this->validate($input)){
         return $this->filter($input);
       }
@@ -153,7 +154,7 @@ class Form extends HTMLElement{
    * Set Form_Element::value to the user input
    * @param Input $input
    */
-  public function setElementValues(Input $input){
+  public function setElementValues(Form\Input $input){
     foreach($this->getElements() as $element){
       $element->setValue($input->get($element->getName()));
     }
@@ -179,7 +180,7 @@ class Form extends HTMLElement{
    */
   public function filter(Form\Input $input){
     foreach($this->getElements() as $element){
-      $input->set($element->name,$element->filter($input));
+      $input->set($element->getName(),$element->filter($input));
     }
     return $input;
   }
