@@ -5,7 +5,7 @@ namespace Foundation\Form\Validator;
  * Inspiration from http://www.linuxjournal.com/article/9585
  * If the ruleSet is set to true we will do a domain lookup to check if the email address domain is valid
  */
-class Email extends AbstractValidator{
+class EmailAddress extends AbstractValidator{
   /**
    * The error string
    * @const string
