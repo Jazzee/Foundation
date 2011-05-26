@@ -79,4 +79,13 @@ class Cache implements \Doctrine\Common\Cache\Cache{
   public function deleteBySuffix($suffix){
     $this->cache->deleteBySuffix($suffix);
   }
+  
+  /**
+   * Get all our cached ids
+   * 
+   * @return array $ids
+   */
+  public function getIds(){
+    return $this->cache->getIds();
+  }
 }
