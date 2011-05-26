@@ -20,16 +20,24 @@ namespace Foundation\VC;
  **/
 class Config extends \Lvc_Config {
   /**
-   *  Our cache
+   *  Our real cache
    *  @var Cache 
    */
   static private $_cache;
   
   /**
+   * Temporary Cache
+   * 
+   * WHen a real cache hasn't been sent we put stuff here
+   * @var \Foundation\Cache
+   */
+  static private $_tempCache;
+  
+  /**
    * Set the cache
    * @param \Foundation\Cache $cache
    */
-  public static function setCache(){
+  public static function setCache($cache){
     self::$_cache = $cache;
   }
   
@@ -38,7 +46,15 @@ class Config extends \Lvc_Config {
    * @return \Foundation\Cache;
    */
   protected static function getCache(){
-    if(is_null(self::$_cache)) throw new \Foundation\Exception('The Foundation\VC\Cache must be initialized before any controlers can be used.');
+    if(is_null(self::$_cache)){
+      if(!is_null(self::$_tempCache)) return self::$_tempCache;
+      //no cache was set so we will use our internal array for now.  When a cache is set we will update it using this array
+      $config = new \Foundation\Configuration;
+      $config->setCacheType('array');
+      //use a unique id to namespace so we don't have collisions
+      self::$_tempCache = new \Foundation\Cache(uniqid(),$config);
+      return self::$_tempCache;
+    }
     return self::$_cache;
   }
   
@@ -66,7 +82,7 @@ class Config extends \Lvc_Config {
    */
   public static function getControllerPath($controllerName) {
     $cache = self::getCache();
-    if($cachePath = $cache>fetch('Controller' . $controllerName)){
+    if($cachePath = $cache->fetch('Controller' . $controllerName)){
       return $cachePath;
     }
     foreach (self::$controllerPaths as $path) {
@@ -162,7 +178,10 @@ class Config extends \Lvc_Config {
    */
   public static function findElementCacading($className, $prefix = '', $suffix = ''){
     do {
-      $elementName = $prefix . $className . $suffix;
+      //strip namespace information from the class
+      $class = \explode('\\', (is_string($className) ? $className : \get_class($className)));
+      $class = $class[count($class) - 1];
+      $elementName = $prefix . $class . $suffix;
       if(self::elementExists($elementName)) return $elementName;
     } while ($className = get_parent_class($className));
     return false;
