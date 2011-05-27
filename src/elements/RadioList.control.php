@@ -9,8 +9,7 @@
   if($element->getValue() == $item->getValue()){
     print ' checked="checked"';
   }
-  $this->renderElement('attributes', array('object'=>$link));
-  echo ' name="' . $element->getName() . '" id="' . $element->getName() . "_{$id}\" />" .
+  echo ' value="' . $item->getValue() . '" name="' . $element->getName() . '" id="' . $element->getName() . "_{$id}\" />" .
       '<label for="' . $element->getName() . "_{$id}\">" . $item->getLabel() . '</label>' .
       '</li>';
 }
