@@ -4,12 +4,10 @@ namespace Foundation\Form\Element;
  * A Date Element
  */
 class DateInput extends Input{
-  /**
-   * Make a \DateTime object out of the value
-   * @param array $values
-   */
-  public function setValue($value){
-    $this->value = \DateTime($value);
+  public function __construct($field){
+    parent::__construct($field);
+    $validator = new \Foundation\Form\Validator\Date($this);
+    $this->addValidator($validator);
   }
 }
 ?>

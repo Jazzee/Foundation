@@ -6,6 +6,12 @@ namespace Foundation\Form\Element;
  * Just the month and year
  */
 class ShortDateInput extends Input{
+  
+  public function __construct($field){
+    parent::__construct($field);
+    $validator = new \Foundation\Form\Validator\Date($this);
+    $this->addValidator($validator);
+  }
   /**
    * Transform input into a valid date string
    * @see Foundation\Form\Element.AbstractElement::processInput()
