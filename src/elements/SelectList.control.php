@@ -3,18 +3,14 @@
  * Select element form control;
  */
  ?>
- <select <?php
-foreach($element->getAttributes() as $memberName => $htmlName){
-  $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$element->$memberName));
-}
-?>>
+ <select <?php $this->renderElement('attributes', array('object'=>$element)); ?>>
 <?php foreach($element->getItems() as $item){
   echo '<option';
-  if($element->value == $item->value){
+  if($element->getValue() == $item->getValue()){
     print ' selected="selected"';
   }
-  $this->renderElement('attributes', array('object'=>$link));
-  echo ">{$item->label}</option>";
+  $this->renderElement('attributes', array('object'=>$item));
+  print '>' . $item->getLabel() . '</option>';
 }
 ?>
 </select>
