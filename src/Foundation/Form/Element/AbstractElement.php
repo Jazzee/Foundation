@@ -81,6 +81,10 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
     $this->filters = array();
     
     $this->addClass('field');
+    
+    //add the Element class without its namespace
+    $class = \explode('\\', \get_class($this));
+    $this->addClass($class[count($class) - 1]);
   }
   
   /**
