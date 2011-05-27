@@ -6,20 +6,20 @@ namespace Foundation\Form\Element;
  * Just the month and year
  */
 class ShortDateInput extends Input{
-    
   /**
-   * Transform ShortDate input into a valid date
-   * @see Form_Element::validate()
+   * Transform input into a valid date string
+   * @see Foundation\Form\Element.AbstractElement::processInput()
    */
-  public function validate(FormInput $input){
-    if(!empty($input->get($this->getName() . '-month')) and !empty($input->get($this->getName() . '-year'))){
+  public function processInput(\Foundation\Form\Input $input){
+    if(!is_null($input->get($this->getName() . '-month')) and !is_null($input->get($this->getName() . '-year'))){
       //create a date using the first day of the month
-      $input->set($this->getName(), $input->get($this->getName() . '-month') . '-' . $input->get($this->getName() . '-year') . '-1');
+      $input->set($this->getName(), $input->get($this->getName() . '-year') . '-' . $input->get($this->getName() . '-month') . '-1');
     } else if(!is_null($input->get($this->getName()))){
       $arr = explode(' ', $input->get($this->getName));
+      var_dump($arr); die;
       $input->set($this->getName(), "{$arr[0]} 1 {$arr[1]}");
     }
-    return parent::validate($input);
+    return parent::processInput($input);
   }
 }
 ?>
