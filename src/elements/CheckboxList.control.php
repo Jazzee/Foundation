@@ -1,19 +1,17 @@
 <?php
 /**
- * Checkbox element form control;
+ * CheckboxList element form control;
  */
  ?>
  <ol>
 <?php foreach($element->getItems() as $id => $item){
   echo "<li><input type='checkbox'";
-  if(in_array($element->inList($item->getValue()))){
+  if(in_array($item->getValue(),$element->getValue())){
     print ' checked="checked"';
   }
-  $this->renderElement('attributes', array('object'=>$link));
-  echo ' name="' . $element->getName() . '[]" id="' . $element->getName() . '_{$id}" />' .
-      '<label for="' . $element->getName() . '_{$id}">' . $item->getLabel() . '</label>' .
+  echo ' value="' . $item->getValue() . '" name="' . $element->getName() . '[]" id="' . $element->getName() . "_{$id}\" />" .
+      '<label for="' . $element->getName() . "_{$id}\">" . $item->getLabel() . '</label>' .
       '</li>';
 }
-
 ?>
 </ol>
