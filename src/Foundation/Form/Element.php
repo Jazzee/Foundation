@@ -33,18 +33,14 @@ interface Element{
    * Run any validator preRender methods
    */
   public function preRender();
-    
-  /**
-   * Validate user input
-   * @param FormInput $input
-   */
-  function validate(Input $input);
   
   /**
-   * Filter user input
-   * @param FormInput $input
+   * Process Input
+   * 
+   * @param \Foundation\Form\Input $input
+   * @return boolean
    */
-  function filter(Input $input);
+  function processInput(\Foundation\Form\Input $input);
   
   /**
    * Set the name

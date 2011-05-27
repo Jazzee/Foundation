@@ -116,14 +116,13 @@ class Form extends HTMLElement{
    * @return true|false if errors
    */
   public function processInput($arr){
-    if(!empty($arr)){
-      $input = new Form\Input($arr);
-      if($this->validate($input)){
-        return $this->filter($input);
-      }
-      $this->setElementValues($input);
+    $error = false;
+    $input = new Form\Input($arr);
+    foreach($this->getElements() as $element){
+      if(!$element->processInput($input)) $error = true;
     }
-    return false;
+    if(!$error) return $input;
+    else return false;
   }
   
   /**
@@ -158,31 +157,6 @@ class Form extends HTMLElement{
     foreach($this->getElements() as $element){
       $element->setValue($input->get($element->getName()));
     }
-  }
-  
-  /**
-   * Validate user input
-   * @param Input $input
-   * @return bool true on success false on failure
-   */
-  public function validate(Form\Input $input){
-    $return = true;
-    foreach($this->getElements() as $element){
-      if(!$element->validate($input)) $return = false;
-    }
-    return $return;
-  }
-  
-  /**
-   * Filter user input
-   * @param Input $input
-   * @return \Foundation\Form\Input
-   */
-  public function filter(Form\Input $input){
-    foreach($this->getElements() as $element){
-      $input->set($element->getName(),$element->filter($input));
-    }
-    return $input;
   }
   
   /**

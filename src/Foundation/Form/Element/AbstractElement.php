@@ -121,12 +121,25 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
   public function preRender(){
     foreach($this->validators as $v) $v->preRender();
   }
-    
+  
+  /**
+   * 
+   * @see Foundation\Form.Element::processInput()
+   */
+  public function processInput(\Foundation\Form\Input $input){
+    if($this->validate($input)){
+      $input->set($this->getName(), $this->filter($input));
+      return true;
+    }
+    return false;
+  }
+  
   /**
    * Validate user input
    * @param FormInput $input
+   * @return boolean
    */
-  public function validate(\Foundation\Form\Input $input){
+  protected function validate(\Foundation\Form\Input $input){
     $valid = true;
     //Null input gets run through the validateNull
     if(is_null($input->get($this->getName()))) {
@@ -140,8 +153,9 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
   /**
    * Filter user input
    * @param FormInput $input
+   * @return string
    */
-  public function filter(\Foundation\Form\Input $input){
+  protected function filter(\Foundation\Form\Input $input){
     $value = $input->get($this->getName());
     if(!\is_null($value))
       foreach($this->filters as $f) 
