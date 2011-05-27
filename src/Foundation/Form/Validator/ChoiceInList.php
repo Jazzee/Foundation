@@ -10,7 +10,7 @@ class ChoiceInList extends AbstractValidator{
     else $arr = $input->get($this->e->getName());
     foreach($arr as $value){
       if(!$this->e->inList($value)){
-        $this->addError('Your chose an invalid option');
+        $this->addError('That is not a valid option.');
         return false;
       }
     }

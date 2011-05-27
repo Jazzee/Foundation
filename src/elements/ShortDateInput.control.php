@@ -4,7 +4,7 @@
  * 
  */
 ?>
- <input type='hidden' name='<?php print $element->getName() ?>' value='<? print $element->getValue() ?>' />
+<input type='hidden' name='<?php print $element->getName() ?>' value='<?php print $element->getValue() ?>' />
 <select name='<?php print $element->getName() ?>-month'>
 
   <option value=''>&nbsp;</option>

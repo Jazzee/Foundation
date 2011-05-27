@@ -15,8 +15,7 @@ class ShortDateInput extends Input{
       //create a date using the first day of the month
       $input->set($this->getName(), $input->get($this->getName() . '-year') . '-' . $input->get($this->getName() . '-month') . '-1');
     } else if(!is_null($input->get($this->getName()))){
-      $arr = explode(' ', $input->get($this->getName));
-      var_dump($arr); die;
+      $arr = explode(' ', $input->get($this->getName()));
       $input->set($this->getName(), "{$arr[0]} 1 {$arr[1]}");
     }
     return parent::processInput($input);
