@@ -13,7 +13,7 @@ class FileInput extends Input{
     parent::__construct($field);
     $this->attributes['maxsize'] = 'maxsize';
     //set the encoding type for the parent form
-    $field->form->setEncType('multipart/form-data');
+    $field->getForm()->setEncType('multipart/form-data');
     $this->type = 'file';
     
     $validator = new \Foundation\Form\Validator\FileInput($this, null);

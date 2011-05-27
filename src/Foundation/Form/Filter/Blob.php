@@ -1,4 +1,5 @@
 <?php
+namespace Foundation\Form\Filter;
 /**
  * Pull the file contents out and set them as the value
  */

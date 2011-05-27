@@ -1,5 +1,5 @@
 <?php
-namespace \Foundation\Form\Validator;
+namespace Foundation\Form\Validator;
 /**
  * File input falidator
  */

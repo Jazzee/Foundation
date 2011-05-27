@@ -12,14 +12,14 @@ class MaximumFileSize extends AbstractValidator{
   
   /**
    * Do our own constructor so we can set the maxfilesize and check the ruleSet
-   * @param Form_Element $e the element we are validating
-   * @param mixed $ruleSet rules set to use might be an array of rules or just a value to match
+   * @param \Foundation\Form\Element $e the element we are validating
+   * @param integer $sizeInBytes
    */
-  public function  __construct(Form_Element $e, $ruleSet){
-    if(!\is_int($ruleSet)){
-      throw new \Foundation\Exception("The ruleset for MaximumFileSize must be an integer");
+  public function  __construct(\Foundation\Form\Element $element, $sizeInBytes){
+    if(!$integer = \intval($sizeInBytes)){
+      throw new \Foundation\Exception("The ruleset for MaximumFileSize must be an integer. Value: '{$sizeInBytes}'");
     }
-    parent::__construct($e,$ruleSet,$set);
+    parent::__construct($element,$integer);
     $this->e->setMaxSize($this->ruleSet);
   }
   
@@ -33,8 +33,7 @@ class MaximumFileSize extends AbstractValidator{
   }
   
   public function preRender(){
-    $format = $this->e->getForms() . ' Maximum file size: ' . convertBytesToString($this->ruleSet, 0) . '. ';
-    $this->e->setFormat($format);
+    if(is_null($this->e->getFormat())) $this->setFormat('Maximum file size: ' . convertBytesToString($this->ruleSet, 0) . '.');
   }
 }
 ?>
