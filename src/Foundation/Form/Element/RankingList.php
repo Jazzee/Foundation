@@ -4,18 +4,23 @@ namespace Foundation\Form\Element;
 /**
  * RankingList element
  */
-class RankingList extends ListElement{
+class RankingList extends AbstractElement{
+  /**
+   * @var array the items in each list
+   */
+  protected $items;
+  
   /**
    * The Number of items to rank
    * @var integer
    */
-  protected $rankItems;
+  protected $totalItems;
   
   /**
    * The minimum required items which must be ranked
    * @var integer
    */
-  protected $minimumItems;
+  protected $requiredItems;
   
   /**
    * Constructor
@@ -23,9 +28,12 @@ class RankingList extends ListElement{
    */
   public function __construct(\Foundation\Form\Field $field){
     parent::__construct($field);
+    $this->items = array();
     $this->value = array();
-    $this->rankItems = false;
-    $this->minimumItems = false;
+    $this->totalItems = false;
+    $this->requiredItems = false;
+    //value isn't an html attribute for ranking lists
+    unset($this->attributes['value']);
     $validator = new \Foundation\Form\Validator\RankingList($this,null);
     $this->addValidator($validator);
   }
@@ -49,12 +57,98 @@ class RankingList extends ListElement{
    * Check to be sure items and minimumItems are set then run the parent method
    */
   public function preRender(){
-    if(!$this->rankItems OR !$this->minimumItems){
-      throw new \Foundation\Exception('RankingListElement requires items and minimumItems to be set before it is rendered.');
+    if(!$this->totalItems OR !$this->requiredItems){
+      throw new \Foundation\Exception('RankingListElement requires total items and required items to be set before it is rendered.');
     }
     parent::preRender();
   }
-    
+  
+  /**
+   * Set the total items
+   * 
+   * @param integer $totalItems
+   */
+  public function setTotalItems($totalItems){
+    $this->totalItems = $totalItems;
+  }
+  
+  /**
+   * Set the required items
+   * 
+   * @param integer $requiredItemd
+   */
+  public function setrequiredItems($requiredItems){
+    $this->requiredItems = $requiredItems;
+  }
+  
+  /**
+   * Get the total items
+   * 
+   * @return integer
+   */
+  public function getTotalItems(){
+    return $this->totalItems;
+  }
+  
+  /**
+   * Get the required items
+   * 
+   * @return integer
+   */
+  public function getRequiredItems(){
+    return $this->requiredItems;
+  }
+  
+  /**
+   * New item factory
+   * @param string $label
+   * @param mixed $value
+   */
+  public function newItem($value, $label){
+    $item = new ListItem;
+    $item->setLabel($label);
+    $item->setValue($value);
+    $this->addItem($item);
+    return $item;
+  }
+  
+  /**
+   * Add an item to the list
+   * @param \Foundation\Form\Element\ListItem $listItem
+   */
+  public function addItem($listItem){
+    if(array_key_exists($listItem->getValue(), $this->items)) throw new \Foundation\Exception($listItem->getValue() . ' is already an item in this list');
+    $this->items[$listItem->getValue()] = $listItem;
+  }
+  
+  /**
+   * Get the items
+   * @return array
+   */
+  public function getItems(){
+    return $this->items;
+  }
+  
+  /**
+   * Get the label for an item by value
+   * @param string $value
+   * @return string
+   */
+  public function getLabelForValue($value){
+    if(array_key_exists($value, $this->items)){
+      return $this->items[$value]->getLabel();
+    }
+    return false;
+  }
+  
+  /**
+   * Check item by value
+   * @param string $value
+   * @return string
+   */
+  public function inList($value){
+    return array_key_exists($value, $this->items);
+  }
   
   
 }

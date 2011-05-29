@@ -4,23 +4,21 @@
  */
 ?>
 <ol>
-<?php for($i = 0; $i < $element->rankItems; $i++):?>
+<?php for($i = 0; $i < $element->getTotalItems(); $i++):?>
   <li>
-    <label for='<?php print $element->name . '_' . $i ?>'
-    <?php if($i<$element->minimumItems) echo " class='required'"; ?>
-    ><?php print ordinalValue($i+1)?> choice:</label>
-    <select name='<?php print $element->name?>[]' id='<?php print $element->name . '_' . $i ?>' 
-    <?php $this->renderElement('attributes', array('object'=>$link)); ?>>
-    <option value='0'></option>
+    <div class='label<?php if($i<$element->getRequiredItems()) print ' required'; ?>'>
+      <label for='<?php print $element->getName() . '_' . $i ?>'><?php print ordinalValue($i+1)?> choice:</label>
+    </div>
+    <select name='<?php print $element->getName()?>[]' id='<?php print $element->getName() . '_' . $i ?>'>
+    <?php if($i>=$element->getRequiredItems()) print "<option value=''></option>"; ?> 
     <?php foreach($element->getItems() as $item){
       echo '<option';
-      if(isset($element->value[$i]) AND $element->value[$i] == $item->value){
+      $values = $element->getValue();
+      if(isset($values[$i]) and $values[$i] == $item->getValue()){
         print ' selected="selected"';
       }
-      foreach($item->getAttributes() as $memberName => $htmlName){
-        $this->renderElement('attribute', array('name'=>$htmlName, 'value'=>$item->$memberName));
-      }
-      echo ">{$item->label}</option>";
+      $this->renderElement('attributes', array('object'=>$item));
+      print '>' . $item->getLabel() . '</option>';
     }
     ?>
     </select>
