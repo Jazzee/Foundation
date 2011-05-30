@@ -116,6 +116,7 @@ class Form extends HTMLElement{
    * @return true|false if errors
    */
   public function processInput($arr){
+    if(empty($arr)) return false;
     $error = false;
     $input = new Form\Input($arr);
     foreach($this->getElements() as $element){
