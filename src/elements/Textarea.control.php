@@ -3,4 +3,4 @@
  * Textarea element form control;
  */
 ?>
-<textarea<?php $this->renderElement('attributes', array('object'=>$link)); ?>><?php echo $element->value ?></textarea>
+<textarea<?php $this->renderElement('attributes', array('object'=>$element)); ?>><?php echo $element->getValue() ?></textarea>

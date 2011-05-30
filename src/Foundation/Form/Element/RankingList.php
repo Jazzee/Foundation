@@ -32,8 +32,6 @@ class RankingList extends AbstractElement{
     $this->value = array();
     $this->totalItems = false;
     $this->requiredItems = false;
-    //value isn't an html attribute for ranking lists
-    unset($this->attributes['value']);
     $validator = new \Foundation\Form\Validator\RankingList($this,null);
     $this->addValidator($validator);
   }

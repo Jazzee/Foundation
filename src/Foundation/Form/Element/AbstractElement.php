@@ -73,7 +73,6 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
     $this->messages = array();
     
     $this->attributes['name'] = 'name';
-    $this->attributes['value'] = 'value';
     $this->attributes['accesskey'] = 'accesskey';
     $this->attributes['tabindex'] = 'tabindex';
     

@@ -21,6 +21,7 @@ abstract class Input extends AbstractElement{
     $this->type = 'text';
     $this->attributes['disabled'] = 'disabled';
     $this->attributes['type'] = 'type';
+    $this->attributes['value'] = 'value';
     $this->attributes['maxlength'] = 'maxlength';
   }
   

@@ -10,8 +10,6 @@ class CheckboxList extends ListElement{
    */
   public function __construct(\Foundation\Form\Field $field){
     parent::__construct($field);
-    //value isn't an html attribute for checkbox lists
-    unset($this->attributes['value']);
     $this->value = array();
   }
   
