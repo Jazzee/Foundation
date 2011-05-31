@@ -56,7 +56,7 @@ class CreditCard extends AbstractValidator{
       self::Discover => '#^6(?:011|5[0-9]{2})[0-9]{12}$#', //prefix 6011,622,64,65 length 16
       self::JCB => '#^(?:2131|1800|35\d{3})\d{11}$#', //Prefix 2131,1800 length 15 - prefix 35 length 16
       self::MasterCard => '#^5[1-5][0-9]{14}$#', //Prefix 51,52,53,54,55 length 16
-      self::Visa => '#^4[0-9]{12}(?:[0-9]{3})?$#' //prefix 4 length 13 or 16 (only expired cards have 13 except for some test cards 4222222222222 so we leave it in
+      self::Visa => '#^4[0-9]{12}(?:[0-9]{3})?$#' //prefix 4 length 16 (only expired cards have 13 except for some test cards 4222222222222 so we leave it in)
     );
     foreach($types as $int => $patern){
       if(\preg_match($patern, $number)) return $int;
@@ -82,7 +82,6 @@ class CreditCard extends AbstractValidator{
       } else {
         $digit = $number[$i];
       }
-      print (bool)($i%2) . ' ' . $digit;
       $sum += $digit;
       $alt = !$alt;
     }
@@ -96,12 +95,12 @@ class CreditCard extends AbstractValidator{
    */
   public static function listTypes(){
     return array(
-      self::AmericanExpress => 'American Express', //Prefix 34 or 37 15 digits.
-      self::DinersClub => 'Diners Club', //prefix 300-305 36, 38 length 14 or 16
-      self::Discover => 'Discover', //prefix 6011,622,64,65 length 16
-      self::JCB => 'JCB', //Prefix 2131,1800 length 15 - prefix 35 length 16
-      self::MasterCard => 'Master Card', //Prefix 51,52,53,54,55 length 16
-      self::Visa => 'Visa' //prefix 4 length 13 or 16 (only expired cards have 13 except for some test cards 4222222222222 so we leave it in
+      self::AmericanExpress => 'American Express',
+      self::DinersClub => 'Diners Club',
+      self::Discover => 'Discover',
+      self::JCB => 'JCB',
+      self::MasterCard => 'Master Card',
+      self::Visa => 'Visa' 
     );
   }
 }
