@@ -4,87 +4,63 @@
  * Output a form in json;
  */
 $f = $form;
+$f->setId('id');
 $form = array();
-$form['attributes'] = array();
-foreach($f->getAttributes() as $memberName => $htmlName){
-  if(isset($f->$memberName)){
-    $form['attributes'][] = array(
-      'name' => $htmlName,
-      'value' => $f->$memberName
-    );
-  }
- }
- $form['fields'] = array();
- foreach($f->getFields() as $fl){
-   $field = array(
-     'legend' => $fl->getLegend(),
-     'instructions' => $fl->getInstructions(),
-     'attributes' => array(),
-     'elements' => array()
+$form['attributes'] = getAttributes($f);
+
+$form['fields'] = array();
+foreach($f->getFields() as $fl){
+ $field = array(
+   'legend' => $fl->getLegend(),
+   'instructions' => $fl->getInstructions(),
+   'attributes' => getAttributes($fl),
+   'elements' => array()
+ );
+ foreach($fl->getElements() as $e){
+   $e->preRender();
+   $element = array(
+     'name' => $e->getName(),
+     'class' => $e->getClass(),
+     'value' => $e->getValue(),
+     'instructions' => $e->getInstructions(),
+     'format' => $e->getFormat(),
+     'label' => $e->getLabel(),
+     'attributes' => getAttributes($e),
+     'messages' => array(),
+     'items' => array(),
+     'views' => array()
    );
-   foreach($fl->getAttributes() as $memberName => $htmlName){
-     $value = $fl->$memberName;
-     if(!is_null($value)){
-       $field['attributes'][] = array(
-         'name' => $htmlName,
-         'value' =>$value
-       );
+   foreach($e->getMessages() AS $message) $element['messages'][] = $message;
+   $name =  get_class($e);
+   do{
+    $noNameSpaceName = explode('\\', $name);
+    $noNameSpaceName = $noNameSpaceName[count($noNameSpaceName) - 1];
+    $element['views'][] = $noNameSpaceName;
+   } while ($name = get_parent_class($name));
+   if(method_exists($e, 'getItems')){
+     foreach($e->getItems() as $i){
+       $item = array(
+         'value' => $i->getValue(),
+         'label' => $i->getLabel(),
+         'attributes' => getAttributes($i),
+       ); 
+       $element['items'][] = $item;
      }
    }
-   foreach($fl->getElements() as $e){
-     $e->preRender();
-     $element = array(
-       'name' => $e->getName(),
-       'class' => $e->getClass(),
-       'value' => $e->getValus(),
-       'required' => $e->getRequired(),
-       'instructions' => $e->getInstructions(),
-       'format' => $e->getFormat(),
-       'label' => $e->getLabel(),
-       'attributes' => array(),
-       'messages' => array(),
-       'items' => array(),
-       'views' => array()
-     );
-     foreach($e->getMessages() AS $message) $element['messages'][] = $message;
-     $pattern = array(
-       '/^Form_/',
-       '/Element$/'
-     );
-     $name =  get_class($element);
-     do{
-       $element['views'][] = $name;
-       var_dump('checknames in jsonFormElement: ' , $name);
-     } while ($name = get_parent_class($name) AND $name != 'AbstractElement');
-     foreach($e->getAttributes() as $memberName => $htmlName){
-       if(isset($e->$memberName)){
-         $element['attributes'][] = array(
-           'name' => $htmlName,
-           'value' =>$e->$memberName
-         );
-       }
-     }
-     if(method_exists($e, 'getItems')){
-       foreach($e->getItems() as $i){
-         $item = array(
-           'value' => $i->getValue(),
-           'label' => $i->getLabel(),
-           'attributes' => array(),
-         ); 
-         foreach($i->getAttributes() as $memberName => $htmlName){
-           if(isset($i->$memberName)){
-             $item['attributes'][] = array(
-               'name' => $htmlName,
-               'value' =>$i->$memberName
-             );
-           }
-         }
-         $element['items'][] = $item;
-       }
-     }
-     $field['elements'][] = $element;
-   }
-   $form['fields'][] = $field;
+   $field['elements'][] = $element;
  }
+ $form['fields'][] = $field;
+}
 ?>
-"form":<?php print \json_encode($form); ?>
+"form":<?php print \json_encode($form);
+
+function getAttributes(\Foundation\HTMLElement $object){
+  $attributes = array();
+  foreach($object->getAttributes() as $memberName => $htmlName){
+    $method = 'get' . ucfirst($memberName);
+    if(!method_exists($object, $method)) throw new \Foundation\Exception("Unable to access {$memberName} using {$method} on " . get_class($f));
+    $value = $object->$method();
+    if(!is_null($value)) $attributes[] = array('name' => $htmlName, 'value' => htmlentities($value));
+  }
+  return $attributes;
+}
