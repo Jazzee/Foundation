@@ -62,14 +62,14 @@ class Server{
   
   /**
    * Send an email message
-   * @param EmailMessage $message
+   * @param Message $message
    */
-  public function send(EmailMessage $message){
+  public function send(Message $message){
     $headers = array(
       'From' => $message->getFrom(),
       'Subject' => $message->getSubject(),
-      'To' => implode(',', $mesage->getReceipients()),
-      'Cc' => implode(',', $mesage->getCcReceipients()),
+      'To' => implode(',', $message->getReceipients()),
+      'Cc' => implode(',', $message->getCcReceipients()),
     );
     $receipients = array_merge($message->getReceipients(), $message->getCcReceipients());
     $result = $this->_mail->send($receipients, $headers, $message->getBody());

@@ -85,7 +85,7 @@ class Configuration{
     $this->setMailOverrideToName(false);
     $this->setMailServerType('php');
     $this->setMailServerHost(false);
-    $this->setMailServerHost(false);
+    $this->setMailServerPort(false);
     $this->setMailServerUsername(false);
     $this->setMailServerPassword(false);
   }
