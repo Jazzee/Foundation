@@ -33,7 +33,7 @@ class MaximumFileSize extends AbstractValidator{
   }
   
   public function preRender(){
-    if(is_null($this->e->getFormat())) $this->setFormat('Maximum file size: ' . convertBytesToString($this->ruleSet, 0) . '.');
+    if(is_null($this->e->getFormat())) $this->e->setFormat('Maximum file size: ' . convertBytesToString($this->ruleSet, 0) . '.');
   }
 }
 ?>
