@@ -203,6 +203,7 @@ function ElementObject(type, name){
   this.addItem = function(label, value){
     var item = {
       label: label,
+      value: value,
       attributes: {name: 'value', value: value}
     };
     this.items.push(item);
