@@ -11,7 +11,7 @@ class Encrypt extends AbstractFilter{
    * @param \Foundation\Form\Element $e
    * @param \Foundation\PKI $pki
    */
-  public function  __construct(\Foundation\Form\Element $e,  $pki){
+  public function  __construct(\Foundation\Form\Element $e,  \Foundation\PKI $pki){
     if(!$pki instanceof \Foundation\PKI){
       throw new \Foundation\Exception('Invalid PKI class passed to Encrypt filter');
     }
