@@ -44,6 +44,15 @@ class VirtualDirectory implements Directory
     $this->_directories[$virtualName] = $directory;
   }
   
+  /**
+   * Get a virtual directory
+   * @param string $virtualName
+   * @return Directory
+   */
+  public function getDirectory($virtualName) {
+    return $this->_directories[$virtualName];
+  }
+  
   
   /**
    * Get a file by searching out paths

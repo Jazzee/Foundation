@@ -6,6 +6,12 @@ namespace Foundation\Virtual;
 class ProxyDirectory implements Directory
 {
   /**
+   * Array of absolute file system paths keyed by virtual path
+   * @var array
+   */
+  protected $_files;
+  
+  /**
    * @var string the file system path
    */
   protected $_absolutePath;
@@ -20,6 +26,7 @@ class ProxyDirectory implements Directory
    * @param string $absolutePath;
    */
   public function __construct($absolutePath){
+    $this->_files = array();
     if(
       !$this->_absolutePath = \realpath($absolutePath) 
       or !\is_dir($this->_absolutePath) 
@@ -27,12 +34,24 @@ class ProxyDirectory implements Directory
         throw new \Foundation\Exception("Unable to read '{$absolutePath}' directory.");
     $this->_virtualDirectory = false;
   }
+
+  /**
+   * Add a virtual path to a physical file
+   * Multiple paths can point to the same object and paths can be overridden
+   * @param string $virtualName
+   * @param AbstractFile $file
+   */
+  public function addFile($virtualName, File $file) {
+    $this->_files[$virtualName] = $file;
+  }
   
   /**
    * Load the resource as a VirtualDirectory and search it for files
    * @see Foundation\Virtual.Directory::find()
    */
   public function find($pathName){
+    if(\array_key_exists($pathName, $this->_files)) return $this->_files[$pathName];
+    
     if(false != $this->_virtualDirectory) return $this->_virtualDirectory->find($pathName);
     $this->_virtualDirectory = new VirtualDirectory();
     
