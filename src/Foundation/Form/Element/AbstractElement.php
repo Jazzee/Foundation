@@ -123,6 +123,7 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
    */
   public function preRender(){
     foreach($this->validators as $v) $v->preRender();
+    if(!empty($this->messages)) $this->addClass('error');
   }
   
   /**

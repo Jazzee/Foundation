@@ -8,7 +8,6 @@ $element->preRender();
 ?>
 <div<?php $this->renderElement('attributes', array('object'=>$element)); ?>>
 <?php if(!is_null($element->getInstructions())) echo '<p class="instructions">' . $element->getInstructions() . '</p>'; ?>
-<?php foreach($element->getMessages() AS $message) echo "<p class='message'>{$message}</p>"; ?>
   <div class='element yui-gf'>
     <div class='yui-u first label'>
       <?php 
@@ -22,6 +21,7 @@ $element->preRender();
         $view = \Foundation\VC\Config::findElementCacading(get_class($element), '', '.control');
         $this->renderElement($view,  array('element'=>$element));
        ?>
+      <?php foreach($element->getMessages() AS $message) echo "<p class='message'>{$message}</p>"; ?>
       <?php if(!is_null($element->getFormat())) echo '<p class="format">' . $element->getFormat() . '</p>'; ?>
     </div>
   </div>
