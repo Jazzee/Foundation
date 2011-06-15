@@ -46,9 +46,9 @@ $doctrineClassLoader = new Doctrine\Common\ClassLoader('Foundation', __DIR__);
 $doctrineClassLoader->register();
 
 //load lightVC
-require_once(dirname(__FILE__) . '/lib/lightvc/lightvc.php');
+require_once(__DIR__ . '/../lib/lightvc/lightvc.php');
 
 //load the portable password hasher
-require_once(dirname(__FILE__) . '/lib/phpass/PasswordHash.class.php');
+require_once(__DIR__ . '/../lib/phpass/PasswordHash.class.php');
 
 ?>
