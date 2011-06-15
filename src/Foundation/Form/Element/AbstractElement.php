@@ -130,9 +130,9 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
    * @see Foundation\Form.Element::processInput()
    */
   public function processInput(\Foundation\Form\Input $input){
+    $this->setValue($input->get($this->getName()));
     if($this->validate($input)){
       $input->set($this->getName(), $this->filter($input));
-      $this->setValue($input->get($this->getName()));
       return true;
     }
     return false;
