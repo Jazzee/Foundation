@@ -56,8 +56,10 @@ abstract class AbstractFile implements File
       'svgz' => 'image/svg+xml',
       'pdf' => 'application/pdf'
     );
-  
-    $extension = strtolower(array_pop(explode('.',$this->getName())));
+    $arr = explode('.',$this->getName());
+    $end = array_pop($arr);
+    $extension = strtolower($end);
+    
     if (array_key_exists($extension, $mimeTypes)) {
         return $mimeTypes[$extension];
     }
