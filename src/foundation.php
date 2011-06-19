@@ -12,7 +12,7 @@
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
   throw new Exception('You are using PHP version ' . PHP_VERSION . '.  Jazzee\Foundation requires PHP version 5.3.0 or higher.');
 }
-$requiredIncludes = array('Log.php','Mail.php', 'Doctrine/Common/ClassLoader.php');
+$requiredIncludes = array('Log.php', 'Doctrine/Common/ClassLoader.php');
 
 foreach(explode(PATH_SEPARATOR, get_include_path()) as $dir){
   foreach($requiredIncludes as $file){
@@ -23,9 +23,6 @@ foreach(explode(PATH_SEPARATOR, get_include_path()) as $dir){
 }
 if(!class_exists('Log')){
   throw new Exception('Pear Log is required and it is not availalble');
-}
-if(!class_exists('Mail')){
-  throw new Exception('Pear Mail is required and it is not availalble');
 }
 if(!class_exists('imagick')){
   throw new Exception('PECL/Imagick is required and it is not availalble');
