@@ -10,12 +10,19 @@ class Container extends \Foundation\HTMLElement{
   protected $menus;
   
   /**
+   * The Links
+   * @var array of \Foundation\Navitation\Link
+   */
+  protected $links;
+  
+  /**
    * Construct
    * 
    */
   public function __construct(){
     parent::__construct();
     $this->menus = array();
+    $this->links = array();
   }
   
   /**
@@ -32,6 +39,30 @@ class Container extends \Foundation\HTMLElement{
    */
   public function getMenus(){
     return $this->menus;
+  }
+  
+  /**
+   * Add a link
+   * @param \Foundation\Navigation\Link $link
+   */
+  public function addLink(\Foundation\Navigation\Link $link){
+    $this->links[] = $link;
+  }
+  
+  /**
+   * Get the links
+   * return array
+   */
+  public function getLinks(){
+    return $this->links;
+  }
+  
+  /**
+   * Does the container have links
+   * @return bool true if there are any links false if not
+   */
+  public function hasLink(){
+    return (bool)count($this->links);
   }
 }
 ?>
