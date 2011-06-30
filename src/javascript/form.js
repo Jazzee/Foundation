@@ -84,6 +84,10 @@ function TextInput(obj){
   return Input(obj);
 }
 
+function Plaintext(obj){
+  return $('<p>').html(obj.value);
+}
+
 function Textarea(obj){
   var textarea = $('<textarea>');
   textarea.attr('name', obj.name);
