@@ -28,8 +28,9 @@ if(!class_exists('imagick')){
   throw new Exception('PECL/Imagick is required and it is not availalble');
 }
 if(!class_exists('\Doctrine\Common\ClassLoader')){
-  throw new Exception('Doctrine > 2.0 is required and it is not availalble');
+  throw new Exception('Doctrine > 2.1 is required and it is not availalble');
 }
+
 
 //load the helper functions
 require_once('functions.php');
@@ -37,6 +38,10 @@ require_once('functions.php');
 //Register the doctrine class loader
 $doctrineClassLoader = new Doctrine\Common\ClassLoader('Doctrine');
 $doctrineClassLoader->register();
+
+if (version_compare(\Doctrine\ORM\Version::VERSION, '2.1', '<')){
+  throw new Exception('At least Doctrine 2.1.0 is required you are running version ' . \Doctrine\ORM\Version::VERSION);
+}
 
 //Register the foundation class loader
 $doctrineClassLoader = new Doctrine\Common\ClassLoader('Foundation', __DIR__);
