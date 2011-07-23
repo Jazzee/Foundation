@@ -98,6 +98,7 @@ function replaceNullString($arr){
 function thumbnailPDF($blob, $width, $height){
   $im = new imagick;
   $im->readimageblob($blob);
+  //$im = new Imagick(realpath(__DIR__ . '/media/default_pdf_logo.png'));
   $im->setiteratorindex(0);
   $im->setImageFormat("png");
   $im->scaleimage($width, $height);
