@@ -56,7 +56,7 @@ class Message extends \PHPMailer
     }
     //set the from address to the default and override it later
     if($config->getMailDefaultFromAddress()){
-      $this->SetFrom($config->getMailDefaultFromAddress(), $config->getMailDefaultFromName());
+      $this->SetFrom($config->getMailDefaultFromAddress(), $config->getMailDefaultFromName(), false);
     }
     if($config->getMailOverrideToAddress()){
       $this->AddAddress($config->getMailOverrideToAddress(), $config->getMailOverrideToName());
