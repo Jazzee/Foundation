@@ -101,11 +101,11 @@ function Textarea(obj){
 function CheckboxList(obj){
   var ol = $('<ol>');
   $(obj.items).each(function(i){
-    var input = $('<input>').attr('type', 'checkbox').attr('name', obj.name).attr('id', obj.name + '_' + i);
+    var input = $('<input>').attr('type', 'checkbox').attr('name', obj.name + '[]').attr('id', obj.name + '_' + i);
     $(this.attributes).each(function(i){
       input.attr(this.name, this.value);
     });
-    if(this.value == obj.value){
+    if($.inArray(this.value, obj.value) > -1){
       input.attr('checked', true);
     }
     var li = $('<li>');
