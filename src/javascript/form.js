@@ -116,6 +116,45 @@ function CheckboxList(obj){
   return ol;
 }
 
+function ShortDateInput(obj){
+  var months=new Array(12);
+  months[1]="January";
+  months[2]="February";
+  months[3]="March";
+  months[4]="April";
+  months[5]="May";
+  months[6]="June";
+  months[7]="July";
+  months[8]="August";
+  months[9]="September";
+  months[10]="October";
+  months[11]="November";
+  months[12]="December";
+  
+  var month = $('<select>').attr('name', obj.name + '-month');
+  var value = new Date(obj.value);
+  for(var i = 1; i <=12; i++){
+    var option = $('<option>').attr('value', i).html(months[i]);
+    if(value.getMonth()+1 == i){
+      option.attr('selected', true);
+    }
+    month.append(option);
+  }
+  
+  var now = new Date();
+  var year = $('<select>').attr('name', obj.name + '-year');
+  for(var i = now.getFullYear()-50; i < now.getFullYear()+5; i++){
+    var option = $('<option>').attr('value', i).html(i);
+    if(value.getFullYear() == i){
+      option.attr('selected', true);
+    }
+    year.append(option);
+  }
+  return $('<span>').append(month).append(year);
+  
+  
+}
+
 function RadioList(obj){
   var ol = $('<ol>');
   $(obj.items).each(function(i){

@@ -22,7 +22,7 @@ class ShortDateInput extends Input{
       $input->set($this->getName(), $input->get($this->getName() . '-year') . '-' . $input->get($this->getName() . '-month') . '-1');
     } else if(!is_null($input->get($this->getName()))){
       $arr = explode(' ', $input->get($this->getName()));
-      $input->set($this->getName(), "{$arr[0]} 1 {$arr[1]}");
+      $input->set($this->getName(), "{$arr[1]}-{$arr[0]}-1");
     }
     return parent::processInput($input);
   }
