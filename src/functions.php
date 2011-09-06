@@ -93,15 +93,23 @@ function replaceNullString($arr){
 
 /**
  * Get a preview thumbnail for a pdf
- * @param blobl $blob
+ * @param string $blob
+ * @param integer $width
+ * @param integer $height
+ * @param string cachePath looks here for the file first and caches result here
  */
-function thumbnailPDF($blob, $width, $height){
+function thumbnailPDF($blob, $width, $height, $cachePath = false){
+  if($cachePath and is_readable($cachePath)){
+    return file_get_contents($cachePath);
+  }
   $im = new imagick;
   $im->readimageblob($blob);
   //$im = new Imagick(realpath(__DIR__ . '/media/default_pdf_logo.png'));
   $im->setiteratorindex(0);
   $im->setImageFormat("png");
   $im->scaleimage($width, $height);
-  return $im->getimageblob();
+  $previewBlob = $im->getimageblob();
+  if($cachePath) file_put_contents($cachePath, $previewBlob);
+  return $previewBlob;
 }
 ?>
