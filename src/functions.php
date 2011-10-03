@@ -102,12 +102,17 @@ function thumbnailPDF($blob, $width, $height, $cachePath = false){
   if($cachePath and is_readable($cachePath)){
     return file_get_contents($cachePath);
   }
-  $im = new imagick;
-  $im->readimageblob($blob);
-  //$im = new Imagick(realpath(__DIR__ . '/media/default_pdf_logo.png'));
-  $im->setiteratorindex(0);
-  $im->setImageFormat("png");
-  $im->scaleimage($width, $height);
+  try{
+    $im = new imagick;
+    $im->readimageblob($blob);
+    $im->setiteratorindex(0);
+    $im->setImageFormat("png");
+    $im->scaleimage($width, $height);
+  } catch (ImagickException $e){
+    $im = new imagick;
+    $im->readimage(realpath(__DIR__ . '/media/default_pdf_logo.png'));
+    $im->scaleimage($width, $height);
+  }
   $previewBlob = $im->getimageblob();
   if($cachePath) file_put_contents($cachePath, $previewBlob);
   return $previewBlob;
