@@ -60,7 +60,7 @@ function getAttributes(\Foundation\HTMLElement $object){
     $method = 'get' . ucfirst($memberName);
     if(!method_exists($object, $method)) throw new \Foundation\Exception("Unable to access {$memberName} using {$method} on " . get_class($f));
     $value = $object->$method();
-    if(!is_null($value)) $attributes[] = array('name' => $htmlName, 'value' => htmlentities($value));
+    if(!is_null($value)) $attributes[] = array('name' => $htmlName, 'value' => htmlentities($value,ENT_COMPAT,'utf-8'));
   }
   return $attributes;
 }
