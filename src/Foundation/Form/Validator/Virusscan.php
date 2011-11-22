@@ -25,7 +25,6 @@ class Virusscan extends AbstractValidator{
   
   public function validate(\Foundation\Form\Input $input){
     $fileArr = $input->get($this->e->getName());
-    $virusname = '';
     $retcode = cl_scanfile($fileArr['tmp_name'], $virusname);
     if($retcode == CL_VIRUS) {
       unlink($fileArr['tmp_name']);
