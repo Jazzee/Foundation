@@ -12,7 +12,7 @@ $form['fields'] = array();
 foreach($f->getFields() as $fl){
  $field = array(
    'legend' => $fl->getLegend(),
-   'instructions' => $fl->getInstructions(),
+   'instructions' => htmlentities($fl->getInstructions()),
    'attributes' => getAttributes($fl),
    'elements' => array()
  );
@@ -22,8 +22,8 @@ foreach($f->getFields() as $fl){
      'name' => $e->getName(),
      'class' => $e->getClass(),
      'value' => $e->getValue(),
-     'instructions' => $e->getInstructions(),
-     'format' => $e->getFormat(),
+     'instructions' => htmlentities($e->getInstructions()),
+     'format' => htmlentities($e->getFormat()),
      'label' => $e->getLabel(),
      'attributes' => getAttributes($e),
      'messages' => array(),
