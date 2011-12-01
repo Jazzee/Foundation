@@ -16,7 +16,9 @@ class PDF extends AbstractValidator{
                             'text/x-pdf');
     $fileArr = $input->get($this->e->getName());
     //simplest check, however the type is sent by the browser and can be forged
-    if(!\in_array($fileArr['type'], $validMimeTypes)){
+    //octet-stream is the default mime type for any unknown binary file and is sent by some browsers for PDFs so check it here
+    //Do this seperatly becuase it isn't really a valid mime types and shouldn't pass the file info check
+    if(!\in_array($fileArr['type'], $validMimeTypes) AND !\in_array($fileArr['type'], array('application/octet-stream', 'binary/octet-stream'))){
       $this->addError("Your browser is reporting that this is a file of type {$fileArr['type']} which is not a valid PDF.");
       return false;
     }
