@@ -198,7 +198,7 @@ function SelectList(obj){
  */
 function FormObject(){
   var self = this;
-  this.attributes = {};
+  this.attributes = [];
   this.fields = [];
   
   this.setAttr = function(name,value){
