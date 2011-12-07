@@ -39,7 +39,7 @@ class Form extends HTMLElement{
    */
   public function __construct(){
     parent::__construct();
-    $this->setAcceptCharset('utf8');
+    $this->setAcceptCharset('UTF-8');
     $this->setMethod('post');
     $this->fields = array();
     $this->attributes['action'] = 'action';
