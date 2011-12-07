@@ -98,10 +98,7 @@ function replaceNullString($arr){
  * @param integer $height
  * @param string cachePath looks here for the file first and caches result here
  */
-function thumbnailPDF($blob, $width, $height, $cachePath = false){
-  if($cachePath and is_readable($cachePath)){
-    return file_get_contents($cachePath);
-  }
+function thumbnailPDF($blob, $width, $height){
   try{
     $im = new imagick;
     $im->readimageblob($blob);
@@ -113,8 +110,6 @@ function thumbnailPDF($blob, $width, $height, $cachePath = false){
     $im->readimage(realpath(__DIR__ . '/media/default_pdf_logo.png'));
     $im->scaleimage($width, $height);
   }
-  $previewBlob = $im->getimageblob();
-  if($cachePath) file_put_contents($cachePath, $previewBlob);
-  return $previewBlob;
+  return $im->getimageblob();
 }
 ?>
