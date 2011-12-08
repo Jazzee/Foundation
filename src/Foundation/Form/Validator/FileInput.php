@@ -20,7 +20,7 @@ class FileInput extends AbstractValidator{
         switch($fileArr['error']){
           case \UPLOAD_ERR_INI_SIZE:
           case \UPLOAD_ERR_FORM_SIZE:
-            $text = 'Your file is greater than the maximum allowed size of ' . \convertBytesToString($this->maxSize);
+            $text = 'Your file is greater than the maximum allowed size of ' . \convertBytesToString($this->e->getMaxSize());
             break;
           case \UPLOAD_ERR_PARTIAL:
             $text = 'Your file upload was stopped before it completed.  This is probably a temporary problem with your connection to our server.  Please try again.';
@@ -41,6 +41,8 @@ class FileInput extends AbstractValidator{
           default:
             $text = 'There was an error uploading your file.  Please try again.';
         }
+        //get rid of the input because there isn't realy a file
+        $input->set($this->e->getName(), null);
         //write any error messages to the validationSet
         $this->addError($text);
         return false;

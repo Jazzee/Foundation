@@ -43,7 +43,7 @@ function convertBytesToString($bytes, $precision = 2) {
   
     $bytes /= pow(1024, $pow);
   
-    return round($bytes, $precision) . ' ' . $units[$pow];
+    return round($bytes, $precision) . $units[$pow];
 }
 
 /**
