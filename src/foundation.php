@@ -31,12 +31,14 @@ if(!class_exists('\Doctrine\Common\ClassLoader')){
   throw new Exception('Doctrine > 2.1 is required and it is not availalble');
 }
 
+//user our classloader
+require_once (__DIR__ . '/Foundation/ClassLoader.php');
 
 //load the helper functions
 require_once('functions.php');
 
 //Register the doctrine class loader
-$doctrineClassLoader = new Doctrine\Common\ClassLoader('Doctrine');
+$doctrineClassLoader = new \Foundation\ClassLoader('Doctrine');
 $doctrineClassLoader->register();
 
 if (version_compare(\Doctrine\ORM\Version::VERSION, '2.1', '<')){
@@ -44,7 +46,7 @@ if (version_compare(\Doctrine\ORM\Version::VERSION, '2.1', '<')){
 }
 
 //Register the foundation class loader
-$doctrineClassLoader = new Doctrine\Common\ClassLoader('Foundation', __DIR__);
+$doctrineClassLoader = new \Foundation\ClassLoader('Foundation', __DIR__);
 $doctrineClassLoader->register();
 
 //load lightVC
