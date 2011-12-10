@@ -75,8 +75,10 @@ class Store{
   
   /**
    * Update the lastAuthentication timestamp
+   * Logging in regenerates the id which is a best practice
    */
   public function touchAuthentication(){
+    session_regenerate_id();
     $this->lastAuthentication = time();
   }
   
