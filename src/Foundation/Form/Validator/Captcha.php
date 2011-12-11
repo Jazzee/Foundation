@@ -29,14 +29,14 @@ class Captcha extends AbstractValidator{
         return false;
     }
 
-    $response = $this->http_post (self::VERIFY_SERVER, "/verify", array (
+    $response = $this->http_post (self::VERIFY_SERVER, "/recaptcha/api/verify", array (
       'privatekey' => $this->ruleSet,
       'remoteip' => $_SERVER['REMOTE_ADDR'],
       'challenge' => $input->get('recaptcha_challenge_field'),
       'response' => $input->get('recaptcha_response_field')
      )
     );
-
+    
     $answers = explode ("\n", $response [1]);
     if (trim($answers[0]) == 'false') {
       $this->e->errorString = $answers[1];
