@@ -12,7 +12,7 @@ $form['fields'] = array();
 foreach($f->getFields() as $fl){
  $field = array(
    'legend' => $fl->getLegend(),
-   'instructions' => htmlentities($fl->getInstructions()),
+   'instructions' => $fl->getInstructions(),
    'attributes' => getAttributes($fl),
    'elements' => array()
  );
@@ -22,8 +22,8 @@ foreach($f->getFields() as $fl){
      'name' => $e->getName(),
      'class' => $e->getClass(),
      'value' => $e->getValue(),
-     'instructions' => htmlentities($e->getInstructions()),
-     'format' => htmlentities($e->getFormat()),
+     'instructions' => $e->getInstructions(),
+     'format' => $e->getFormat(),
      'label' => $e->getLabel(),
      'attributes' => getAttributes($e),
      'messages' => array(),
@@ -43,16 +43,17 @@ foreach($f->getFields() as $fl){
          'value' => $i->getValue(),
          'label' => $i->getLabel(),
          'attributes' => getAttributes($i),
-       ); 
+       );
        $element['items'][] = $item;
      }
    }
+   
    $field['elements'][] = $element;
  }
  $form['fields'][] = $field;
 }
 ?>
-"form":<?php print \json_encode($form);
+"form":<?php print \json_encode($form, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
 
 function getAttributes(\Foundation\HTMLElement $object){
   $attributes = array();
@@ -60,7 +61,7 @@ function getAttributes(\Foundation\HTMLElement $object){
     $method = 'get' . ucfirst($memberName);
     if(!method_exists($object, $method)) throw new \Foundation\Exception("Unable to access {$memberName} using {$method} on " . get_class($f));
     $value = $object->$method();
-    if(!is_null($value)) $attributes[] = array('name' => $htmlName, 'value' => htmlentities($value,ENT_COMPAT,'utf-8'));
+    if(!is_null($value)) $attributes[] = array('name' => $htmlName, 'value' => $value);
   }
   return $attributes;
 }
