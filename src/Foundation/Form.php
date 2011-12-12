@@ -34,6 +34,12 @@ class Form extends HTMLElement{
   protected $buttons;
   
   /**
+   * Anti CSRF Token
+   * @var string
+   */
+  protected $csrfToken;
+  
+  /**
    * Constructor
    * Create the special hidden and button fields
    */
@@ -110,6 +116,15 @@ class Form extends HTMLElement{
   }
   
   /**
+   * Set the anti CSRF Token
+   * @param string $token
+   */
+  public function setCSRFToken($token){
+    $this->csrfToken = $token;
+    $this->newHiddenElement('antiCSRFToken', $token);
+  }
+  
+  /**
    * Process form input
    * If there is no input or a validation error then return false
    * @param array $arr
@@ -119,6 +134,7 @@ class Form extends HTMLElement{
     if(empty($arr)) return false;
     $error = false;
     $input = new Form\Input($arr);
+    if($this->csrfToken and $input->get('antiCSRFToken') != $this->csrfToken) throw new \Foundation\Exception('CSRF Detected - token does not match');
     foreach($this->getElements() as $element){
       if(!$element->processInput($input)) $error = true;
     }
