@@ -5,8 +5,6 @@ namespace Foundation\Form\Validator;
  */
 class PDF extends AbstractValidator{
   public function validate(\Foundation\Form\Input $input){
-    //will get called even on an empty file so we have to check
-    if(is_null($input->get($this->e->getName()))) return true;
     $validMimeTypes = array('application/pdf',
                             'application/pdf; charset=binary',
                             'application/x-pdf',

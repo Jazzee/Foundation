@@ -24,8 +24,6 @@ class Virusscan extends AbstractValidator{
   }
   
   public function validate(\Foundation\Form\Input $input){
-    //will get called even on an empty file so we have to check
-    if(is_null($input->get($this->e->getName()))) return true;
     $fileArr = $input->get($this->e->getName());
     $retcode = cl_scanfile($fileArr['tmp_name'], $virusname);
     if($retcode == CL_VIRUS) {
