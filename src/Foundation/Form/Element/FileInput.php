@@ -23,17 +23,17 @@ class FileInput extends Input{
    * @return boolean
    */
   protected function validate(\Foundation\Form\Input $input){
-    $fileArr = $input->get($this->e->getName());
+    $fileArr = $input->get($this->getName());
     //if no file was updaed
     if($fileArr['size'] == 0 AND $fileArr['name'] === ''){
-      $input->set($this->e->getName(), null); //set the file upload to null
+      $input->set($this->getName(), null); //set the file upload to null
     } else {
       //look for upload errors
       if($fileArr['error'] != \UPLOAD_ERR_OK){
         switch($fileArr['error']){
           case \UPLOAD_ERR_INI_SIZE:
           case \UPLOAD_ERR_FORM_SIZE:
-            $text = 'Your file is greater than the maximum allowed size of ' . \convertBytesToString($this->e->getMaxSize());
+            $text = 'Your file is greater than the maximum allowed size of ' . \convertBytesToString($this->getMaxSize());
             break;
           case \UPLOAD_ERR_PARTIAL:
             $text = 'Your file upload was stopped before it completed.  This is probably a temporary problem with your connection to our server.  Please try again.';
@@ -55,7 +55,7 @@ class FileInput extends Input{
             $text = 'There was an error uploading your file.  Please try again.';
         }
         //get rid of the input because there isn't realy a file
-        $input->set($this->e->getName(), null);
+        $input->set($this->getName(), null);
         //write any error messages to the validationSet
         $this->addMessage($text);
         return false;
