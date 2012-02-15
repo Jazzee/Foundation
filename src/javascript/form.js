@@ -192,6 +192,28 @@ function SelectList(obj){
   return select;
 }
 
+function RankingList(obj){
+  var list = $('<ol>');
+  for(var i = 0;i<obj.totalItems; i++){
+    var li = $('<li>');
+    li.append($('<label>').attr('for', obj.name + '_' + i).html(i+1 + ' choice'));
+    li.append(SelectList({
+      attributes: [
+        {'name': 'name', 'value': obj.name + '[]'},
+        {'name': 'id', 'value': obj.name + '_' + i}
+      ],
+      value: obj.value[i],
+      items: obj.items
+    }));
+    if(i >= obj.requiredItems){
+      $('option:selected', li).removeAttr('selected');
+      $('select',li).prepend($('<option>').html('').attr('name','').attr('value','').attr('selected','1'));
+    }
+    list.append(li);
+  }
+  return list;
+}
+
 /**
  * Create a form object
  * Should mirror the API for Foundation_Form
