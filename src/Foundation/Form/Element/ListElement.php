@@ -70,5 +70,20 @@ abstract class ListElement extends AbstractElement{
   public function inList($value){
     return array_key_exists($value, $this->items);
   }
+  
+  /**
+   * Add list items to the array
+   */
+  public function toArray(){
+    $arr = parent::toArray();
+    $arr['items'] = array();
+    foreach($this->items as $i){
+      $arr['items'][] = array(
+        'value' => $i->getValue(),
+        'label' => $i->getLabel()
+      );
+    }
+    return $arr;
+  }
 }
 ?>

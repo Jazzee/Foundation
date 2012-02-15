@@ -101,7 +101,7 @@ function Textarea(obj){
 function CheckboxList(obj){
   var ol = $('<ol>');
   $(obj.items).each(function(i){
-    var input = $('<input>').attr('type', 'checkbox').attr('name', obj.name + '[]').attr('id', obj.name + '_' + i);
+    var input = $('<input>').attr('type', 'checkbox').attr('name', obj.name + '[]').attr('id', obj.name + '_' + i).attr('value', this.value);
     $(this.attributes).each(function(i){
       input.attr(this.name, this.value);
     });
@@ -158,7 +158,7 @@ function ShortDateInput(obj){
 function RadioList(obj){
   var ol = $('<ol>');
   $(obj.items).each(function(i){
-    var input = $('<input>').attr('type', 'radio').attr('name', obj.name).attr('id', obj.name + '_' + i);
+    var input = $('<input>').attr('type', 'radio').attr('name', obj.name).attr('id', obj.name + '_' + i).attr('value', this.value);
     $(this.attributes).each(function(i){
       input.attr(this.name, this.value);
     });
@@ -180,7 +180,7 @@ function SelectList(obj){
   });
   
   $(obj.items).each(function(i){
-    var option = $('<option>').html(this.label);
+    var option = $('<option>').html(this.label).attr('value', this.value);
     $(this.attributes).each(function(i){
       option.attr(this.name, this.value);
     });

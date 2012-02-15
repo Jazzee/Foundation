@@ -148,6 +148,23 @@ class RankingList extends AbstractElement{
     return array_key_exists($value, $this->items);
   }
   
+  /**
+   * Add list items to the array
+   * Add totle and required to array
+   */
+  public function toArray(){
+    $arr = parent::toArray();
+    $arr['requiredItems'] = $this->requiredItems;
+    $arr['totalItems'] = $this->totalItems;
+    $arr['items'] = array();
+    foreach($this->items as $i){
+      $arr['items'][] = array(
+        'value' => $i->getValue(),
+        'label' => $i->getLabel()
+      );
+    }
+    return $arr;
+  }
   
 }
 ?>

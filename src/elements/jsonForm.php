@@ -18,18 +18,10 @@ foreach($f->getFields() as $fl){
  );
  foreach($fl->getElements() as $e){
    $e->preRender();
-   $element = array(
-     'name' => $e->getName(),
-     'class' => $e->getClass(),
-     'value' => $e->getValue(),
-     'instructions' => $e->getInstructions(),
-     'format' => $e->getFormat(),
-     'label' => $e->getLabel(),
-     'attributes' => getAttributes($e),
-     'messages' => array(),
-     'items' => array(),
-     'views' => array()
-   );
+   $element = $e->toArray();
+   $element['attributes'] = getAttributes($e);
+   $element['messages'] = array();
+   $element['views'] = array();
    foreach($e->getMessages() AS $message) $element['messages'][] = $message;
    $name =  get_class($e);
    do{
@@ -37,17 +29,6 @@ foreach($f->getFields() as $fl){
     $noNameSpaceName = $noNameSpaceName[count($noNameSpaceName) - 1];
     $element['views'][] = $noNameSpaceName;
    } while ($name = get_parent_class($name));
-   if(method_exists($e, 'getItems')){
-     foreach($e->getItems() as $i){
-       $item = array(
-         'value' => $i->getValue(),
-         'label' => $i->getLabel(),
-         'attributes' => getAttributes($i),
-       );
-       $element['items'][] = $item;
-     }
-   }
-   
    $field['elements'][] = $element;
  }
  $form['fields'][] = $field;

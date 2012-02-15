@@ -303,5 +303,20 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
   public function getFormat(){
     return $this->format;
   }
+  
+  /**
+   * Create an array from the element 
+   */
+  public function toArray(){
+    $arr = array(
+     'name' => $this->getName(),
+     'class' => $this->getClass(),
+     'value' => $this->getValue(),
+     'instructions' => $this->getInstructions(),
+     'format' => $this->getFormat(),
+     'label' => $this->getLabel()
+   );
+    return $arr;
+  }
 }
 ?>

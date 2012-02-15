@@ -127,6 +127,12 @@ interface Element{
    * @return string $legend
    */
   function getFormat();
+  
+  /**
+   * Convert the element to an array
+   * @return array
+   */
+  function toArray();
     
 }
 ?>
