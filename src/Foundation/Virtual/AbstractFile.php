@@ -111,11 +111,34 @@ abstract class AbstractFile implements File
     if($this->getLastModified()) header('Last-Modified: ' . $this->getLastModified()->format('D, d M Y H:i:s e'));
     $contents = $this->getFileContents();
     header('Content-Type: ' . $this->getMimeType());
-    header('Content-Disposition: attachment; filename='. $this->getName());
+    header('Content-Disposition: attachment; filename='. $this->niceName($this->getName()));
     header('Content-Transfer-Encoding: binary');
     header('Content-Length: ' . strlen($contents));
     print $contents;
     exit(0);
+  }
+  
+  /**
+   * Create a nice file name
+   * Stolen and modified from wordpress
+   * Removes special characters that are illegal in filenames on certain
+   * operating systems and special characters requiring special escaping
+   * to manipulate at the command line. Replaces spaces and consecutive
+   * dashes with a single dash. Trim period, dash and underscore from beginning
+   * and end of filename.
+   *
+   * This isn't a security issues - it is a usability improvement so the downloaded files 
+   * Will display correctly in Windows.
+   * @param string $filename
+   * @return string 
+   */
+  function niceName($filename){
+    $filename_raw = $filename;
+    $special_chars = array("?", "[", "]", "/", "\\", "=", "<", ">", ":", ";", ",", "'", "\"", "&", "$", "#", "*", "(", ")", "|", "~", "`", "!", "{", "}");
+    $filename = str_replace($special_chars, '', $filename);
+    $filename = preg_replace('/[\s-]+/', '-', $filename);
+    $filename = trim($filename, '.-_');
+    return $filename;
   }
 }
 ?>
