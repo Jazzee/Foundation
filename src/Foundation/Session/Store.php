@@ -88,7 +88,7 @@ class Store{
    * @param mixed $value the value to store
    */
   public function __set($name, $value){
-   $this->data[$name] = $value;
+    $this->set($name, $value);
   }
   
   /**
@@ -96,6 +96,23 @@ class Store{
    * @param string $name the name of the data
    */
   public function __get($name){
+    return $this->get($name);
+  }
+  
+  /**
+   * Store data in the session
+   * @param string $name the name of the data
+   * @param mixed $value the value to store
+   */
+  public function set($name, $value){
+   $this->data[$name] = $value;
+  }
+  
+  /**
+   * Retrieve data stored in the session
+   * @param string $name the name of the data
+   */
+  public function get($name){
     $this->checkExpired();
     if(array_key_exists($name, $this->data)){
       return $this->data[$name];
@@ -108,6 +125,22 @@ class Store{
    * @param string $name
    */
   public function __isset($name){
+    return $this->check($name);
+  }
+  
+  /**
+   * Unset a property
+   * @param string $name
+   */
+  public function __unset($name){
+    $this->remove($name);
+  }
+  
+  /**
+   * Check if a property is set
+   * @param string $name
+   */
+  public function check($name){
     $this->checkExpired();
     return isset($this->data[$name]);
   }
@@ -116,7 +149,7 @@ class Store{
    * Unset a property
    * @param string $name
    */
-  public function __unset($name){
+  public function remove($name){
     unset($this->data[$name]);
   }
 }
