@@ -17,7 +17,7 @@ class MaximumLength extends AbstractValidator{
   }
   
   public function validate(\Foundation\Form\Input $input){
-    if(strlen($input->get($this->e->getName())) < $this->ruleSet){
+    if(strlen($input->get($this->e->getName())) > $this->ruleSet){
       $this->addError('Input is too large.  Your input is: ' . (strlen($input->get($this->e->getName())) - $this->ruleSet) . ' characters bigger than the maximum size of ' . $this->ruleSet);
       return false;
     }
