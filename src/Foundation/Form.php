@@ -40,6 +40,12 @@ class Form extends HTMLElement{
   protected $csrfToken;
   
   /**
+   * Form wide error messages
+   * @var array 
+   */
+  protected $_errorMessages;
+  
+  /**
    * Constructor
    * Create the special hidden and button fields
    */
@@ -58,6 +64,7 @@ class Form extends HTMLElement{
     $this->hidden->addClass('hidden');
     $this->buttons = new Form\Field($this);
     $this->buttons->addClass('buttons');
+    $this->_errorMessages = array();
   }
   
   /**
@@ -125,6 +132,22 @@ class Form extends HTMLElement{
   }
   
   /**
+   * Add an error message
+   * @param string $message 
+   */
+  public function addErrorMessage($message){
+    $this->_errorMessages[] = $message;
+  }
+  
+  /**
+   * Add an error message
+   * @return array
+   */
+  public function getErrorMessages(){
+    return $this->_errorMessages;
+  }
+  
+  /**
    * Process form input
    * If there is no input or a validation error then return false
    * @param array $arr
@@ -134,7 +157,11 @@ class Form extends HTMLElement{
     if(empty($arr)) return false;
     $error = false;
     $input = new Form\Input($arr);
-    if($this->csrfToken and $input->get('antiCSRFToken') != $this->csrfToken) throw new \Foundation\Exception('CSRF Detected - token does not match');
+    if($this->csrfToken and $input->get('antiCSRFToken') != $this->csrfToken){
+      $this->addErrorMessage('For your security your input was not accepted because your identity could not be verified.  Your session may have expired, or there may have been a problem with our connection.  You may try submitting this form again or refreshing the page.');
+      $error = true;
+    }
+    
     foreach($this->getElements() as $element){
       if(!$element->processInput($input)) $error = true;
     }
