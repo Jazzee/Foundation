@@ -105,6 +105,7 @@ class Store{
    * @param mixed $value the value to store
    */
   public function set($name, $value){
+    $this->touchActivity();
    $this->data[$name] = $value;
   }
   
@@ -113,7 +114,7 @@ class Store{
    * @param string $name the name of the data
    */
   public function get($name){
-    $this->checkExpired();
+    $this->touchActivity();
     if(array_key_exists($name, $this->data)){
       return $this->data[$name];
     }
@@ -141,7 +142,7 @@ class Store{
    * @param string $name
    */
   public function check($name){
-    $this->checkExpired();
+    $this->touchActivity();
     return isset($this->data[$name]);
   }
   
@@ -150,6 +151,7 @@ class Store{
    * @param string $name
    */
   public function remove($name){
+    $this->touchActivity();
     unset($this->data[$name]);
   }
 }
