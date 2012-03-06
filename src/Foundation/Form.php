@@ -128,7 +128,8 @@ class Form extends HTMLElement{
    */
   public function setCSRFToken($token){
     $this->csrfToken = $token;
-    $this->newHiddenElement('antiCSRFToken', $token);
+    if($element = $this->getElementByName('antiCSRFToken')) $element->setValue($token);
+    else $this->newHiddenElement('antiCSRFToken', $token);
   }
   
   /**
