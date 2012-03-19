@@ -32,6 +32,7 @@ class Message extends \PHPMailer
    */
   public function __construct(\Foundation\Configuration $config){
     $this->exceptions = true;
+    parent::__construct(true);
     $this->_subjectPrefix = $config->getMailSubjectPrefix();
     switch($config->getMailServerType()){
       case 'php': //we don't need to do any addtional setup for PHP mail
