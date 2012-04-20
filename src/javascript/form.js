@@ -230,7 +230,7 @@ function FormObject(){
   this.newField = function(obj){
     var field = new FieldObject;
     $.each(obj, function(name, value){
-      field.name = value;
+      field[name] = value;
     });
     this.fields.push(field);
     return field;
