@@ -94,5 +94,14 @@ class Message extends \PHPMailer
     if($this->_isToOverridden) return true;
     return parent::AddBCC($address, $name);
   } 
+  
+  /**
+   * Add Subject Prefix when creating header 
+   * @return string
+   */
+  public function CreateHeader() {
+    $this->Subject = $this->_subjectPrefix . $this->Subject;
+    return parent::CreateHeader();
+  }
 }
 ?>
