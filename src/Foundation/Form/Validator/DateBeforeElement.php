@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check to see if the date entered is before the date in another element
+ * @package foundation\form\validator
  */
 class DateBeforeElement extends AbstractValidator{
   public function validate(\Foundation\Form\Input $input){

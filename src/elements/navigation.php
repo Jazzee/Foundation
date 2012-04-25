@@ -1,6 +1,7 @@
 <?php
 /**
  * View for navigation container
+ * @package foundation\navigation
  */
 ?>
 <div<?php $this->renderElement('attributes', array('object'=>$container)); ?>>

@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check that the input string is at least the minimum length
+ * @package foundation\form\validator
  */
 class MinimumLength extends AbstractValidator{
   /**

@@ -3,7 +3,7 @@ namespace Foundation;
 /**
  * Foundation class for simplyfying Public Key Encyption
  * Use the php OpenSSL library to encrypt and decrypt data
- * @package Foundation
+ * @package foundation
  */
 class PKI{
   /**

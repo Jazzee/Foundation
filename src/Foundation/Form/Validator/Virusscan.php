@@ -6,8 +6,7 @@ namespace Foundation\Form\Validator;
  * Which depends on clamav
  * @author Jon Johnson <jon.johnson@ucsf.edu>
  * @license http://jazzee.org/license.txt
- * @package foundation
- * @subpackage forms
+ * @package foundation\form\validator
  */
 class Virusscan extends AbstractValidator{
   

@@ -1,6 +1,7 @@
 <?php
 /**
- * RadioList element form control;
+ * RadioList element form control
+ * @package foundation\form
  */
  ?>
  <ol>

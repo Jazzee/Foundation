@@ -1,6 +1,7 @@
 <?php
 /**
  * View for a menu
+ * @package foundation\navigation
  */
 ?>
 <?php echo $menu->getTitle() ?>

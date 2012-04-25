@@ -2,6 +2,7 @@
 namespace Foundation\Virtual;
 /**
  * Proxy Directory
+ * @package foundation\virtual
  */
 class ProxyDirectory implements Directory
 {

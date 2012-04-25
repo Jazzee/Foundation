@@ -1,6 +1,7 @@
 <?php
 /**
- * CheckboxList element form control;
+ * CheckboxList element form control
+ * @package foundation\form
  */
  ?>
  <ol>

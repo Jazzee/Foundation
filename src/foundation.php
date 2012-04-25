@@ -5,7 +5,7 @@
  * Checks PHP version
  * Checks for required PEAR Includes
  * Sets up LIbraries
- * @package Jazzee\Foundation
+ * @package foundation
  */
  
 //check dependencies

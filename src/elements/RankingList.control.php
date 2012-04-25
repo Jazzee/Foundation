@@ -1,6 +1,7 @@
 <?php
 /**
- * RankingList element form control;
+ * RankingList element form control
+ * @package foundation\form
  */
 ?>
 <ol>

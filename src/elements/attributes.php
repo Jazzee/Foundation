@@ -1,6 +1,7 @@
 <?php
 /**
  * HTML attributes element
+ * @package foundation
  */
 foreach($object->getAttributes() as $memberName => $htmlName){
   $method = 'get' . ucfirst($memberName);

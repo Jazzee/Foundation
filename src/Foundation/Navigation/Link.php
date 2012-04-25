@@ -3,9 +3,7 @@ namespace Foundation\Navigation;
 /**
  * A single Navigation link
  * @author Jon Johnson <jon.johnson@ucsf.edu>
- * @license http://jazzee.org/license.txt
- * @package foundation
- * @subpackage navigation
+ * @package foundation\navigation
  */
 class Link extends \Foundation\HTMLElement{
   /**

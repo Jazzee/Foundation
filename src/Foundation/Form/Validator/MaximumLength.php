@@ -1,7 +1,9 @@
 <?php
 namespace Foundation\Form\Validator;
 /**
- * Check that the input string is below the max */
+ * Check that the input string is below the max
+ * @package foundation\form\validator 
+ */
 class MaximumLength extends AbstractValidator{
   /**
    * Construct 

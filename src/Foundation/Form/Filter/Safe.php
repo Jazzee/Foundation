@@ -3,6 +3,7 @@ namespace Foundation\Form\Filter;
 /**
  * Make sure input is safe
  * Uses HTML Purifier
+ * @package foundation\form\filter
  */
 class Safe extends AbstractFilter{
   

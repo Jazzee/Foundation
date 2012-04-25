@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Ensure the uploaded file is a pdf
+ * @package foundation\form\validator
  */
 class PDF extends AbstractValidator{
   public function validate(\Foundation\Form\Input $input){

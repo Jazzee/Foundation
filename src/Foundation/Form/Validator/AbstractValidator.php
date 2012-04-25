@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Abstract class to define form element validators
+ * @package foundation\form\validator
  */
 abstract class AbstractValidator implements \Foundation\Form\Validator{
   /**

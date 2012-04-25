@@ -4,7 +4,7 @@ namespace Foundation;
  * Cache
  * A pluggable cache
  * Fascade for Doctrine\Common\Cache drivers to work
- * @package Foundation
+ * @package foundation
  */
 class Cache implements \Doctrine\Common\Cache\Cache{
   protected $cache;

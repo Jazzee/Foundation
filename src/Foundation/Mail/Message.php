@@ -9,6 +9,7 @@ require_once(realpath(__DIR__ . '/../../../lib/phpmailer/class.phpmailer.php'));
  * 
  * Override PHPMailer to add configuration based setup
  * and some extra functionality
+ * @package foundation\mail
  *
  */
 class Message extends \PHPMailer

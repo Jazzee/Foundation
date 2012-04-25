@@ -5,6 +5,7 @@ namespace Foundation;
  * 
  * Attempts to use the PECL UUID library
  * Stolen from comments in PHP manual: http://www.php.net/manual/en/function.uniqid.php
+ * @package foundation
  */
 class UUID {
   /**

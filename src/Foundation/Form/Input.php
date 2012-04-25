@@ -2,7 +2,7 @@
 namespace Foundation\Form;
 /**
  * User input from a form
- * @package \Foundation\Form
+ * @package foundation\form
  */
 class Input{
   /**

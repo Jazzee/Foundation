@@ -3,7 +3,7 @@ namespace Foundation\VC;
 /**
  * Foundation base controller
  * Extends LightVC controller
- * @package Foundation
+ * @package foundation\vc
  */
 class Controller extends \Lvc_PageController{
   
@@ -112,6 +112,7 @@ class Controller extends \Lvc_PageController{
 
 /**
  * Define Authorization settings for a controller
+ * @package foundation\vc
  */
 class ControllerAuth {
   /**
@@ -145,6 +146,7 @@ class ControllerAuth {
 
 /**
  * Authorization for a single action
+ * @package foundation\vc
  */
 class ActionAuth {
   /**

@@ -3,7 +3,7 @@ namespace Foundation\Form\Element;
 /**
  * Element
  * Represents a single element on a form
- * @package Foundation\Form
+ * @package foundation\form\element
  */
 abstract class AbstractElement extends \Foundation\HTMLElement implements \Foundation\Form\Element{
   /**

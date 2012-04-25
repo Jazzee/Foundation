@@ -2,6 +2,7 @@
 namespace Foundation\Form\Element;
 /**
  * A Button Input Element
+ * @package foundation\form\element
  */
 class ButtonInput extends Input{
   /**

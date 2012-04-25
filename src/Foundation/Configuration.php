@@ -4,7 +4,7 @@ namespace Foundation;
  * Configuration
  * Define all the necessary defaults for foundation
  * This class has to be passed to most foundation classes
- * @package Foundation
+ * @package foundation
  */
 class Configuration{
   /**

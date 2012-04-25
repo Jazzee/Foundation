@@ -4,6 +4,7 @@ namespace Foundation\Session;
  * Session Store
  * Seperate Session stores allow the same variables to be sepearted
  * For instance a user can be logged in to two seperate parts of an application
+ * @package foundation\session
  */
 class Store{
   /**

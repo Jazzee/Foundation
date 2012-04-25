@@ -2,6 +2,7 @@
 namespace Foundation\Navigation;
 /**
  * A single navigtion menu
+ * @package foundation\navigation
  */
 class Menu extends \Foundation\HTMLElement{
   /**

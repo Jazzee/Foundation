@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check usr input to make sure it was an option in the list
+ * @package foundation\form\validator
  */
 class ChoiceInList extends AbstractValidator{
   public function validate(\Foundation\Form\Input $input){

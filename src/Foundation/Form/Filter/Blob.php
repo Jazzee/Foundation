@@ -2,6 +2,7 @@
 namespace Foundation\Form\Filter;
 /**
  * Pull the file contents out and set them as the value
+ * @package foundation\form\filter
  */
 class Blob extends AbstractFilter{
   public function filterValue($value){

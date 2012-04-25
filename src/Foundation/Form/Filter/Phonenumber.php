@@ -2,6 +2,7 @@
 namespace Foundation\Form\Filter;
 /**
  * Format phone numbers nicely into a string
+ * @package foundation\form\filter
  */
 class Phonenumber extends AbstractFilter{
   public function filterValue($value){

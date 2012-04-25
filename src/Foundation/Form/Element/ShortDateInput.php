@@ -4,6 +4,7 @@ namespace Foundation\Form\Element;
 /**
  * A Short Date Element
  * Just the month and year
+ * @package foundation\form\element
  */
 class ShortDateInput extends Input{
   

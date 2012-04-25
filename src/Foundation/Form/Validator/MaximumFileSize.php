@@ -5,8 +5,7 @@ namespace Foundation\Form\Validator;
  * Also set the FileInputElement::maxSize value
  * @author Jon Johnson <jon.johnson@ucsf.edu>
  * @license http://jazzee.org/license.txt
- * @package foundation
- * @subpackage forms
+ * @package foundation\form\validator
  */
 class MaximumFileSize extends AbstractValidator{
   

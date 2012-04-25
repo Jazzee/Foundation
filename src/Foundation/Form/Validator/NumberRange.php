@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check that a number is within a range
+ * @package foundation\form\validator
  */
 class NumberRange extends AbstractValidator{
   /**

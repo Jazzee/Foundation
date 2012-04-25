@@ -1,7 +1,8 @@
 <?php
 /**
  * Form element layout in a yui grid
- * Sets the structure for the element and the individual controls and displays fill in data;
+ * Sets the structure for the element and the individual controls and displays fill in data
+ * @package foundation\form
  */
 //call any pre rendering functions for validators
 $element->preRender(); 

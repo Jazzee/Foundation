@@ -1,8 +1,8 @@
 <?php
 namespace Foundation;
 /**
- * Session Fascade
- * Handles some default security and wrapper tasks
+ * Easier session management
+ * @package foundation\session
  */
 class Session{
   /**

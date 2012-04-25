@@ -1,11 +1,8 @@
 <?php
 namespace Foundation\VC;
 /**
- * Add functionality to LvcView
- */
-
-/**
  * A view to extend application views from
+ * @package foundation\vc
  */
 class View extends \Lvc_View{
 	public function requireCss($cssFile){

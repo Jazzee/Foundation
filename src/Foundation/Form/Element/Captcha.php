@@ -3,6 +3,7 @@ namespace Foundation\Form\Element;
 /**
  * A CAPTCHA Element to validate against bots
  * uses reCAPTCHA library from http://recaptcha.net/
+ * @package foundation\form\element
  */
 class Captcha extends AbstractElement{
   /**

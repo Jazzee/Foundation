@@ -3,6 +3,7 @@ namespace Foundation\Form\Element;
 
 /**
  * RankingList element
+ * @package foundation\form\element
  */
 class RankingList extends AbstractElement{
   /**

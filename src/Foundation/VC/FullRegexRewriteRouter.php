@@ -1,11 +1,11 @@
 <?php
+namespace Foundation\VC;
 /**
  * Routes a request using mod_rewrite data and regular expressions
  * Allows full pattern matching and replacement in the parsing
  * @author Jon Johnson <jon.johnson@ucsf.edu>
- * @package Foundation\VC
+ * @package foundation\vc
  **/
-namespace Foundation\VC;
 class FullRegexRewriteRouter extends \Lvc_RegexRewriteRouter {
   
   public function route($request) {

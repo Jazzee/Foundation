@@ -2,7 +2,7 @@
 namespace Foundation\Form;
 /**
  * Form elements are contained in fields
- * @package Foundation\Form
+ * @package foundation\form
  */
 class Field extends \Foundation\HTMLElement{
   /**

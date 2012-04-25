@@ -6,7 +6,7 @@ namespace Foundation\Virtual;
  * 
  * Used to create a File when all we have is the binary contents
  * @author Jonathan Johnson <jon.johnson@ucsf.edu>
- *
+ * @package foundation\virtual
  */
 class VirtualFile extends AbstractFile
 {

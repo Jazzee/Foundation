@@ -3,6 +3,7 @@ namespace Foundation\Form\Element;
 /**
  * A single item for an element list
  * Radio, Checkbox, and select lists use these
+ * @package foundation\form\element
  */
 class ListItem extends \Foundation\HTMLElement {
   /**

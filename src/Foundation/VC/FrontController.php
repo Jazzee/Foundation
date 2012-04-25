@@ -4,6 +4,7 @@ namespace Foundation\VC;
  * The Front Controller
  * Extend the original to use our Foundation\VC\Config class
  * @author Jon Johnson
+ * @package foundation\vc
  *
  */
 class FrontController extends \Lvc_FrontController {

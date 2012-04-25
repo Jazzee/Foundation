@@ -2,6 +2,7 @@
 namespace Foundation\Form\Filter;
 /**
  * Apply one of PHPs built in input sanitizers
+ * @package foundation\form\filter
  */
 class PHPSanitize extends AbstractFilter{
   public function filterValue($value){

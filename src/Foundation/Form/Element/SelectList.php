@@ -2,6 +2,7 @@
 namespace Foundation\Form\Element;
 /**
  * A Select List Element
+ * @package foundation\form\element
  */
 class SelectList extends ListElement{
   /**

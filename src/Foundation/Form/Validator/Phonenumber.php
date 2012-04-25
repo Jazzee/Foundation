@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check if a phone number is feasibly valid
+ * @package foundation\form\validator
  */
 class Phonenumber extends AbstractValidator{
   

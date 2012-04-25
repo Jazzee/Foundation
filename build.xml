@@ -3,6 +3,7 @@
 <project name="foundation" default="build" basedir=".">
  <property name="source" value="."/>
  <property name="build" value="build"/>
+ <property name="apidocsdestination" value="${build}/apidocs"/>
 
  <target name="clean"
          description="Clean up and create artifact directories">
@@ -32,7 +33,6 @@
    </sequential>
    <antcall target="phpcpd"/>
    <antcall target="phpcs"/>
-   <antcall target="phpdoc"/>
    <antcall target="phploc"/>
   </parallel>
  </target>
@@ -81,13 +81,6 @@
   </exec>
  </target>
 
- <target name="phpdoc"
-         description="Generate API documentation using PHPDocumentor">
-  <exec executable="phpdoc">
-   <arg line="-d ${source} -t ${build}/api" />
-  </exec>
- </target>
-
  <target name="phpcb"
          description="Aggregate tool output with PHP_CodeBrowser">
   <exec executable="phpcb">
@@ -102,6 +95,17 @@
     <fileset dir="${source}" includes="src/ lib/"/>
   </copy>
  </target>
+ 
+  <target name="apidocs" description="Build API Documentation">
+   <exec executable="apigen">
+     <arg line="--source ${source}/src" />
+     <arg line="--destination '${apidocsdestination}'"/>
+     <arg value="--quiet"/>
+     <arg line="--title 'Jazzee Foundation API'"/>
+     <arg line="--base-url 'http://api.jazzee.org'"/>
+     <arg line="--groups packages"/>
+   </exec>
+  </target>
 
  <target name="build" depends="clean,parallelTasks,phpunit,phpcb,src"/>
  <target name="export" depends="clean,src"/>

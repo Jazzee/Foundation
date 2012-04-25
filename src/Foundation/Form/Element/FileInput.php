@@ -2,6 +2,7 @@
 namespace Foundation\Form\Element;
 /**
  * A File Element
+ * @package foundation\form\element
  */
 class FileInput extends Input{
   /**

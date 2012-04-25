@@ -1,6 +1,7 @@
 <?php
 /**
- * Captcha element form control;
+ * Captcha element form control
+ * @package foundation\form
  */
 $errorString = ($element->errorString)?"&amp;error={$element->errorString}":'';
 ?>

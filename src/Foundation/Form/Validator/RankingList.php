@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Validation for RankingList Element
+ * @package foundation\form\validator
  */
 class RankingList extends AbstractValidator{
 

@@ -2,6 +2,7 @@
 namespace Foundation\Form;
 /**
  * Filter Interface
+ * @package foundation\form\filter
  */
 interface Filter{
   

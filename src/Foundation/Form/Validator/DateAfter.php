@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check to see if the date entered is before a specific date
+ * @package foundation\form\validator
  */
 class DateAfter extends AbstractValidator{
   /**

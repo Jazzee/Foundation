@@ -2,6 +2,7 @@
 namespace Foundation\Form;
 /**
  * Interface for form validators
+ * @package foundation\form\validator
  */
 interface Validator{
   /**

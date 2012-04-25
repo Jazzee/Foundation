@@ -2,6 +2,7 @@
 namespace Foundation\Form\Element;
 /**
  * A Password Input Element
+ * @package foundation\form\element
  */
 class PasswordInput extends Input{
   

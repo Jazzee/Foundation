@@ -1,4 +1,6 @@
 <?php
+namespace Foundation\VC;
+
 /**
  * Config
  * Mostly copied from LightVC - A lightweight view-controller framework.
@@ -9,14 +11,8 @@
  * 
  * @author Anthony Bush
  * @author Jonathan Johnson
- * @version 1.0.4-foundation (2011-05-22)
- * @package Foundation\VC
+ * @package foundation\vc
  * @see http://lightvc.org/
- **/
-
-namespace Foundation\VC;
-/**
- * Configuration Overrides
  **/
 class Config extends \Lvc_Config {
   /**

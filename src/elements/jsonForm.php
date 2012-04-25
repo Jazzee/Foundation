@@ -1,7 +1,8 @@
 <?php
 /**
  * JSON Form Element
- * Output a form in json;
+ * Output a form in json
+ * @package foundation\form
  */
 $f = $form;
 $f->setId('id');
@@ -36,6 +37,10 @@ foreach($f->getFields() as $fl){
 ?>
 "form":<?php print \json_encode($form, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
 
+/**
+ * Get JSON attributes
+ * @package foundation\form
+ */
 function getAttributes(\Foundation\HTMLElement $object){
   $attributes = array();
   foreach($object->getAttributes() as $memberName => $htmlName){

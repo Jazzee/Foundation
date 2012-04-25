@@ -2,6 +2,7 @@
 namespace Foundation\Form\Filter;
 /**
  * Encrypt the value using the PKI class which is passed as the ruleSet
+ * @package foundation\form\filter
  */
 class Encrypt extends AbstractFilter{
   

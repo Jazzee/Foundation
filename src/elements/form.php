@@ -1,6 +1,7 @@
 <?php
 /**
- * Form element form control;
+ * Form element form control
+ * @package foundation\form
  */
  ?><div class='form'>
   <p class='required'>indicates a required field</p>

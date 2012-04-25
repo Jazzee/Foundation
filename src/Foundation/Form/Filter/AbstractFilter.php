@@ -2,6 +2,7 @@
 namespace Foundation\Form\Filter;
 /**
  * Abstract Filter Class
+ * @package foundation\form\filter
  */
 abstract class AbstractFilter implements \Foundation\Form\Filter{
   /**

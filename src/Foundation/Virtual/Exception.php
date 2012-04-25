@@ -5,6 +5,7 @@ namespace Foundation\Virtual;
  * 
  * Declare an exception class for Foundation\Virtual
  * Allows us to easily send error codes
+ * @package foundation\virtual
 */
 class Exception extends \Foundation\Exception
 {

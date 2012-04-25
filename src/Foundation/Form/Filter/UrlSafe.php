@@ -2,6 +2,7 @@
 namespace Foundation\Form\Filter;
 /**
  * Make the value safe to use in URLs
+ * @package foundation\form\filter
  */
 class UrlSafe extends AbstractFilter{
   public function filterValue($value){

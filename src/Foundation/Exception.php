@@ -2,6 +2,7 @@
 namespace Foundation;
 /**
  * Declare an exception class for Foundation
+ * @package foundation
 */
 class Exception extends \RuntimeException{
   /**

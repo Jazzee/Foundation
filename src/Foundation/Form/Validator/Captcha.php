@@ -4,8 +4,7 @@ namespace Foundation\Form\Validator;
  * Check to see if the captcha was valid
  * @author Jon Johnson <jon.johnson@ucsf.edu>
  * @license http://jazzee.org/license.txt
- * @package foundation
- * @subpackage forms
+ * @package foundation\form\validator
  */
 class Captcha extends AbstractValidator{
   /**

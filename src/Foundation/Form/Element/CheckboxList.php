@@ -2,6 +2,7 @@
 namespace Foundation\Form\Element;
 /**
  * A Checkbox Element
+ * @package foundation\form\element
  */
 class CheckboxList extends ListElement{
   /**

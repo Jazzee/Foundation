@@ -2,6 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check to see if the input is a date
+ * @package foundation\form\validator
  */
 class Date extends AbstractValidator{
   public function validate(\Foundation\Form\Input $input){

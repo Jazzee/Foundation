@@ -2,7 +2,7 @@
 namespace Foundation;
 /**
  * Dynamic HTML elements
- * @package Foundation
+ * @package foundation
  */
 class HTMLElement{
   /**

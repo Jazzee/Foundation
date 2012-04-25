@@ -2,6 +2,7 @@
 namespace Foundation\Form\Element;
 /**
  * A Hidden Input Element
+ * @package foundation\form\element
  */
 class HiddenInput extends Input{
   

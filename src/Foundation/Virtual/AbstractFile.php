@@ -2,7 +2,7 @@
 namespace Foundation\Virtual;
 /**
  * An abstract file type
- * @package Foundation\Virtual
+ * @package foundation\virtual
  */
 abstract class AbstractFile implements File
 {

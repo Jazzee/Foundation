@@ -2,6 +2,7 @@
 namespace Foundation\Virtual;
 /**
  * Virtual Directory
+ * @package foundation\virtual
  */
 class VirtualDirectory implements Directory
 {

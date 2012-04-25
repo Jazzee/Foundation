@@ -3,8 +3,7 @@ namespace Foundation\Form\Validator;
 /**
  * Check to see if a credit card number is valid
  * The rule set should contain an array of valid credit card type constants
- * @package foundation
- * @subpackage forms
+ * @package foundation\form\validator
  */
 class CreditCard extends AbstractValidator{
   /**

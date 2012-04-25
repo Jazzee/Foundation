@@ -2,6 +2,7 @@
 namespace Foundation\Virtual;
 /**
  * Interface for VirtualFiles
+ * @package foundation\virtual
  */
 interface File
 {

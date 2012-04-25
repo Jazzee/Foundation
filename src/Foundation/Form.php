@@ -2,7 +2,7 @@
 namespace Foundation;
 /**
  * Create Dynamic Forms
- * @package Foundation\Form
+ * @package foundation\form
  */
 class Form extends HTMLElement{
   /**

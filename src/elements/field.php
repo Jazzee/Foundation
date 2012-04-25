@@ -1,6 +1,7 @@
 <?php
 /**
- * Form Field element form control;
+ * Form Field element form control
+ * @package foundation\form
  */
  ?><fieldset<?php $this->renderElement('attributes', array('object'=>$field)); ?>>
 <?php if(!is_null($field->getLegend())){

@@ -1,6 +1,7 @@
 <?php
 /**
- * Select element form control;
+ * Select element form control
+ * @package foundation\form
  */
  ?>
  <select <?php $this->renderElement('attributes', array('object'=>$element)); ?>>

@@ -2,7 +2,7 @@
 namespace Foundation\Virtual;
 /**
  * A physical file
- * @package Foundation\Virtual
+ * @package foundation\virtual
  */
 class RealFile extends AbstractFile{  
   /**
