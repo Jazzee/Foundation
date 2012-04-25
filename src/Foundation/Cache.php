@@ -88,4 +88,11 @@ class Cache implements \Doctrine\Common\Cache\Cache{
   public function getIds(){
     return $this->cache->getIds();
   }
+  
+  /**
+   * Pass through to cache provider 
+   */
+  public function getStats(){
+    return $this->cache->getStats();
+  }
 }
