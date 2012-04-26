@@ -71,14 +71,13 @@
   </exec>
  </target>
 
- <target name="phpcs"
-         description="Generate checkstyle.xml using PHP_CodeSniffer">
-  <exec executable="phpcs" output="/dev/null">
-   <arg line="--report=checkstyle
-              --report-file=${build}/logs/checkstyle.xml
-              --standard=phpcs.xml
-              ${source}" />
-  </exec>
+  <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
+   <exec executable="phpcs" output="/dev/null">
+     <arg value="--report=checkstyle" />
+     <arg value="--report-file=${build}/logs/checkstyle.xml" />
+     <arg value="--standard=Symfony2" />
+     <arg path="${source}/src" />
+   </exec>
  </target>
 
  <target name="phpcb"
