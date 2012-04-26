@@ -1,11 +1,11 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';;
 
-class SessionSessionTest extends TestCase{
+class SessionTest extends TestCase{
   
   
   function testSetup(){
-    $s  = new \Foundation\Session\Session();
+    $s  = new \Foundation\Session();
     $vars = array(
       'name', 
       'use_only_cookies',
