@@ -1,4 +1,9 @@
-build
+build/api
+build/code-browser
+build/coverage
+build/foundation
+build/logs
+build/pdepend
 .buildpath
 .project
 .settings
