@@ -30,21 +30,11 @@ class CacheTest extends TestCase{
   function testDelete(){
     $this->cache->save('testdata', uniqid(), 30);
     $this->cache->save('magicTestData', uniqid(), 30);
-    $this->cache->save('prefix_testdata', uniqid(), 30);
-    $this->cache->save('testdata_suffix', uniqid(), 30);
     
     $this->assertTrue($this->cache->contains('testdata'));
     $this->assertTrue($this->cache->contains('magicTestData'));
     $this->assertTrue($this->cache->contains('prefix_testdata'));
     $this->assertTrue($this->cache->contains('testdata_suffix'));
-    
-    $this->cache->deleteByPrefix('prefix_');
-    $this->assertTrue($this->cache->contains('testdata'));
-    $this->assertFalse($this->cache->contains('prefix_testdata'));
-    
-    $this->cache->deleteBySuffix('_suffix');
-    $this->assertTrue($this->cache->contains('testdata'));
-    $this->assertFalse($this->cache->contains('testdata_suffix'));
     
     $this->cache->delete('testdata');
     $this->assertFalse($this->cache->contains('testdata'));

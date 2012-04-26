@@ -65,22 +65,6 @@ class Cache implements \Doctrine\Common\Cache\Cache{
   }
   
   /**
-   * Delete item from the cache by prefix
-   * @param string $prefix
-   */
-  public function deleteByPrefix($prefix){
-    $this->cache->deleteByPrefix($prefix);
-  }
-  
-  /**
-   * Delete item from the cache by suffix
-   * @param string $suffix
-   */
-  public function deleteBySuffix($suffix){
-    $this->cache->deleteBySuffix($suffix);
-  }
-  
-  /**
    * Get all our cached ids
    * 
    * @return array $ids
