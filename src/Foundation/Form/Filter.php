@@ -2,10 +2,11 @@
 namespace Foundation\Form;
 /**
  * Filter Interface
- * @package foundation\form\filter
+ * 
+ * @package Foundation\form\filter
  */
-interface Filter{
-  
+interface Filter
+{
   /**
    * Filter the input
    * @param mixed $value
@@ -13,4 +14,3 @@ interface Filter{
    */
   function filterValue($value);
 }
-?>

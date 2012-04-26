@@ -1,16 +1,18 @@
 <?php
 /**
  * Form element form control
- * @package foundation\form
+ * @package Foundation\form
  */
  ?><div class='form'>
   <p class='required'>indicates a required field</p>
-  <?php foreach($form->getErrorMessages() as $message){?>
+  <?php 
+  foreach ($form->getErrorMessages() as $message) {?>
     <p class='error'><?php print $message; ?></p>
-  <?php } ?>
+  <?php 
+  } ?>
   <form<?php $this->renderElement('attributes', array('object'=>$form)); ?>>
   <?php
-  foreach($form->getFields() as $field){
+  foreach ($form->getFields() as $field) {
     $this->renderElement('field', array('field'=>$field));
   }
   ?>

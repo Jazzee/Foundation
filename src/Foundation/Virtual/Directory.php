@@ -2,7 +2,8 @@
 namespace Foundation\Virtual;
 /**
  * Direcotry interface
- * @package foundation\virtual
+ * 
+ * @package Foundation\virtual
  */
 interface Directory
 {

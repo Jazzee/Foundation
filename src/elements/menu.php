@@ -1,15 +1,15 @@
 <?php
 /**
  * View for a menu
- * @package foundation\navigation
+ * @package Foundation\navigation
  */
 ?>
 <?php echo $menu->getTitle() ?>
 <ol<?php $this->renderElement('attributes', array('object'=>$menu)); ?>>
 <?php
-foreach($menu->getLinks() as $link){
+foreach ($menu->getLinks() as $link) {
   echo '<li';
-  if($link->getCurrent()){
+  if ($link->getCurrent()) {
     echo " class='current'";
   }
   echo '>';

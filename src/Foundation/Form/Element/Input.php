@@ -3,9 +3,11 @@ namespace Foundation\Form\Element;
 
 /**
  * An Abstract Input Element
- * @package foundation\form\element
+ * 
+ * @package Foundation\form\element
  */
-abstract class Input extends AbstractElement{
+abstract class Input extends AbstractElement
+{
   /**
    * HTML element attributes
    * @var string
@@ -17,7 +19,8 @@ abstract class Input extends AbstractElement{
   /**
    * Constructor
    */
-  public function __construct($field){
+  public function __construct($field)
+  {
     parent::__construct($field);
     $this->type = 'text';
     $this->attributes['disabled'] = 'disabled';
@@ -25,55 +28,59 @@ abstract class Input extends AbstractElement{
     $this->attributes['value'] = 'value';
     $this->attributes['maxlength'] = 'maxlength';
   }
-  
+
   /**
    * Set the disabled
    * @param string $disabled
    */
-  public function setDisabled($disabled){
+  public function setDisabled($disabled)
+  {
     $this->disabled = $disabled;
   }
-  
+
   /**
    * Get the disabled
    * @return string $disabled
    */
-  public function getDisabled(){
+  public function getDisabled()
+  {
     return $this->disabled;
   }
-  
+
   /**
    * Set the type
    * @todo verify type 
    * @param string $type
    */
-  public function setType($type){
+  public function setType($type)
+  {
     $this->type = $type;
   }
-  
+
   /**
    * Get the type
    * @return string $type
    */
-  public function getType(){
+  public function getType()
+  {
     return $this->type;
   }
-  
+
   /**
    * Set the maxlength
    * @param string $maxlength
    */
-  public function setMaxlength($maxlength){
+  public function setMaxlength($maxlength)
+  {
     $this->maxlength = $maxlength;
   }
-  
+
   /**
    * Get the maxlength
    * @return string $maxlength
    */
-  public function getMaxlength(){
+  public function getMaxlength()
+  {
     return $this->maxlength;
   }
-    
 }
-?>

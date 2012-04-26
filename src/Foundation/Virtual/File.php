@@ -2,7 +2,8 @@
 namespace Foundation\Virtual;
 /**
  * Interface for VirtualFiles
- * @package foundation\virtual
+ * 
+ * @package Foundation\virtual
  */
 interface File
 {
@@ -11,28 +12,28 @@ interface File
    * @return string
    */
   function getFileContents();
-  
+
   /**
    * Get the name to send in the header
    * @return string
    */
   function getName();
-  
+
   /**
    * Get the mime type to send in the header
    * @return string
    */
   function getMimeType();
-  
+
   /**
    * Get the Last Modified time so we can send browser cachign info
    * @return \DateTime
    */
   function getLastModified();
-  
+
   /**
    * Output the file to the browser
    */
   function output();
-  
+
 }

@@ -5,7 +5,8 @@ namespace Foundation\Virtual;
  * 
  * Declare an exception class for Foundation\Virtual
  * Allows us to easily send error codes
- * @package foundation\virtual
+ * 
+ * @package Foundation\virtual
 */
 class Exception extends \Foundation\Exception
 {
@@ -17,18 +18,20 @@ class Exception extends \Foundation\Exception
    * @param string $fileName
    * @param int $httpErrorCode HTTP error code
    */
-  public function __construct($fileName, $httpErrorCode){
+  public function __construct($fileName, $httpErrorCode)
+  {
     $this->_httpErrorCode = $httpErrorCode;
     $message = "Attempting to access {$fileName} resulted in {$httpErrorCode}";
     parent::__construct($message);
   }
-  
+
   /**  
    * Returns httd error code
    * 
    * @return integer
    */
-  public function getHttpErrorCode(){
+  public function getHttpErrorCode()
+  {
     return $this->_httpErrorCode;
   }
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * FileInput element form control
- * @package foundation\form
+ * @package Foundation\form
  */
  ?>
  <!-- MAX_FILE_SIZE -->

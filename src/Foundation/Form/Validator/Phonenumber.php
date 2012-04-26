@@ -2,23 +2,24 @@
 namespace Foundation\Form\Validator;
 /**
  * Check if a phone number is feasibly valid
- * @package foundation\form\validator
+ * 
+ * @package Foundation\form\validator
+ * @author  Jon Johnson <jon.johnson@ucsf.edu>
+ * @license BSD http://jazzee.org/license.html
  */
-class Phonenumber extends AbstractValidator{
-  
-  /**
-   * 
-   * @see jazzee/lib/foundation/src/Foundation/Form/Validator/Foundation\Form\Validator.AbstractValidator::validate()
-   */
-  public function validate(\Foundation\Form\Input $input){
+class Phonenumber extends AbstractValidator
+{
+  public function validate(\Foundation\Form\Input $input)
+  {
     //only keep the digits
-    $number = preg_replace("#[^0-9]#",'',$input->get($this->e->getName()));
+    $number = preg_replace("#[^0-9]#", '', $input->get($this->e->getName()));
     $length = \strlen($number);
-    if($length < 10 OR $length > 13){
+    if ($length < 10 OR $length > 13) {
       $this->addError('Invalid Phone Number');
+
       return false;
     }
+
     return true;
   }
 }
-?>

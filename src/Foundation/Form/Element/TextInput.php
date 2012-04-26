@@ -2,7 +2,10 @@
 namespace Foundation\Form\Element;
 /**
  * A Text Input Element
- * @package foundation\form\element
+ * 
+ * @package Foundation\form\element
  */
-class TextInput extends Input{}
-?>
+class TextInput extends Input
+{
+
+}

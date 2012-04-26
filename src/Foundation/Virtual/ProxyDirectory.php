@@ -2,7 +2,8 @@
 namespace Foundation\Virtual;
 /**
  * Proxy Directory
- * @package foundation\virtual
+ * 
+ * @package Foundation\virtual
  */
 class ProxyDirectory implements Directory
 {
@@ -11,28 +12,31 @@ class ProxyDirectory implements Directory
    * @var array
    */
   protected $_files;
-  
+
   /**
    * @var string the file system path
    */
   protected $_absolutePath;
-  
+
   /**
    * @var the VirtualDirectory we represent
    */
   protected $_virtualDirectory;
- 
+
   /**
    * Constructor
    * @param string $absolutePath;
    */
-  public function __construct($absolutePath){
+  public function __construct($absolutePath)
+  {
     $this->_files = array();
-    if(
-      !$this->_absolutePath = \realpath($absolutePath) 
-      or !\is_dir($this->_absolutePath) 
-      or !\is_readable($this->_absolutePath)) 
-        throw new \Foundation\Exception("Unable to read '{$absolutePath}' directory.");
+    if (
+      !$this->_absolutePath = \realpath($absolutePath) OR
+      !\is_dir($this->_absolutePath) OR
+      !\is_readable($this->_absolutePath)
+    ) {
+      throw new \Foundation\Exception("Unable to read '{$absolutePath}' directory.");
+    }
     $this->_virtualDirectory = false;
   }
 
@@ -42,31 +46,37 @@ class ProxyDirectory implements Directory
    * @param string $virtualName
    * @param AbstractFile $file
    */
-  public function addFile($virtualName, File $file) {
+  public function addFile($virtualName, File $file)
+  {
     $this->_files[$virtualName] = $file;
   }
-  
+
   /**
    * Load the resource as a VirtualDirectory and search it for files
    * @see Foundation\Virtual.Directory::find()
    */
-  public function find($pathName){
-    if(\array_key_exists($pathName, $this->_files)) return $this->_files[$pathName];
-    
-    if(false != $this->_virtualDirectory) return $this->_virtualDirectory->find($pathName);
+  public function find($pathName)
+  {
+    if (\array_key_exists($pathName, $this->_files)) {
+      return $this->_files[$pathName];
+    }
+
+    if (false != $this->_virtualDirectory) {
+      return $this->_virtualDirectory->find($pathName);
+    }
     $this->_virtualDirectory = new VirtualDirectory();
-    
+
     $dir = new \DirectoryIterator($this->_absolutePath);
-    foreach($dir as $file){
-      if(!$file->isDot() and $file->isReadable()){
-        if($file->isFile()){
-          $this->_virtualDirectory->addFile($file->getFilename(), new RealFile($file->getFilename(),$file->getPathName()));
-        } else if($file->isDir()){
+    foreach ($dir as $file) {
+      if (!$file->isDot() and $file->isReadable()) {
+        if ($file->isFile()) {
+          $this->_virtualDirectory->addFile($file->getFilename(), new RealFile($file->getFilename(), $file->getPathName()));
+        } else if ($file->isDir()) {
           $this->_virtualDirectory->addDirectory($file->getFilename(), new ProxyDirectory($file->getPathName()));
         }
       }
     }
+
     return $this->find($pathName);
   }
-  
 }

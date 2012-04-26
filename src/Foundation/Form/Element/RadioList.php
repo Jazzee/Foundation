@@ -2,7 +2,10 @@
 namespace Foundation\Form\Element;
 /**
  * A Radio List Element
- * @package foundation\form\element
+ * 
+ * @package Foundation\form\element
  */
-class RadioList extends ListElement{}
-?>
+class RadioList extends ListElement
+{
+
+}

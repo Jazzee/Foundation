@@ -2,9 +2,11 @@
 namespace Foundation\Form\Element;
 /**
  * A Select List Element
- * @package foundation\form\element
+ * 
+ * @package Foundation\form\element
  */
-class SelectList extends ListElement{
+class SelectList extends ListElement
+{
   /**
    * HTML element attributes
    * @var string
@@ -14,26 +16,28 @@ class SelectList extends ListElement{
   /**
    * Constructor
    */
-  public function __construct($field){
+  public function __construct($field)
+  {
     parent::__construct($field);
     $this->attributes['multiple'] = 'multiple';
   }
-  
+
   /**
    * Get Multiple
    * @return integer
    */
-  public function getMultiple(){
+  public function getMultiple()
+  {
     return $this->multiple;
   }
-  
+
   /**
    * Set Multiple
    * @todo restrict to valie input (true:false)?
    * @param integer $multiple
    */
-  public function setMultiple($multiple){
+  public function setMultiple($multiple)
+  {
     $this->multiple = $multiple;
   }
 }
-?>
