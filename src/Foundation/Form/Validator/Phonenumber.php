@@ -22,4 +22,11 @@ class Phonenumber extends AbstractValidator
 
     return true;
   }
+
+  public function preRender()
+  {
+    if (is_null($this->e->getFormat())) {
+      $this->e->setFormat('10 digit phone number.');
+    }
+  }
 }
