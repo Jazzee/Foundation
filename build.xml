@@ -153,4 +153,5 @@
      <arg line="--groups packages"/>
    </exec>
   </target>
+  <target name="export" depends="clean,src"/>
 </project>
