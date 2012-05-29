@@ -1,5 +1,9 @@
 {
   "name": "jazzee/foundation",
+  "type": "library",
+  "description": "Foundation framework for Jazzee project",
+  "keywords": ["framework"],
+  "homepage": "http://jazzee.org",
   "license": "BSD-3-Clause",
   "authors": [
     {
