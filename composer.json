@@ -1,0 +1,42 @@
+{
+  "name": "jazzee/foundation",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Jon Johnson",
+      "email": "jon.johnson@ucsf.edu",
+      "role": "Developer"
+    }
+  ],
+  
+  "repositories": [
+    {
+      "type": "pear",
+      "url": "http://pear.php.net"
+    }
+  ],
+  "require": {  
+    "php": ">=5.3.0",
+    "ext-curl"     : "*",
+    "ext-json"     : "*",
+    "ext-imagick"     : "*", 
+    "ext-uuid"     : "*", 
+    "ext-mbstring"     : "*",
+    "ext-ldap"     : "*", 
+    "ext-xml"      : "*",
+    "ext-dom"      : "*",
+    "ext-clamav"      : ">=0.15.6",
+    "pear-pear/Log": ">=1.12",
+    "doctrine/orm": "2.2.1",
+    "symfony/console": ">=2.0",
+    "ezyang/htmlpurifier": ">=4.4.0"
+  },
+  "suggest": {
+    "ext-apc": "Caching will significantly improve performance."
+  },
+  "autoload": {
+    "psr-0": {
+      "Foundation": "src/"
+    }
+  }
+}
