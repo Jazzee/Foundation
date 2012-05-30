@@ -12,13 +12,6 @@
       "role": "Developer"
     }
   ],
-  
-  "repositories": [
-    {
-      "type": "pear",
-      "url": "http://pear.php.net"
-    }
-  ],
   "require": {  
     "php": ">=5.3.0",
     "ext-curl"     : "*",
@@ -29,9 +22,7 @@
     "ext-ldap"     : "*", 
     "ext-xml"      : "*",
     "ext-dom"      : "*",
-    "ext-clamav"      : ">=0.15.6",
-    "pear-pear/Log": ">=1.12",
-    "doctrine/orm": "2.2.1",
+    "ext-clamav"      : "*",
     "symfony/console": ">=2.0",
     "ezyang/htmlpurifier": ">=4.4.0"
   },
@@ -41,6 +32,7 @@
   "autoload": {
     "psr-0": {
       "Foundation": "src/"
-    }
+    },
+    "classmap": ["lib/lightvc", "lib/phpass", "lib/phpmailer"]
   }
 }

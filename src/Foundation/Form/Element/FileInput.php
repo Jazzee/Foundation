@@ -38,7 +38,7 @@ class FileInput extends Input
         switch ($fileArr['error']) {
           case \UPLOAD_ERR_INI_SIZE:
           case \UPLOAD_ERR_FORM_SIZE:
-            $text = 'Your file is greater than the maximum allowed size of ' . \convertBytesToString($this->getMaxSize());
+            $text = 'Your file is greater than the maximum allowed size of ' . \Foundation\Utility::convertBytesToString($this->getMaxSize());
               break;
           case \UPLOAD_ERR_PARTIAL:
             $text = 'Your file upload was stopped before it completed.  This is probably a temporary problem with your connection to our server.  Please try again.';
@@ -108,7 +108,7 @@ class FileInput extends Input
   public function getMaxSize()
   {
     if (is_null($this->maxSize)) {
-      return \convertIniShorthandValue(\ini_get('upload_max_filesize'));
+      return \Foundation\Utility::convertIniShorthandValue(\ini_get('upload_max_filesize'));
     }
 
     return $this->maxSize;
@@ -121,11 +121,11 @@ class FileInput extends Input
    */
   public function setMaxSize($maxSize)
   {
-    $maxSize = \convertIniShorthandValue($maxSize);
-    if ($maxSize > \convertIniShorthandValue(\ini_get('upload_max_filesize'))) {
+    $maxSize = \Foundation\Utility::convertIniShorthandValue($maxSize);
+    if ($maxSize > \Foundation\Utility::convertIniShorthandValue(\ini_get('upload_max_filesize'))) {
       throw new \Foundation\Exception('Attempting to set FileInput::maxSize to a value greater than PHP INI upload_max_filesize');
     }
-    if ($maxSize > \convertIniShorthandValue(\ini_get('post_max_size'))) {
+    if ($maxSize > Foundation\Utility::convertIniShorthandValue(\ini_get('post_max_size'))) {
       throw new \Foundation\Exception('Attempting to set FileInput::maxSize to a value greater than PHP INI post_max_size');
     }
     $this->maxSize = $maxSize;

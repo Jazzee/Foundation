@@ -12,7 +12,7 @@
       if ($i<$element->getRequiredItems()) {
         print ' required';
       } ?>'>
-        <label for='<?php print $element->getName() . '_' . $i ?>'><?php print ordinalValue($i+1)?> choice:</label>
+      <label for='<?php print $element->getName() . '_' . $i ?>'><?php print \Foundation\Utility::ordinalValue($i+1)?> choice:</label>
       </div>
       <select name='<?php print $element->getName()?>[]' id='<?php print $element->getName() . '_' . $i ?>'>
       <?php 
