@@ -304,4 +304,13 @@ class Configuration
   {
     return $this->mailServerPass;
   }
+
+  /**
+   * Get the path to the foundation source
+   * @return string
+   */
+  public static function getSourcePath()
+  {
+    return realpath(__DIR__ . '/../..');
+  }
 }
