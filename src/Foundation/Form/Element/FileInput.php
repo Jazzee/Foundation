@@ -125,7 +125,7 @@ class FileInput extends Input
     if ($maxSize > \Foundation\Utility::convertIniShorthandValue(\ini_get('upload_max_filesize'))) {
       throw new \Foundation\Exception('Attempting to set FileInput::maxSize to a value greater than PHP INI upload_max_filesize');
     }
-    if ($maxSize > Foundation\Utility::convertIniShorthandValue(\ini_get('post_max_size'))) {
+    if ($maxSize > \Foundation\Utility::convertIniShorthandValue(\ini_get('post_max_size'))) {
       throw new \Foundation\Exception('Attempting to set FileInput::maxSize to a value greater than PHP INI post_max_size');
     }
     $this->maxSize = $maxSize;
