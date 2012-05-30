@@ -28,7 +28,7 @@ class MaximumFileSize extends AbstractValidator
   {
     $fileArr = $input->get($this->e->getName());
     if ($fileArr['size'] > $this->ruleSet) {
-      $this->addError('File is too large.  Your file is: ' . \convertBytesToString($fileArr['size'] - $this->ruleSet) . ' bigger than the maximum size of ' . \convertBytesToString($this->ruleSet, 0));
+      $this->addError('File is too large.  Your file is: ' . \Foundation\Utility::convertBytesToString($fileArr['size'] - $this->ruleSet) . ' bigger than the maximum size of ' . \Foundation\Utility::convertBytesToString($this->ruleSet, 0));
 
       return false;
     }
@@ -39,7 +39,7 @@ class MaximumFileSize extends AbstractValidator
   public function preRender()
   {
     if (is_null($this->e->getFormat())) {
-      $this->e->setFormat('Maximum file size: ' . convertBytesToString($this->ruleSet, 0) . '.');
+      $this->e->setFormat('Maximum file size: ' . \Foundation\Utility::convertBytesToString($this->ruleSet, 0) . '.');
     }
   }
 }
