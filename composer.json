@@ -14,20 +14,20 @@
   ],
   "require": {  
     "php": ">=5.3.0",
-    "ext-curl"     : "*",
-    "ext-json"     : "*",
-    "ext-imagick"     : "*", 
-    "ext-uuid"     : "*", 
-    "ext-mbstring"     : "*",
-    "ext-ldap"     : "*", 
-    "ext-xml"      : "*",
-    "ext-dom"      : "*",
-    "ext-clamav"      : "*",
     "symfony/console": ">=2.0",
     "ezyang/htmlpurifier": ">=4.4.0"
   },
   "suggest": {
-    "ext-apc": "Caching will significantly improve performance."
+    "ext-apc": "Caching will significantly improve performance.",
+    "ext-curl": "PHP Curl",
+    "ext-json": "PHP JSON",
+    "ext-imagick": "PHP Image Magick", 
+    "ext-uuid": "PHP UUID", 
+    "ext-mbstring": "PHP MBString",
+    "ext-ldap": "PHP LDAP", 
+    "ext-xml": "PHP XML",
+    "ext-dom": "PHP DOM",
+    "ext-clamav": "Clamav Extension, http://php-clamav.sourceforge.net/"
   },
   "autoload": {
     "psr-0": {
