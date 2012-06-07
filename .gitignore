@@ -7,3 +7,4 @@ build/pdepend
 .buildpath
 .project
 .settings
+vendor
