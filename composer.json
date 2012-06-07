@@ -34,5 +34,6 @@
       "Foundation": "src/"
     },
     "classmap": ["lib/lightvc", "lib/phpass", "lib/phpmailer"]
-  }
+  },
+  "include-path": ["vendor/ezyang/htmlpurifier/library"]
 }

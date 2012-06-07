@@ -1,5 +1,5 @@
 {
-    "hash": "b481d3d822b19010896685db035ac3df",
+    "hash": "aa46ae6b2487abb783e650e1f2b0533a",
     "packages": [
         {
             "package": "ezyang/htmlpurifier",
@@ -9,7 +9,6 @@
         {
             "package": "symfony/console",
             "version": "dev-master",
-            "source-reference": "22be75777fe18315637abe092de5aa5c7f4ed3cd",
             "alias-pretty-version": "2.1.x-dev",
             "alias-version": "2.1.9999999.9999999-dev"
         },
