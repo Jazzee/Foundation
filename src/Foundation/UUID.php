@@ -15,8 +15,8 @@ class UUID
   public static function v4()
   {
     //try and use the PECL UUID library
-    if (!function_exists('uuid_create')) {
-      return uuid_create(UUID_TYPE_RANDOM);
+    if (function_exists('uuid_create')) {
+      return \uuid_create(UUID_TYPE_RANDOM);
     }
     $prBits = null;
     $fp = @fopen('/dev/urandom', 'rb');
