@@ -52,8 +52,8 @@ class Field extends \Foundation\HTMLElement
   public function newElement($type, $name)
   {
     $class = __NAMESPACE__ . "\\Element\\{$type}";
-    if (!\Doctrine\Common\ClassLoader::classExists($class)) {
-      throw new \Foundation\Exception(__NAMESPACE__ . "\\{$class} does not exist");
+    if (!\class_exists($class)) {
+      throw new \Foundation\Exception("{$class} does not exist");
     }
     $element = new $class($this);
     $element->setName($name);
