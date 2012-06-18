@@ -36,7 +36,7 @@ function Form(){
   this.createElement = function(obj){
     var div = $('<div>');
     div.addClass('field');
-    div.addClass(obj.class);
+    div.addClass(obj['class']);
     if(obj.required){
       div.addClass('required');
     }
