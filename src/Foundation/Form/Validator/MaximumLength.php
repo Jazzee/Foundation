@@ -36,7 +36,8 @@ class MaximumLength extends AbstractValidator
 
   public function preRender()
   {
-    $format = $this->e->getFormat() . " Maximum length: {$this->ruleSet} characters. ";
-    $this->e->setFormat($format);
+    if (is_null($this->e->getFormat())) {
+      $this->e->setFormat(" Maximum length: {$this->ruleSet} characters. ");
+    }
   }
 }
