@@ -4,4 +4,4 @@
  * @package Foundation\form
  */
  ?>
- <input<?php $this->renderElement('attributes', array('object'=>$element)); ?> />
+ <input id="<?php print $element->getName();?>" <?php $this->renderElement('attributes', array('object'=>$element)); ?> />
