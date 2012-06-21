@@ -74,6 +74,7 @@ function Input(obj){
   var input = $('<input>');
   input.attr('value', obj.value);
   input.attr('name', obj.name);
+  input.attr('id', obj.name);
   $(obj.attributes).each(function(i){
     input.attr(this.name, this.value);
   });
