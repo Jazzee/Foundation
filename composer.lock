@@ -1,21 +1,14 @@
 {
-    "hash": "7553451358136b0adf70fec714e0176b",
+    "hash": "e1b04848a05b6afd2170464d5bd3c8b3",
     "packages": [
         {
             "package": "ezyang/htmlpurifier",
-            "version": "dev-master",
-            "source-reference": "7291f19347b05f5833421eaf5152558bfbd2b454"
+            "version": "v4.4.0.1"
         },
         {
             "package": "symfony/console",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/console",
-            "version": "dev-master",
-            "source-reference": "22be75777fe18315637abe092de5aa5c7f4ed3cd"
+            "version": "2.0.x-dev",
+            "source-reference": "v2.0.15"
         }
     ],
     "packages-dev": null,
