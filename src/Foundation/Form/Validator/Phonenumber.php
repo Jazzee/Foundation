@@ -2,7 +2,7 @@
 namespace Foundation\Form\Validator;
 /**
  * Check if a phone number is feasibly valid
- * 
+ *
  * @package Foundation\form\validator
  * @author  Jon Johnson <jon.johnson@ucsf.edu>
  * @license BSD http://jazzee.org/license.html
@@ -21,12 +21,5 @@ class Phonenumber extends AbstractValidator
     }
 
     return true;
-  }
-
-  public function preRender()
-  {
-    if (is_null($this->e->getFormat())) {
-      $this->e->setFormat('10 digit phone number.');
-    }
   }
 }
