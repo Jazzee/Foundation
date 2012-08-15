@@ -1,12 +1,14 @@
 <?php
 namespace Foundation\Form;
+
 /**
  * User input from a form
- * 
+ *
  * @package Foundation\form
  */
 class Input
 {
+
   /**
    * Read/Write store of user input
    * Will be acted on by Filters and Proccesed by Validators
@@ -31,7 +33,13 @@ class Input
     foreach ($input as $key => $value) {
       //get rid of magic quotes
       if (get_magic_quotes_gpc()) {
-        $value = stripslashes($value);
+        if (is_array($value)) {
+          foreach ($value as $key2 => $value2) {
+            $value[$key2] = \stripslashes($value2);
+          }
+        } else {
+          $value = \stripslashes($value);
+        }
       }
       if ($value === '') {
         $value = null; //convert empty strings to null values
@@ -47,7 +55,7 @@ class Input
    */
   public function set($name, $value)
   {
-   $this->input[$name] = $value;
+    $this->input[$name] = $value;
   }
 
   /**
@@ -81,4 +89,5 @@ class Input
   {
     unset($this->input[$name]);
   }
+
 }
