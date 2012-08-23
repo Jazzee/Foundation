@@ -5,21 +5,24 @@
  */
 ?>
 <ol>
-<?php 
+<?php
   for ($i = 0; $i < $element->getTotalItems(); $i++) {?>
     <li>
-      <div class='label<?php 
+      <div class='label'>
+      <label for='<?php print $element->getName() . '_' . $i ?>'><?php print \Foundation\Utility::ordinalValue($i+1)?> choice:</label>
+      </div>
+      <div class='control<?php
       if ($i<$element->getRequiredItems()) {
         print ' required';
       } ?>'>
-      <label for='<?php print $element->getName() . '_' . $i ?>'><?php print \Foundation\Utility::ordinalValue($i+1)?> choice:</label>
-      </div>
       <select name='<?php print $element->getName()?>[]' id='<?php print $element->getName() . '_' . $i ?>'>
-      <?php 
+      <?php
       if ($i>=$element->getRequiredItems()) {
         print "<option value=''></option>";
-      } ?> 
-      <?php 
+      } else {
+        print "<option value=''>Select {$element->getLabel()}...</option>";
+      } ?>
+      <?php
       foreach ($element->getItems() as $item) {
         echo '<option';
         $values = $element->getValue();
@@ -32,6 +35,6 @@
       ?>
       </select>
     </li>
-<?php 
+<?php
   }?>
 </ol>
