@@ -5,24 +5,25 @@ namespace Foundation\VC;
  * Config
  * Mostly copied from LightVC - A lightweight view-controller framework.
  * http://lightvc.org/
- * 
- * The original framework Copyright (c) 2007, Anthony Bush has been modified to meet the caching and 
+ *
+ * The original framework Copyright (c) 2007, Anthony Bush has been modified to meet the caching and
  * detection needs of our Foundation framework.
- * 
+ *
  * @package Foundation\vc
  * @see     http://lightvc.org/
- **/
+ * */
 class Config extends \Lvc_Config
 {
+
   /**
    *  Our real cache
-   *  @var Cache 
+   *  @var Cache
    */
   static private $_cache;
 
   /**
    * Temporary Cache
-   * 
+   *
    * WHen a real cache hasn't been sent we put stuff here
    * @var \Foundation\Cache
    */
@@ -63,14 +64,17 @@ class Config extends \Lvc_Config
   {
     array_unshift(self::$controllerPaths, $path);
   }
+
   public static function prefixControllerViewPath($path)
   {
     array_unshift(self::$controllerViewPaths, $path);
   }
+
   public static function prefixLayoutViewPath($path)
   {
     array_unshift(self::$layoutViewPaths, $path);
   }
+
   public static function prefixElementViewPath($path)
   {
     array_unshift(self::$elementViewPaths, $path);
@@ -95,7 +99,8 @@ class Config extends \Lvc_Config
         return $file;
       }
     }
-    throw new \Foundation\Exception("Path to {$controllerName} can not be found");
+    $cache->save('Controller' . $controllerName, false);
+    return false;
   }
 
   /**
@@ -108,19 +113,19 @@ class Config extends \Lvc_Config
    */
   public static function getViewPath($viewName, $viewType, $paths, $suffix)
   {
-    $cache=self::getCache();
-    if ($cachePath = $cache->fetch($viewType .'View' . $viewName)) {
+    $cache = self::getCache();
+    if ($cachePath = $cache->fetch($viewType . 'View' . $viewName)) {
       return $cachePath;
     }
     foreach ($paths as $path) {
       $file = $path . $viewName . $suffix;
       if (file_exists($file)) {
-        $cache->save($viewType .'View' . $viewName, $file);
+        $cache->save($viewType . 'View' . $viewName, $file);
 
         return $file;
       }
     }
-    throw new \Foundation\Exception("Path to {$viewType} {$viewName} can not be found");
+    throw new \Foundation\Exception("Path to View {$viewName} for {$viewType} can not be found");
   }
 
   /**
@@ -129,19 +134,25 @@ class Config extends \Lvc_Config
    */
   public static function includeController($controllerName)
   {
-    $file = self::getControllerPath($controllerName);
-    include_once($file);
+    if ($file = self::getControllerPath($controllerName)) {
+      include_once($file);
+    } else {
+      throw new \Foundation\Exception("{$controllerName} does not exist.");
+    }
   }
 
   public static function getController($controllerName)
   {
-    $file = self::getControllerPath($controllerName);
-    include_once($file);
-    $controllerClass = self::getControllerClassName($controllerName);
-    $controller = new $controllerClass();
-    $controller->setControllerName($controllerName);
+    if ($file = self::getControllerPath($controllerName)) {
+      include_once($file);
+      $controllerClass = self::getControllerClassName($controllerName);
+      $controller = new $controllerClass();
+      $controller->setControllerName($controllerName);
 
-    return $controller;
+      return $controller;
+    }
+
+    return null;
   }
 
   public static function getControllerView($viewName, &$data = array())
@@ -171,7 +182,7 @@ class Config extends \Lvc_Config
    */
   public static function elementExists($elementName)
   {
-    $cache=self::getCache();
+    $cache = self::getCache();
     if ($cachePath = $cache->fetch('Element' . $elementName)) {
       return true;
     }
@@ -190,8 +201,8 @@ class Config extends \Lvc_Config
   /**
    * Cascading Element Exists
    * @param string $className
-	 * @param string $prefix
-	 * @param string $suffix
+   * @param string $prefix
+   * @param string $suffix
    */
   public static function findElementCacading($className, $prefix = '', $suffix = '')
   {
@@ -207,4 +218,5 @@ class Config extends \Lvc_Config
 
     return false;
   }
+
 }
