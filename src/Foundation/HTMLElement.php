@@ -2,7 +2,7 @@
 namespace Foundation;
 /**
  * Dynamic HTML elements
- * 
+ *
  * @package Foundation
  */
 class HTMLElement
@@ -48,7 +48,7 @@ class HTMLElement
 
   /**
    * Get all of the availalbe attributes for this element
-   * @return array 
+   * @return array
    */
   public function getAttributes()
   {
@@ -182,7 +182,8 @@ class HTMLElement
    */
   public function addClass($name)
   {
-    $this->classes[] = $name;
+    //use the name as the key to prevent duplicates
+    $this->classes[$name] = $name;
   }
 
   /**
