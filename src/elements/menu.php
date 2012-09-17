@@ -4,15 +4,15 @@
  * @package Foundation\navigation
  */
 ?>
-<?php echo $menu->getTitle() ?>
+<a href='#'><?php echo $menu->getTitle() ?></a>
 <ol<?php $this->renderElement('attributes', array('object'=>$menu)); ?>>
 <?php
 foreach ($menu->getLinks() as $link) {
-  echo '<li';
+  echo '<li class="link';
   if ($link->getCurrent()) {
-    echo " class='current'";
+    echo " current";
   }
-  echo '>';
+  echo '">';
   $this->renderElement('link', array('link'=>$link));
   echo '</li>';
 }

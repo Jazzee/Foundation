@@ -9,7 +9,7 @@
     <?php
     if ($container->hasLink()) {
       foreach ($container->getLinks() as $link) {
-        echo '<li>';
+        echo '<li class="link">';
           $this->renderElement('link', array('link'=>$link));
         echo '</li>';
       }
@@ -18,7 +18,7 @@
     <?php
     foreach ($container->getMenus() as $menu) {
       if ($menu->hasLink()) {
-        echo '<li>';
+        echo '<li class="menu">';
         $this->renderElement('menu', array('menu'=>$menu));
         echo '</li>';
       }
