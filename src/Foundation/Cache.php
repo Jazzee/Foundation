@@ -71,16 +71,6 @@ class Cache implements \Doctrine\Common\Cache\Cache
   }
 
   /**
-   * Get all our cached ids
-   * 
-   * @return array $ids
-   */
-  public function getIds()
-  {
-    return $this->cache->getIds();
-  }
-
-  /**
    * Pass through to cache provider 
    */
   public function getStats()
