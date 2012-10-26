@@ -67,7 +67,7 @@ class Cache implements \Doctrine\Common\Cache\Cache
    */
   public function delete($id)
   {
-    $this->cache->delete($id);
+    return $this->cache->delete($id);
   }
 
   /**
