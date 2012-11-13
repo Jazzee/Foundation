@@ -133,12 +133,11 @@ function ShortDateInput(obj){
   months[12]="December";
   
   var month = $('<select>').attr('name', obj.name + '-month');
-  var value = new Date(obj.value);
+  var option = $('<option>').attr('value', null).html('').attr('selected', true);
+  month.append(option);
+  
   for(var i = 1; i <=12; i++){
     var option = $('<option>').attr('value', i).html(months[i]);
-    if(value.getMonth()+1 == i){
-      option.attr('selected', true);
-    }
     month.append(option);
   }
   
@@ -146,10 +145,18 @@ function ShortDateInput(obj){
   var year = $('<select>').attr('name', obj.name + '-year');
   for(var i = now.getFullYear()-50; i < now.getFullYear()+5; i++){
     var option = $('<option>').attr('value', i).html(i);
-    if(value.getFullYear() == i){
-      option.attr('selected', true);
-    }
     year.append(option);
+  }
+  var option = $('<option>').attr('value', null).html('').attr('selected', true);
+  year.append(option);
+  if(obj.value != null){
+    var value = new Date(0);
+    var parts = obj.value.split('-');
+    value.setYear(parts[0]);
+    value.setMonth(parts[1]-1, 1);
+    var monthNum = value.getMonth()+1;
+    $('option[value="' + monthNum + '"]', month).attr('selected', true);
+    $('option[value="' + value.getFullYear() + '"]', year).attr('selected', true);
   }
   return $('<span>').append(month).append(year);
   
