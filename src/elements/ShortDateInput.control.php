@@ -5,7 +5,6 @@
  * 
  */
 ?>
-<input type='hidden' name='<?php print $element->getName() ?>' value='<?php print $element->getValue() ?>' />
 <select name='<?php print $element->getName() ?>-month'>
 
   <option value=''>&nbsp;</option>
@@ -34,12 +33,3 @@
     print '</option>';
   }?>
 </select>
-<?php /* input for year - this works too
-<input name='<?php print $element->name ?>-year' size='4' value='
-<?php if(!is_null($element->value)){
-  print date('Y',strtotime($element->value));
-} else {
-  print date('Y');
-}?>
- ' />
-*/
