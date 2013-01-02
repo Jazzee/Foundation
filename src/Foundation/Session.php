@@ -40,6 +40,14 @@ class Session
   public function restart()
   {
     session_regenerate_id(true);
+    $this->setup();
+  }
+
+  /**
+   * Setup a new session
+   */
+  public function setup()
+  {
     $_SESSION = array();
     $_SESSION['security'] = array(
         'user-agent' => md5(empty($_SERVER['HTTP_USER_AGENT'])?'':$_SERVER['HTTP_USER_AGENT']),
@@ -85,7 +93,9 @@ class Session
     session_start();
     //do a very small check to see if the browser is the same as the originating browser
     //this canbe fooled easily, but provides a bit of security
-    if (empty($_SESSION['security']) OR $_SESSION['security']['user-agent'] != md5(empty($_SERVER['HTTP_USER_AGENT'])?'':$_SERVER['HTTP_USER_AGENT'])) {
+    if(empty($_SESSION)){
+      $this->setup();
+    } else if (empty($_SESSION['security']) OR $_SESSION['security']['user-agent'] != md5(empty($_SERVER['HTTP_USER_AGENT'])?'':$_SERVER['HTTP_USER_AGENT'])) {
       $this->restart();
     }
   }
