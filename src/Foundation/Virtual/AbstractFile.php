@@ -125,7 +125,7 @@ abstract class AbstractFile implements File
     }
     $contents = $this->getFileContents();
     header('Content-Type: ' . $this->getMimeType());
-    header('Content-Disposition: attachment; filename='. $this->niceName($this->getName()));
+    header('Content-Disposition: inline; filename='. $this->niceName($this->getName()));
     header('Content-Transfer-Encoding: binary');
     header('Content-Length: ' . strlen($contents));
     print $contents;
