@@ -9,14 +9,25 @@ namespace Foundation\Form\Validator;
  */
 class Regex extends AbstractValidator
 {
-  public function validate(FormInput $input)
+  protected $_errorMessage = 'Does not match requirements for this field';
+
+  public function validate(\Foundation\Form\Input $input)
   {
     if (!\preg_match($this->ruleSet, $input->get($this->e->getName()))) {
-      $this->addError('Does not match requirements for this field');
+      $this->addError($this->_errorMessage);
 
       return false;
     }
 
     return true;
+  }
+  
+  /**
+   * Set the custom regex error message
+   * @param string $errorMessage
+   */
+  public function setErrorMessage($errorMessage)
+  {
+    $this->_errorMessage = $errorMessage;
   }
 }
