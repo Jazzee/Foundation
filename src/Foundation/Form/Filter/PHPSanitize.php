@@ -18,7 +18,7 @@ class PHPSanitize extends AbstractFilter
         $options = array_shift($this->ruleSet);
       }
     } else {
-      throw new \Foundation\Error("Invalid ruleset provided to PHPSanitize Filter");
+      throw new \Foundation\Exception("Invalid ruleset provided to PHPSanitize Filter");
     }
 
     return \filter_var($value, $type, $options);
