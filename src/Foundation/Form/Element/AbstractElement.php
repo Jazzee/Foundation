@@ -117,12 +117,30 @@ abstract class AbstractElement extends \Foundation\HTMLElement implements \Found
   }
 
   /**
+   * Add a validator
+   * @param \Foundation\Form\Validator
+   */
+  public function prependValidator(\Foundation\Form\Validator $validator)
+  {
+    array_unshift($this->validators, $validator);
+  }
+
+  /**
    * Add a filter
    * @param \Foundation\Form\Filter
    */
   public function addFilter(\Foundation\Form\Filter $filter)
   {
     $this->filters[] = $filter;
+  }
+  
+  /**
+   * Prepend a filter to the top of the tack
+   * @param \Foundation\Form\Filter $filter
+   */
+  public function prependFilter(\Foundation\Form\Filter $filter)
+  {
+    array_unshift($this->filters, $filter);
   }
 
   /**

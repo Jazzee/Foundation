@@ -27,10 +27,22 @@ interface Element
   function addValidator(Validator $validator);
 
   /**
+   * Prepend a validator to any onthe stack already
+   * @param \Foundation\Form\Validator
+   */
+  function prependValidator(Validator $validator);
+
+  /**
    * Add a filter
    * @param \Foundation\Form\Filter
    */
   function addFilter(Filter $filter);
+
+  /**
+   * Prepend a filter to any other ones
+   * @param \Foundation\Form\Filter
+   */
+  function prependFilter(Filter $filter);
 
   /**
    * Run any validator preRender methods
