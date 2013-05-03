@@ -20,12 +20,20 @@ class ListItem extends \Foundation\HTMLElement
    * @var string
    */
   protected $label;
+  
+  /**
+   * An array of metadata attributes for describing the list item
+   * @var array
+   */
+  protected $metadata;
 
   public function __construct()
   {
     parent::__construct();
     $this->attributes['disabled'] = 'disabled';
     $this->attributes['value'] = 'value';
+    $this->attributes['metadataString'] = 'data-metadata';
+    $this->clearMetadata();
   }
 
   /**
@@ -80,5 +88,27 @@ class ListItem extends \Foundation\HTMLElement
   public function getValue()
   {
     return $this->value;
+  }
+
+  /**
+   * Add some metadata
+   * @param string $data
+   */
+  public function addMetadata($data)
+  {
+    $this->metadata[] = $data;
+  }
+
+  /**
+   * Get the metadata as a string
+   * @return string
+   */
+  public function getMetadataString()
+  {
+    return implode(' ', $this->metadata);
+  }
+  
+  public function clearMetadata(){
+    $this->metadata = array();
   }
 }
