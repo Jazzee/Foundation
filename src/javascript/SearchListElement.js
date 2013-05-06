@@ -8,6 +8,8 @@ function SearchListElement(element){
   this.container;
   this.items = this.getItems();
   this.init();
+  this.noResultsMessage = "Leave Blank";
+  this.allowBlankSelection = false;
 };
 
 
@@ -54,7 +56,6 @@ SearchListElement.prototype.getItems = function(){
 SearchListElement.prototype.createSearchBox = function(){
   var self = this;
   self.selectListElement.val(''); //default to nothing
-  var noResults = "No Results Found";
   var input = $('<input>');
   $(input).autocomplete({
     delay: 0,
@@ -69,12 +70,12 @@ SearchListElement.prototype.createSearchBox = function(){
         }
       });
       if (!results.length) {
-        results = [noResults];
+        results = [self.noResultsMessage];
       }
       response(results);
     },
     select: function( event, ui ) {
-      if (ui.item.label === noResults) {
+      if (!self.allowBlankSelection && ui.item.label === self.noResultsMessage) {
         event.preventDefault();
       } else {
         self.selectValue(ui.item.value, ui.item.label);
@@ -82,7 +83,7 @@ SearchListElement.prototype.createSearchBox = function(){
       return false;
     },
     focus: function (event, ui) {
-      if (ui.item.label === noResults) {
+      if (!self.allowBlankSelection && ui.item.label === self.noResultsMessage) {
         event.preventDefault();
       }
       return false;
@@ -99,7 +100,9 @@ SearchListElement.prototype.selectValue = function(value, label){
   var self = this;
   self.selectListElement.val(value);
   $('.box', self.container).empty();
-  $('.box', self.container).append(label);
+  if(label != self.noResultsMessage){
+    $('.box', self.container).append(label);
+  }
   var button = $('<button>').button({
     icons: {
       primary: "ui-icon-close"
@@ -110,4 +113,12 @@ SearchListElement.prototype.selectValue = function(value, label){
     self.createSearchBox();
   });
   $('.box', self.container).append(button);
+};
+
+/**
+ * Set the no results found message
+ * @param String
+ */
+SearchListElement.prototype.setNoResultsFoundMessage = function(message){
+  this.noResultsMessage = message;
 };
