@@ -183,6 +183,8 @@ function RadioList(obj){
 
 function SelectList(obj){
   var select = $('<select>');
+  select.attr('name', obj.name);
+  select.attr('id', obj.name);
   $(obj.attributes).each(function(i){
     select.attr(this.name, this.value);
   });
