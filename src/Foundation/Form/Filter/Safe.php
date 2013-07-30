@@ -64,6 +64,10 @@ class Safe extends AbstractFilter
     }
 
     $purifier = new \HTMLPurifier($config);
+    //HTMLPUrifier has a bad habit of deleting all the text which follows <string
+    //if we instead add a space it works fine.  In some cases this will add an extra space, but
+    //that is preferable to losing input.
+    $value = str_replace("<","< ",$value);
 
     return $purifier->purify($value);
   }
