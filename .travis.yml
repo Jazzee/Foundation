@@ -4,9 +4,11 @@ php:
   - 5.3
 
 before_script:
-  - composer install
+  - composer install --dev --no-interaction
 
-script: phpunit --configuration build/phpunit.xml
+script: 
+	-	mkdir -p build/logs
+  - php vendor/bin/phpunit -c build/phpunit.xml
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - vendor/bin/coveralls -v
