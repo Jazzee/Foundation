@@ -7,6 +7,16 @@ namespace Foundation\Form\Element;
  */
 class ButtonInput extends Input
 {
+
+  /**
+   * Constructor
+   */
+  public function __construct($field)
+  {
+    parent::__construct($field);
+    $this->type = 'button';
+  }
+
   /**
    * Dont allow the type to be overridden
    * @see Foundation\Form\Element.Input::setType()
