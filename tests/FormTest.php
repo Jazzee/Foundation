@@ -19,7 +19,7 @@ class FormTest extends TestCase{
     $this->assertNull($object->getName());
     
     $this->assertEquals('post', $object->getMethod());
-    $this->assertEquals('utf8', $object->getAcceptCharset());
+    $this->assertEquals('UTF-8', $object->getAcceptCharset());
     
     $elements = $object->getElements();
     $this->assertTrue(empty($elements));
