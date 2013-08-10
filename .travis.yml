@@ -9,4 +9,4 @@ before_script:
 script: phpunit --configuration build/phpunit.xml
 
 after_script:
-  - php vendor/bin/coveralls
+  - php vendor/bin/coveralls -v
