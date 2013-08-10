@@ -15,7 +15,12 @@
   "require": {
     "php": ">=5.3.0",
     "symfony/console": "2.0.*",
-    "ezyang/htmlpurifier": "4.*"
+    "ezyang/htmlpurifier": "4.*",
+    "doctrine/common": "2.3.*"
+  },
+  "require-dev": {
+      "phpunit/phpunit": "3.7.*",
+      "phpmd/phpmd": "1.5.*"
   },
   "suggest": {
     "ext-apc": "Caching will significantly improve performance.",
