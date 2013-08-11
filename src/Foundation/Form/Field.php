@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form;
+
 /**
  * Form elements are contained in fields
  * 
@@ -7,124 +8,127 @@ namespace Foundation\Form;
  */
 class Field extends \Foundation\HTMLElement
 {
-  /**
-   * Any field level instructions
-   * @var string
-   */
-  protected $instructions;
 
-  /**
-   * The legend for the field
-   * @var string
-   */
-  protected $legend;
+    /**
+     * Any field level instructions
+     * @var string
+     */
+    protected $instructions;
 
-  /**
-   * Holds the field elements
-   * @var array
-   */
-  protected $elements;
+    /**
+     * The legend for the field
+     * @var string
+     */
+    protected $legend;
 
-  /**
-   * Holds a reference to the form
-   * @var \Foundation\Form
-   */
-  protected $form;
+    /**
+     * Holds the field elements
+     * @var array
+     */
+    protected $elements;
 
-  /**
-   * Constructor
-   * @param \Foundation\Form $form the form that contains this field
-   */
-  public function __construct(\Foundation\Form $form)
-  {
-    parent::__construct();
-    $this->addClass('field');
-    $this->elements = array();
-    $this->form = $form;
-  }
+    /**
+     * Holds a reference to the form
+     * @var \Foundation\Form
+     */
+    protected $form;
 
-  /**
-   * Create a new form element
-   * @param string $type what kind of element to create
-   * @param string $name the unique name of the element
-   * 
-   */
-  public function newElement($type, $name)
-  {
-    $class = __NAMESPACE__ . "\\Element\\{$type}";
-    if (!\class_exists($class)) {
-      throw new \Foundation\Exception("{$class} does not exist");
+    /**
+     * Constructor
+     * @param \Foundation\Form $form the form that contains this field
+     */
+    public function __construct(\Foundation\Form $form)
+    {
+        parent::__construct();
+        $this->addClass('field');
+        $this->elements = array();
+        $this->form = $form;
     }
-    $element = new $class($this);
-    $element->setName($name);
-    $this->addElement($element);
 
-    return $element;
-  }
+    /**
+     * Create a new form element
+     * @param string $type what kind of element to create
+     * @param string $name the unique name of the element
+     * 
+     */
+    public function newElement($type, $name)
+    {
+        $class = __NAMESPACE__ . "\\Element\\{$type}";
+        if (!\class_exists($class)) {
+            throw new \Foundation\Exception("{$class} does not exist");
+        }
+        $element = new $class($this);
+        $element->setName($name);
+        $this->addElement($element);
 
-  /**
-   * Add an element
-   * @param \Foundation\Form\Element
-   */
-  public function addElement(Element $element)
-  {
-    if (array_key_exists($element->getName(), $this->form->getElements())) {
-      throw new \Foundation\Exception('An element with the name ' . $element->getName() . ' already exists in this form');
+        return $element;
     }
-    $this->elements[$element->getName()] = $element;
-  }
 
-  /**
-   * Get the Elements
-   * @return array
-   */
-  public function getElements()
-  {
-    return $this->elements;
-  }
+    /**
+     * Add an element
+     * @param \Foundation\Form\Element
+     */
+    public function addElement(Element $element)
+    {
+        if (array_key_exists($element->getName(), $this->form->getElements())) {
+            $message = 'An element with the name ' . $element->getName()
+                    . ' already exists in this form';
+            throw new \Foundation\Exception($message);
+        }
+        $this->elements[$element->getName()] = $element;
+    }
 
-  /**
-   * Get the Form
-   * @return \Foundation\Form
-   */
-  public function getForm()
-  {
-    return $this->form;
-  }
+    /**
+     * Get the Elements
+     * @return array
+     */
+    public function getElements()
+    {
+        return $this->elements;
+    }
 
-  /**
-   * Set the instructions
-   * @param string $instructions
-   */
-  public function setInstructions($instructions)
-  {
-    $this->instructions = $instructions;
-  }
+    /**
+     * Get the Form
+     * @return \Foundation\Form
+     */
+    public function getForm()
+    {
+        return $this->form;
+    }
 
-  /**
-   * Get the instructions
-   * @return string $instructions
-   */
-  public function getInstructions()
-  {
-    return $this->instructions;
-  }
+    /**
+     * Set the instructions
+     * @param string $instructions
+     */
+    public function setInstructions($instructions)
+    {
+        $this->instructions = $instructions;
+    }
 
-  /**
-   * Set the legend
-   * @param string $legend
-   */
-  public function setLegend($legend)
-  {
-    $this->legend = $legend;
-  }
+    /**
+     * Get the instructions
+     * @return string $instructions
+     */
+    public function getInstructions()
+    {
+        return $this->instructions;
+    }
 
-  /**
-   * Get the legend
-   * @return string $legend
-   */
-  public function getLegend()
-  {
-    return $this->legend;
-  }
+    /**
+     * Set the legend
+     * @param string $legend
+     */
+    public function setLegend($legend)
+    {
+        $this->legend = $legend;
+    }
+
+    /**
+     * Get the legend
+     * @return string $legend
+     */
+    public function getLegend()
+    {
+        return $this->legend;
+    }
 }

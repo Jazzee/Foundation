@@ -4,7 +4,7 @@ class TestFormElement extends \Foundation\Form\Element\AbstractElement{
   
 }
 
-class FormElementTest extends TestCase{
+class FormAbstractElementTest extends TestCase{
   protected $field;
   
   public function setUp(){

@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Filter;
+
 /**
  * Convert the value to all lowercase
  * 
@@ -7,8 +8,9 @@ namespace Foundation\Form\Filter;
  */
 class Lowercase extends AbstractFilter
 {
-  public function filterValue($value)
-  {
-    return \strtolower($value);
-  }
+
+    public function filterValue($value)
+    {
+        return \strtolower($value);
+    }
 }

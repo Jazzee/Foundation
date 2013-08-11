@@ -8,96 +8,97 @@ namespace Foundation\Form\Element;
  */
 class Textarea extends AbstractElement
 {
-  /**
-   * HTML element attributes
-   * @var string
-   */
-  protected $cols;
-  protected $rows;
-  protected $disabled;
-  protected $readonly;
 
-  /**
-   * Constructor
-   */
-  public function __construct($field)
-  {
-    parent::__construct($field);
-    $this->attributes['cols'] = 'cols';
-    $this->attributes['rows'] = 'rows';
-    $this->attributes['disabled'] = 'disabled';
-    $this->attributes['readonly'] = 'readonly';
-  }
+    /**
+     * HTML element attributes
+     * @var string
+     */
+    protected $cols;
+    protected $rows;
+    protected $disabled;
+    protected $readonly;
 
-  /**
-   * Set the cols
-   * @param string $cols
-   */
-  public function setCols($cols)
-  {
-    $this->cols = $cols;
-  }
+    /**
+     * Constructor
+     */
+    public function __construct($field)
+    {
+        parent::__construct($field);
+        $this->attributes['cols'] = 'cols';
+        $this->attributes['rows'] = 'rows';
+        $this->attributes['disabled'] = 'disabled';
+        $this->attributes['readonly'] = 'readonly';
+    }
 
-  /**
-   * Get the cols
-   * @return string $cols
-   */
-  public function getCols()
-  {
-    return $this->cols;
-  }
+    /**
+     * Set the cols
+     * @param string $cols
+     */
+    public function setCols($cols)
+    {
+        $this->cols = $cols;
+    }
 
-  /**
-   * Set the rows
-   * @param string $rows
-   */
-  public function setRows($rows)
-  {
-    $this->rows = $rows;
-  }
+    /**
+     * Get the cols
+     * @return string $cols
+     */
+    public function getCols()
+    {
+        return $this->cols;
+    }
 
-  /**
-   * Get the rows
-   * @return string $rows
-   */
-  public function getRows()
-  {
-    return $this->rows;
-  }
+    /**
+     * Set the rows
+     * @param string $rows
+     */
+    public function setRows($rows)
+    {
+        $this->rows = $rows;
+    }
 
-  /**
-   * Set the disabled
-   * @param string $disabled
-   */
-  public function setDisabled($disabled)
-  {
-    $this->disabled = $disabled;
-  }
+    /**
+     * Get the rows
+     * @return string $rows
+     */
+    public function getRows()
+    {
+        return $this->rows;
+    }
 
-  /**
-   * Get the disabled
-   * @return string $disabled
-   */
-  public function getDisabled()
-  {
-    return $this->disabled;
-  }
+    /**
+     * Set the disabled
+     * @param string $disabled
+     */
+    public function setDisabled($disabled)
+    {
+        $this->disabled = $disabled;
+    }
 
-  /**
-   * Set the readonly
-   * @param string $readonly
-   */
-  public function setReadonly($readonly)
-  {
-    $this->readonly = $readonly;
-  }
+    /**
+     * Get the disabled
+     * @return string $disabled
+     */
+    public function getDisabled()
+    {
+        return $this->disabled;
+    }
 
-  /**
-   * Get the readonly
-   * @return string $readonly
-   */
-  public function getReadonly()
-  {
-    return $this->readonly;
-  }
+    /**
+     * Set the readonly
+     * @param string $readonly
+     */
+    public function setReadonly($readonly)
+    {
+        $this->readonly = $readonly;
+    }
+
+    /**
+     * Get the readonly
+     * @return string $readonly
+     */
+    public function getReadonly()
+    {
+        return $this->readonly;
+    }
 }

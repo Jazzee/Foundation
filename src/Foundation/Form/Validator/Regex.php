@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Validator;
+
 /**
  * Check to see if the element matches the regex
  * 
@@ -9,25 +10,26 @@ namespace Foundation\Form\Validator;
  */
 class Regex extends AbstractValidator
 {
-  protected $_errorMessage = 'Does not match requirements for this field';
 
-  public function validate(\Foundation\Form\Input $input)
-  {
-    if (!\preg_match($this->ruleSet, $input->get($this->e->getName()))) {
-      $this->addError($this->_errorMessage);
+    protected $errorMessage = 'Does not match requirements for this field';
 
-      return false;
+    public function validate(\Foundation\Form\Input $input)
+    {
+        if (!\preg_match($this->ruleSet, $input->get($this->e->getName()))) {
+            $this->addError($this->errorMessage);
+
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-  }
-  
-  /**
-   * Set the custom regex error message
-   * @param string $errorMessage
-   */
-  public function setErrorMessage($errorMessage)
-  {
-    $this->_errorMessage = $errorMessage;
-  }
+    /**
+     * Set the custom regex error message
+     * @param string $errorMessage
+     */
+    public function setErrorMessage($errorMessage)
+    {
+        $this->errorMessage = $errorMessage;
+    }
 }

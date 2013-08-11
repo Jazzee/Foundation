@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Validator;
+
 /**
  * Check if a phone number is feasibly valid
  *
@@ -9,17 +10,18 @@ namespace Foundation\Form\Validator;
  */
 class Phonenumber extends AbstractValidator
 {
-  public function validate(\Foundation\Form\Input $input)
-  {
-    //only keep the digits
-    $number = preg_replace("#[^0-9]#", '', $input->get($this->e->getName()));
-    $length = \strlen($number);
-    if ($length < 10 OR $length > 13) {
-      $this->addError('Invalid Phone Number');
 
-      return false;
+    public function validate(\Foundation\Form\Input $input)
+    {
+        //only keep the digits
+        $number = preg_replace("#[^0-9]#", '', $input->get($this->e->getName()));
+        $length = \strlen($number);
+        if ($length < 10 or $length > 13) {
+            $this->addError('Invalid Phone Number');
+
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-  }
 }

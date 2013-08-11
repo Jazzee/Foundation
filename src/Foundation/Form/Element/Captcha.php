@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Element;
+
 /**
  * A CAPTCHA Element to validate against bots
  * uses reCAPTCHA library from http://recaptcha.net/
@@ -8,140 +9,141 @@ namespace Foundation\Form\Element;
  */
 class Captcha extends AbstractElement
 {
-  /**
-  * The reCAPTCHA server URL's
-  */
-  const API_SERVER = 'http://www.google.com/recaptcha/api';
-  const API_SECURE_SERVER = 'https://www.google.com/recaptcha/api';
-  const SIGNUP_SERVER = 'https://www.google.com/recaptcha/admin/create';
+    /**
+     * The reCAPTCHA server URL's
+     */
 
-  /**
-   * Our Private API Key
-   * @var string
-   */
-  static private $_privateApiKey;
+    const API_SERVER = 'http://www.google.com/recaptcha/api';
+    const API_SECURE_SERVER = 'https://www.google.com/recaptcha/api';
+    const SIGNUP_SERVER = 'https://www.google.com/recaptcha/admin/create';
 
-  /**
-   * Our Public API Key
-   * @var string
-   */
-  static private $_publicApiKey;
+    /**
+     * Our Private API Key
+     * @var string
+     */
+    static private $privateApiKey;
 
-  /**
-   * Local copy of public api key
-   * @var string
-   */
-  protected $publicKey;
+    /**
+     * Our Public API Key
+     * @var string
+     */
+    static private $publicApiKey;
 
-  /**
-   * The server we are connecting to
-   * @var string
-   */
-  protected $server;
+    /**
+     * Local copy of public api key
+     * @var string
+     */
+    protected $publicKey;
 
-  /**
-   * Holds the error message from processing
-   * @var string
-   */
-  public $errorString = '';
+    /**
+     * The server we are connecting to
+     * @var string
+     */
+    protected $server;
 
-  /**
-   * What reCaptcha theme should we use
-   * @var string
-   */
-  protected $themeName = 'red';
+    /**
+     * Holds the error message from processing
+     * @var string
+     */
+    public $errorString = '';
 
-  /**
-   * Constructor
-   * Check the API keys
-   */
-  public function __construct($field)
-  {
-    if (!self::$_privateApiKey) {
-      throw new \Foundation\Exception('Private API Key not set for reCAPTCHA library.');
-    }
-    if (!self::$_publicApiKey) {
-      throw new \Foundation\Exception('Public API Key not set for reCAPTCHA library.');
-    }
+    /**
+     * What reCaptcha theme should we use
+     * @var string
+     */
+    protected $themeName = 'red';
 
-    //move the static keys into local space for ease of use
-    $this->publicKey = self::$_publicApiKey;
+    /**
+     * Constructor
+     * Check the API keys
+     */
+    public function __construct($field)
+    {
+        if (!self::$privateApiKey) {
+            throw new \Foundation\Exception('Private API Key not set for reCAPTCHA library.');
+        }
+        if (!self::$publicApiKey) {
+            throw new \Foundation\Exception('Public API Key not set for reCAPTCHA library.');
+        }
 
-    //use the secure server
-    $this->server = self::API_SECURE_SERVER;
+        //move the static keys into local space for ease of use
+        $this->publicKey = self::$publicApiKey;
 
-    parent::__construct($field);
+        //use the secure server
+        $this->server = self::API_SECURE_SERVER;
 
-    $this->addValidator(new \Foundation\Form\Validator\Captcha($this, self::$_privateApiKey));
-  }
+        parent::__construct($field);
 
-  /**
-   * Set the api keys
-   * @param string $private
-   * @param string $public
-   */
-  public static function setKeys($private, $public)
-  {
-    self::$_privateApiKey = $private;
-    self::$_publicApiKey = $public;
-  }
-
-  /**
-   * gets a URL where the user can sign up for reCAPTCHA.
-   * @param string $domain The domain where the page is hosted
-   * @param string $appname The name of your application
-   */
-  public static function signupUrl($domain = null, $appname = null)
-  {
-    $url = self::SIGNUP_SERVER;
-    if ($domain) {
-      $url .= '?domain=' . \urlencode($domain);
-      if ($appname) {
-         $url .= '&app=' . \urlencode($appname);
-      }
+        $this->addValidator(new \Foundation\Form\Validator\Captcha($this, self::$privateApiKey));
     }
 
-    return $url;
-  }
-
-  /**
-   * Set the theme
-   * @param string $themeName
-   */
-  public function setTheme($themeName)
-  {
-    //valid themes
-    $arr = array('red','white','blackglass','clean','custom');
-    if (!\in_array($themeName, $arr)) {
-      throw \Foundation\Exception('Invalid reCaptch theme');
+    /**
+     * Set the api keys
+     * @param string $private
+     * @param string $public
+     */
+    public static function setKeys($private, $public)
+    {
+        self::$privateApiKey = $private;
+        self::$publicApiKey = $public;
     }
-    $this->themeName = $themeName;
-  }
 
-  /**
-   * Get the theme
-   * @return string the current theme
-   */
-  public function getTheme()
-  {
-    return $this->themeName;
-  }
+    /**
+     * gets a URL where the user can sign up for reCAPTCHA.
+     * @param string $domain The domain where the page is hosted
+     * @param string $appname The name of your application
+     */
+    public static function signupUrl($domain = null, $appname = null)
+    {
+        $url = self::SIGNUP_SERVER;
+        if ($domain) {
+            $url .= '?domain=' . \urlencode($domain);
+            if ($appname) {
+                $url .= '&app=' . \urlencode($appname);
+            }
+        }
 
-  /**
-   * Get the server
-   * @return string
-   */
-  public function getServer()
-  {
-    return $this->server;
-  }
+        return $url;
+    }
 
-  /**
-   * Get the public key
-   * @return string
-   */
-  public function getPublicKey()
-  {
-    return $this->publicKey;
-  }
+    /**
+     * Set the theme
+     * @param string $themeName
+     */
+    public function setTheme($themeName)
+    {
+        //valid themes
+        $arr = array('red', 'white', 'blackglass', 'clean', 'custom');
+        if (!\in_array($themeName, $arr)) {
+            throw \Foundation\Exception('Invalid reCaptch theme');
+        }
+        $this->themeName = $themeName;
+    }
+
+    /**
+     * Get the theme
+     * @return string the current theme
+     */
+    public function getTheme()
+    {
+        return $this->themeName;
+    }
+
+    /**
+     * Get the server
+     * @return string
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
+    /**
+     * Get the public key
+     * @return string
+     */
+    public function getPublicKey()
+    {
+        return $this->publicKey;
+    }
 }

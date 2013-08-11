@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Navigation;
+
 /**
  * Site Navigation Container
  * 
@@ -7,70 +8,71 @@ namespace Foundation\Navigation;
  */
 class Container extends \Foundation\HTMLElement
 {
-  /**
-   * @var array $menus holds the menus
-   */
-  protected $menus;
 
-  /**
-   * The Links
-   * @var array of \Foundation\Navitation\Link
-   */
-  protected $links;
+    /**
+     * @var array $menus holds the menus
+     */
+    protected $menus;
 
-  /**
-   * Construct
-   * 
-   */
-  public function __construct()
-  {
-    parent::__construct();
-    $this->menus = array();
-    $this->links = array();
-  }
+    /**
+     * The Links
+     * @var array of \Foundation\Navitation\Link
+     */
+    protected $links;
 
-  /**
-   * Add A menu to the container
-   * @param \Foundation\Navigation\Menu $menu
-   */
-  public function addMenu(\Foundation\Navigation\Menu $menu)
-  {
-    $this->menus[] = $menu;
-  }
+    /**
+     * Construct
+     * 
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->menus = array();
+        $this->links = array();
+    }
 
-  /**
-   * Get the menus
-   * @return array \Foundation\Navigation\Menu
-   */
-  public function getMenus()
-  {
-    return $this->menus;
-  }
+    /**
+     * Add A menu to the container
+     * @param \Foundation\Navigation\Menu $menu
+     */
+    public function addMenu(\Foundation\Navigation\Menu $menu)
+    {
+        $this->menus[] = $menu;
+    }
 
-  /**
-   * Add a link
-   * @param \Foundation\Navigation\Link $link
-   */
-  public function addLink(\Foundation\Navigation\Link $link)
-  {
-    $this->links[] = $link;
-  }
+    /**
+     * Get the menus
+     * @return array \Foundation\Navigation\Menu
+     */
+    public function getMenus()
+    {
+        return $this->menus;
+    }
 
-  /**
-   * Get the links
-   * return array
-   */
-  public function getLinks()
-  {
-    return $this->links;
-  }
+    /**
+     * Add a link
+     * @param \Foundation\Navigation\Link $link
+     */
+    public function addLink(\Foundation\Navigation\Link $link)
+    {
+        $this->links[] = $link;
+    }
 
-  /**
-   * Does the container have links
-   * @return bool true if there are any links false if not
-   */
-  public function hasLink()
-  {
-    return (bool) count($this->links);
-  }
+    /**
+     * Get the links
+     * return array
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
+
+    /**
+     * Does the container have links
+     * @return bool true if there are any links false if not
+     */
+    public function hasLink()
+    {
+        return (bool) count($this->links);
+    }
 }

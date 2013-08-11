@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Element;
+
 /**
  * A Text Input Element
  * 
@@ -7,5 +8,5 @@ namespace Foundation\Form\Element;
  */
 class TextInput extends Input
 {
-
+    
 }

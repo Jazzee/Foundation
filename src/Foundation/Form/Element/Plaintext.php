@@ -8,5 +8,5 @@ namespace Foundation\Form\Element;
  */
 class Plaintext extends AbstractElement
 {
-
+    
 }

@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form;
+
 /**
  * Filter Interface
  * 
@@ -7,10 +8,11 @@ namespace Foundation\Form;
  */
 interface Filter
 {
-  /**
-   * Filter the input
-   * @param mixed $value
-   * @return mixed $value
-   */
-  function filterValue($value);
+
+    /**
+     * Filter the input
+     * @param mixed $value
+     * @return mixed $value
+     */
+    public function filterValue($value);
 }

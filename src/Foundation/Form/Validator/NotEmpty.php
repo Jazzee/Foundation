@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Validator;
+
 /**
  * Check to see if the value is empty
  * 
@@ -9,19 +10,20 @@ namespace Foundation\Form\Validator;
  */
 class NotEmpty extends AbstractValidator
 {
-  public function validateNull(\Foundation\Form\Input $input)
-  {
-    if (is_null($input->get($this->e->getName()))) {
-      $this->addError('This field is required and you left it blank');
 
-      return false;
+    public function validateNull(\Foundation\Form\Input $input)
+    {
+        if (is_null($input->get($this->e->getName()))) {
+            $this->addError('This field is required and you left it blank');
+
+            return false;
+        }
+
+        return true;
     }
 
-    return true;
-  }
-
-  public function preRender()
-  {
-    $this->e->addClass('required');
-  }
+    public function preRender()
+    {
+        $this->e->addClass('required');
+    }
 }

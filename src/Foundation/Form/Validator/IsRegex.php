@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Validator;
+
 /**
  * Check to see if the input is a valid regular expression
  * 
@@ -9,14 +10,15 @@ namespace Foundation\Form\Validator;
  */
 class IsRegex extends AbstractValidator
 {
-  public function validate(\Foundation\Form\Input $input)
-  {
-    if (@preg_match($input->get($this->e->getName()), null) === false) {
-      $this->addError('Not a valid regular expression');
 
-      return false;
+    public function validate(\Foundation\Form\Input $input)
+    {
+        if (@preg_match($input->get($this->e->getName()), null) === false) {
+            $this->addError('Not a valid regular expression');
+
+            return false;
+        }
+
+        return true;
     }
-
-    return true;
-  }
 }

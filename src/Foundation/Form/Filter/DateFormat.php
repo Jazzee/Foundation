@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Filter;
+
 /**
  * Convert value to a nice date
  * 
@@ -7,8 +8,9 @@ namespace Foundation\Form\Filter;
  */
 class DateFormat extends AbstractFilter
 {
-  public function filterValue($value)
-  {
-    return date($this->ruleSet, strtotime($value));
-  }
+
+    public function filterValue($value)
+    {
+        return date($this->ruleSet, strtotime($value));
+    }
 }

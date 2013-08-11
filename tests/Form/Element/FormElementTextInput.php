@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../../bootstrap.php';
 ;
 
-class FormElementTextareaTest extends TestCase
+class FormElementTextInputTest extends TestCase
 {
 
     protected $field;
@@ -16,17 +16,13 @@ class FormElementTextareaTest extends TestCase
 
     public function testDefaultAttributes()
     {
-        $object = new \Foundation\Form\Element\Textarea($this->field);
-
-        $this->assertNull($object->getRows());
-        $this->assertNull($object->getCols());
+        $object = new \Foundation\Form\Element\TextInput($this->field);
         $this->assertNull($object->getDisabled());
-        $this->assertNull($object->getReadonly());
     }
 
     public function testSetProperties()
     {
-        $object = new \Foundation\Form\Element\Textarea($this->field);
+        $object = new \Foundation\Form\Element\TextInput($this->field);
         $value = uniqid();
         foreach ($object->getAttributes() as $memberName => $htmlName) {
             $set = 'set' . ucfirst($memberName);

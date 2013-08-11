@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Filter;
+
 /**
  * Replace elements of a string
  * 
@@ -7,8 +8,9 @@ namespace Foundation\Form\Filter;
  */
 class Replace extends AbstractFilter
 {
-  public function filterValue($value)
-  {
-    return \str_replace($this->ruleSet['pattern'], $this->ruleSet['replace'], $value);
-  }
+
+    public function filterValue($value)
+    {
+        return \str_replace($this->ruleSet['pattern'], $this->ruleSet['replace'], $value);
+    }
 }

@@ -11,16 +11,18 @@ namespace Foundation\Form\Validator;
 class PDFNotEncrypted extends AbstractValidator
 {
 
-  public function validate(\Foundation\Form\Input $input)
-  {
+    public function validate(\Foundation\Form\Input $input)
+    {
 
-    $fileArr = $input->get($this->e->getName());
-    $contents = file_get_contents($fileArr['tmp_name']);
-    if (strpos($contents, '/Encrypt')) {
-      $this->addError("This PDF file appears to be password protected or encrypted and cannot be accepted by our system.");
-      return false;
+        $fileArr = $input->get($this->e->getName());
+        $contents = file_get_contents($fileArr['tmp_name']);
+        if (strpos($contents, '/Encrypt')) {
+            $this->addError(
+                "This PDF file appears to be password protected or encrypted and " .
+                "cannot be accepted by our system."
+            );
+            return false;
+        }
+        return true;
     }
-    return true;
-  }
-
 }

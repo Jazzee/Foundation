@@ -1,5 +1,6 @@
 <?php
 namespace Foundation\Form\Element;
+
 /**
  * A Radio List Element
  * 
@@ -7,5 +8,5 @@ namespace Foundation\Form\Element;
  */
 class RadioList extends ListElement
 {
-
+    
 }
