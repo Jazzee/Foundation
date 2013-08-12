@@ -10,4 +10,4 @@ script:
   - php vendor/bin/phpunit -c build/phpunit.xml
 
 after_script:
-  - vendor/bin/coveralls -v
+  - vendor/bin/coveralls --exclude-no-stmt
