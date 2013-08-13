@@ -2,5 +2,13 @@
 <ruleset name="Foundation">
  <description>Foundation standard based on The Symfony2 coding standard as published by opensky.</description>
  <rule ref="PSR2"/>
- <exclude-pattern>*.js</exclude-pattern>
+ <exclude-pattern>tests/*</exclude-pattern>
+ <exclude-pattern>lib/*</exclude-pattern>
+ <exclude-pattern>vendor/*</exclude-pattern>
+ <exclude-pattern>build/*</exclude-pattern>
+ <exclude-pattern>src/elements</exclude-pattern>
+ <exclude-pattern>src/media</exclude-pattern>
+ <exclude-pattern>src/javascript</exclude-pattern>
+ <!-- Temporarily exclude until we can refactor to nto use PHPMailer functions directly  -->
+ <exclude-pattern>src/Foundation/Mail/Message.php</exclude-pattern>
 </ruleset>
