@@ -8,8 +8,23 @@ namespace Foundation\Form\Filter;
  */
 class Safe extends AbstractFilter
 {
+    /**
+     * Filter the value to be safe by encoding all of the
+     * HTML entities
+     * @param string $value
+     * @return string
+     */
     public function filterValue($value)
     {
-        return htmlentities($value);
+        return htmlentities($value, ENT_COMPAT, 'UTF-8');
+    }
+    
+    /**
+     * Undo a Filter to get the original value
+     * @param string $value
+     * @return string
+     */
+    public static function unFilter($value){
+        return html_entity_decode($value, ENT_COMPAT, 'UTF-8');
     }
 }
