@@ -7,7 +7,7 @@ class FormFilterSafeHTMLTest extends TestCase
 
     public function testFilter()
     {
-        $element = $this->getMockBuilder('\Foundation\Form\Element\ListElement')
+        $element = $this->getMockBuilder('\Foundation\Form\Element')
                         ->disableOriginalConstructor()->getMock();
         $object = new \Foundation\Form\Filter\SafeHTML($element);
         $this->assertEquals(
