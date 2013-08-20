@@ -16,7 +16,7 @@ class Safe extends AbstractFilter
      */
     public function filterValue($value)
     {
-        return htmlentities($value, ENT_COMPAT, 'UTF-8');
+        return htmlentities($value, ENT_COMPAT, 'UTF-8', false);
     }
     
     /**

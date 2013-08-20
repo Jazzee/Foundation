@@ -76,4 +76,18 @@ class FormFilterSafeTest extends TestCase
             Foundation\Form\Filter\Safe::unFilter($filtered)
         );
     }
+
+    public function testDoubleEntites()
+    {
+        $element = $this->getMockBuilder('\Foundation\Form\Element')
+                        ->disableOriginalConstructor()->getMock();
+        $object = new \Foundation\Form\Filter\Safe($element);
+        $entities = get_html_translation_table(HTML_ENTITIES);
+        foreach ($entities as $char => $html) {
+            $this->assertEquals(
+                $html,
+                $object->filterValue(utf8_encode($html))
+            );
+        }
+    }
 }
