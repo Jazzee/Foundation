@@ -55,10 +55,11 @@ class SafeHTML extends AbstractFilter
         // set up configuration
         $config = \HTMLPurifier_Config::createDefault();
         $config->set('HTML.DefinitionID', 'JazzeeFoundationFormFilterSafeHTML');
-        $config->set('HTML.DefinitionRev', 1); // increment when configuration changes
+        $config->set('HTML.DefinitionRev', 2); // increment when configuration changes
         $config->set("Core.AggressivelyFixLt", true);
         $config->set("Core.EscapeInvalidTags", true);
         $config->set("Core.EscapeInvalidChildren", true);
+        $config->set('Attr.AllowedFrameTargets', array('_blank', '_top'));
         // Doctype
         $config->set('HTML.Doctype', 'XHTML 1.0 Transitional');
         if (!is_null(self::$cachePath)) {

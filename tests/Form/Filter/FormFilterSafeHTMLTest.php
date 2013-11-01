@@ -24,5 +24,11 @@ class FormFilterSafeHTMLTest extends TestCase
                 'alert(String.fromCharCode(88,83,83))//--&gt;"&gt;&gt;&lt;script&gt;' .
                 'alert(String.fromCharCode(88,83,83))&lt;/script&gt;';
         $this->assertEquals($result, $object->filterValue($test));
+        
+        $linkTarget1 = '<a href="#" target="_top">test</a>';
+        $this->assertEquals($linkTarget1, $object->filterValue($linkTarget1));
+        
+        $linkTarget2 = '<a href="#" target="_blank">test</a>';
+        $this->assertEquals($linkTarget2, $object->filterValue($linkTarget2));
     }
 }
