@@ -29,9 +29,11 @@ class PDF extends AbstractValidator
         //Do this seperatly becuase it isn't really a valid mime types and shouldn't pass the file info check
         $defaultTypes = array(
           'application/octet-stream',
+          'application/octetstream',
           'binary/octet-stream',
+          'binary/octetstream',
           'application/force-download',
-          'application/download',
+          'application/download'
         );
         //simplest check, however the type is sent by the browser and can be forged
         if (!\in_array($fileArr['type'], $validMimeTypes) and !\in_array($fileArr['type'], $defaultTypes)) {
