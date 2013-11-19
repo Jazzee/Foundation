@@ -21,28 +21,6 @@ class PDF extends AbstractValidator
           'text/pdf',
           'text/x-pdf');
         $fileArr = $input->get($this->e->getName());
-
-        //There are some default types that sometiems get sent with files so we allow them seeperatly
-        //octet-stream is the default mime type for any unknown binary
-        // and application/download are old ways a server can force a file to be downloaed
-        //firefox sometimes sends these types when its own PDF type has been overridden
-        //Do this seperatly becuase it isn't really a valid mime types and shouldn't pass the file info check
-        $defaultTypes = array(
-          'application/octet-stream',
-          'application/octetstream',
-          'binary/octet-stream',
-          'binary/octetstream',
-          'application/force-download',
-          'application/download'
-        );
-        //simplest check, however the type is sent by the browser and can be forged
-        if (!\in_array($fileArr['type'], $validMimeTypes) and !\in_array($fileArr['type'], $defaultTypes)) {
-            $this->addError(
-                "Your browser is reporting that this is a file of type {$fileArr['type']} which is not a valid PDF."
-            );
-
-            return false;
-        }
         //obviously easily changed but check the extension
         $arr = explode('.', $fileArr['name']);
         $extension = array_pop($arr);
